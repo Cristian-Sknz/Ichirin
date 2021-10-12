@@ -1,0 +1,89 @@
+.navbar {
+    background-color: black;
+}
+
+.logo {
+    width: 232px;
+}
+
+.navbar_body {
+    display: flex;
+    align-items: center;
+    padding: 3rem 0;
+    max-height: 117px;
+    width: 85%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.navbar_navigation {
+    display: flex;
+    align-items: center;
+}
+
+.navbar_list {
+    display: none;
+    margin: 0 3rem;
+}
+
+.navbar_list li a::before {
+    background: white;
+    height: 2px;
+    width: 0;
+    opacity: .5;
+    border-radius: 1rem;
+    content: "";
+
+    position: absolute;
+    transform: translate(-50%, 0);
+    left: 60%;
+    bottom: -35%;
+    
+    transition: 300ms;
+}
+
+.navbar_list li:hover a::before {
+    width: 65px;
+    transition: 300ms;
+}
+
+.navbar_list li {
+    display: inline-block;
+    text-transform: uppercase;
+    margin: .5rem 1rem;
+    position: relative;
+}
+
+.navbar_list li a {
+    font-family: poppins, sans-serif;
+    font-weight: 600;
+    font-size: .9rem;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar_list li a span {
+    margin-left: .5rem;
+}
+
+.navbar_search {
+    padding: .6rem;
+    background: white;
+    border-radius: 100%;
+}
+
+/*.navbar_mobile {
+    
+}*/
+
+.mobile_button {
+    margin-left: 3rem;
+    display: inline-block;
+}
+
+
+@media screen and (min-width: 968px) {
+    .navbar_list {
+        display: block;
+    }
+}
