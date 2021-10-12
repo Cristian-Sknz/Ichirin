@@ -1,13 +1,15 @@
 import '../styles/globals.css'
 import '../styles/reset.css'
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import '../styles/slick.css'
 
 import { library, config } from '@fortawesome/fontawesome-svg-core';
-import { faEnvelopeOpenText, faHome, faListAlt, faSearch, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelopeOpenText, faHome, faListAlt, faSearch, faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import { faDiscord, faFacebook, faFacebookMessenger, faInstagram} from '@fortawesome/free-brands-svg-icons';
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 
 config.autoAddCss = false; /* eslint-disable import/first */
-library.add(faHome, faListAlt, faSearch, faStar, faEnvelopeOpenText)
+library.add(faHome, faListAlt, faSearch, faStar, faEnvelopeOpenText, farStar, faStarHalf)
 library.add(faFacebook, faFacebook, faInstagram, faDiscord, faFacebookMessenger)
 
 function MyApp({ Component, pageProps }) {

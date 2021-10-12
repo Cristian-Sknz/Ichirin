@@ -1,121 +1,150 @@
-.container {
-  min-height: 100vh;
-  padding: 0 0.5rem;
+/* 
+ * Carrousel
+ */
+.carrousel_container {
+  background-image: url(./images/flower-background.jpg);
+  height: 374px;
+}
+
+.feature_carrousel {
+  margin: 0 auto;
+  min-width: 700px;
+  max-width: 991px;
+  width: 60%;
+}
+
+.feature_carrousel img{
+  max-width: 570px;
+  height: 222px;
+  padding: 0 1rem;
+}
+
+/* 
+ * FeaturedCompleted
+ */
+.feature_completed {
+  margin: 4rem 0;
+}
+
+.section_title {
+  margin: 0 auto;
+  width: 85%;
+  padding: .3rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.185);
+  max-width: var(--max-width);
+}
+
+.icon {
+  display: inline-block;
+  background: black;
+  max-width: 30px;
+  padding: .4rem;
+}
+
+.section_title h2 {
+  display: inline-block;
+  margin-left: 1rem;
+  font-family: 'Poppins';
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* 
+ * FeaturedCompleted Container
+ */
+
+ .item_container {
+   display: flex;
+   width: 85%;
+   margin: 0 auto;
+   max-width: var(--max-width);
+ }
+
+ /* 
+ * FeaturedItem
+ */
+.featured_item_container {
+  font-family: 'Poppins';
+  width: 30%;
+  min-width: 250px;
+  max-width: 340px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
+  padding: 1rem;
 }
 
-.main {
-  padding: 5rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer {
-  width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
-}
-
-.description {
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
+.manga_image {
   margin-top: 3rem;
 }
 
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  width: 45%;
+.manga_info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1rem 0;
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+.manga_info .manga_title {
+  display: inline-block;
 }
 
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+.manga_title h2 {
+  font-weight: 500;
+  margin-bottom: .4rem;
 }
 
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
+.manga_title h3 {
+  color: #656565;
+  font-size: .8rem;
+  font-weight: 500;
 }
 
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
+.manga_info .manga_rating {
+  display: inline-block;
+  vertical-align: top;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+.manga_description {
+  color: #656565;
+  width: 100%;
+  line-height: 2;
+}
+
+.featured_list_container {
+  width: 70%;
+  font-family: 'Poppins';
+}
+
+.featured_list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 160px);
+  grid-gap: 20px;
+  padding: 1rem;
+  justify-items: center;
+  justify-content: center;
+}
+
+.featured_list_item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.manga_info_card {
+  margin: .5rem 0;
+}
+
+.manga_info_card h2{
+  font-weight: 500;
+}
+
+.manga_info_card h3 {
+  font-weight: 400;
+  font-size: .8rem;
+}
+
+
+.card_image img {
+  width: 100%;
 }
