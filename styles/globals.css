@@ -12,3 +12,13 @@ body {
 h1, h2, h3, h4, p {
     font-family: poppins, sans-serif;
 }
+
+a {
+    color: #333;
+    transition: color 250ms;
+}
+
+a:hover {
+    color: #eb3349;
+    transition: color 250ms;
+}

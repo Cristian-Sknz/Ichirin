@@ -3,6 +3,7 @@ import Head from 'next/head';
 import FeatureCarrousel from '../components/layouts/Home/FeatureCarrousel';
 import FeaturedCompleted from '../components/layouts/Home/FeaturedCompleted';
 import LastMangaUpdates from '../components/layouts/Home/LastMangaUpdates';
+import Footer from '../components/template/Footer';
 
 import Navbar from '../components/template/Navbar';
 import Topbar from '../components/template/Topbar';
@@ -22,6 +23,8 @@ export default function Home() {
         <FeatureCarrousel/>
         <FeaturedCompleted/>
         <LastMangaUpdates/>
+
+        <Footer/>
       </>
     </>
   );

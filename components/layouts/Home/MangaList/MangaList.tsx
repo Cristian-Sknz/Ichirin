@@ -4,6 +4,10 @@ import MangaListItem from './MangaListItem';
 
 const image = 'https://ichirinnohanayuriscan.com/wp-content/uploads/2019/05/haru-to-midori-cover1-193x278.jpg';
 
+function getRandomInt(min:number , max:number) {
+    return (Math.random() * (max - min) + min).toFixed(1);
+}
+
 export function createManga() {
     return {
         id: 0,
@@ -18,7 +22,7 @@ export function createManga() {
             id: 0,
             name: 'Manga Category'
         },
-        rating: 4.5
+        rating: parseFloat(getRandomInt(2, 5))
     }
 }
 

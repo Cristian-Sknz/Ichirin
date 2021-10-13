@@ -138,18 +138,25 @@
 
 .manga_info_card h2 {
   font-weight: 500;
+  margin: .3rem 0;
 }
 
 .manga_info_card h3 {
-  font-weight: 400;
+  color: #656565;
+  
   font-size: 0.8rem;
+  font-weight: 500;
 }
 
 .card_image img {
   width: 100%;
 }
 
-/* FeaturedCompleted.tsx */
+/* LastMangaUpdates.tsx */
+.last_updates {
+  margin: 5rem 0;
+}
+
 .last_updates_container {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -159,6 +166,7 @@
   .section_title {
     width: 85%;
   }
+  
   .item_container {
     flex-direction: row;
     align-items: flex-start;

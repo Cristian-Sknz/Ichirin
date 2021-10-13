@@ -10,7 +10,7 @@ import { createManga } from './MangaList/MangaList';
 export default function LastMangaUpdates() {
     const mangas = [];
     for (let i = 1; i <= 12; i++) {
-        mangas.push(<MangaListItem data={createManga()}/>);
+        mangas.push(<MangaListItem key={i} data={createManga()}/>);
     }
     return (
     <section className={style.last_updates}>

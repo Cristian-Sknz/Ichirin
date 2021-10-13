@@ -24,7 +24,7 @@ class MangaListItem extends Component<MangaListItemProps> {
                 <h3>{data.category.name}</h3>
               </div>
               <div className='manga_rating'>
-                <RatingStars rating={4.5} />
+                <RatingStars rating={data.rating} />
               </div>
             </li>
           );

@@ -1,51 +1,30 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RatingStars from '../../../models/RatingStar';
 import style from '../Home.module.css';
+import { MangaData } from '../MangaList/MangaList';
 
-type MangaCategory = {
-  id: number;
-  name: string;
-};
+type FeaturedMangaProps = {
+  data : MangaData;
+}
 
-type MangaType = {
-  id: number;
-  name: string;
-};
-
-type FeaturedItemProps = {
-  id: number;
-  name: string;
-  image_url: string;
-  description: string;
-  type: MangaType;
-  category: MangaCategory;
-  rating: number;
-};
-
-const srcPreview =
-  'https://ichirinnohanayuriscan.com/wp-content/uploads/2020/04/cover-193x278.jpg';
-
-export default function FeaturedManga() {
+export default function FeaturedManga({data} : FeaturedMangaProps) {
   return (
     <div className={style.featured_item_container}>
       <div className={style.manga_image}>
-        <img src={srcPreview} alt='manga image' />
+        <img src={data.image_url} alt='manga image' />
       </div>
       <div className={style.manga_info}>
         <div className={style.manga_title}>
-          <h2>Manga name</h2>
-          <h3>Manga category</h3>
+          <h2>{data.name}</h2>
+          <h3>{data.category.name}</h3>
         </div>
         <div className='manga_rating'>
-          <RatingStars rating={4.5} />
+          <RatingStars rating={data.rating} />
         </div>
       </div>
 
       <div className={style.manga_description}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-        veniam! Repudiandae sint hic doloremque, molestias voluptate rerum
-        doloribus consectetur quod magnam soluta perspiciatis impedit quos esse
-        officia explicabo distinctio aliquam?
+        {data.description}
       </div>
 
       <a className={style.readmore} href='# '>
