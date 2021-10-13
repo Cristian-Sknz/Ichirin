@@ -112,13 +112,12 @@
 }
 
 /* FeaturedList.tsx */
-.featured_list_container {
+.manga_list_container {
   width: 100%;
   font-family: 'Poppins';
-  max-width: 884px;
 }
 
-.featured_list {
+.manga_list {
   display: grid;
   grid-template-columns: repeat(auto-fit, 160px);
   grid-gap: 20px;
@@ -127,7 +126,7 @@
   justify-content: center;
 }
 
-.featured_list_item {
+.manga_list_item {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -148,6 +147,12 @@
 
 .card_image img {
   width: 100%;
+}
+
+/* FeaturedCompleted.tsx */
+.last_updates_container {
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 769px) {
