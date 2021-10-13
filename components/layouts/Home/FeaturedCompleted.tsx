@@ -1,7 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import style from '../../styles/Home.module.css'
+
 import FeaturedManga from "./FeaturedManga";
 import FeaturedList from "./FeaturedList";
+
+import style from './Home.module.css'
 
 export default function FeaturedCompleted() {
     return (

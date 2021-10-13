@@ -1,5 +1,5 @@
-import RatingStars from "../Fragments/RatingStar";
-import style from '../../../styles/Home.module.css';
+import RatingStars from "../../../models/RatingStar";
+import style from '../Home.module.css'
 
 const srcPreview =
   'https://ichirinnohanayuriscan.com/wp-content/uploads/2019/05/haru-to-midori-cover1-193x278.jpg';

@@ -1,5 +1,6 @@
-import RatingStars from '../Fragments/RatingStar';
-import style from '../../../styles/Home.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import RatingStars from '../../../models/RatingStar';
+import style from '../Home.module.css';
 
 type MangaCategory = {
   id: number;
@@ -39,12 +40,17 @@ export default function FeaturedManga() {
           <RatingStars rating={4.5} />
         </div>
       </div>
+
       <div className={style.manga_description}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
         veniam! Repudiandae sint hic doloremque, molestias voluptate rerum
         doloribus consectetur quod magnam soluta perspiciatis impedit quos esse
         officia explicabo distinctio aliquam?
       </div>
+
+      <a className={style.readmore} href='# '>
+        Continuar Lendo <FontAwesomeIcon icon={['fas', 'arrow-right']}/>
+      </a>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import Slider from 'react-slick';
-import style from '../../styles/Home.module.css';
+import style from './Home.module.css'
 
 export default function FeatureCarrousel() {
   return (<div className={style.carrousel_container}>

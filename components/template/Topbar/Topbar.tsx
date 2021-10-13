@@ -1,5 +1,5 @@
-import LinkListItem from '../Common/LinkListItem';
-import SocialMedia from './Fragments/SocialMedia';
+import LinkListItem from '../../models/LinkListItem';
+import SocialMedia from './models/SocialMedia';
 import style from './Topbar.module.css';
 
 const category = [

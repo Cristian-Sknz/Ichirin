@@ -1,9 +1,10 @@
 import Head from 'next/head';
 
-import FeatureCarrousel from '../components/Home/FeatureCarrousel';
-import FeaturedCompleted from '../components/Home/FeaturedCompleted';
-import Navbar from '../components/UI/Navbar';
-import Topbar from '../components/UI/Topbar';
+import FeatureCarrousel from '../components/layouts/Home/FeatureCarrousel';
+import FeaturedCompleted from '../components/layouts/Home/FeaturedCompleted';
+
+import Navbar from '../components/template/Navbar';
+import Topbar from '../components/template/Topbar';
 
 export default function Home() {
   return (
