@@ -68,8 +68,33 @@
 
 .navbar_search {
     padding: .6rem;
+    background-color: white;
     background: white;
     border-radius: 100%;
+    color: black;
+    transition: .4s;
+}
+    
+
+.navbar_search:hover {
+    color: white;
+
+    background: linear-gradient(124deg, #d7360f, #fe9855, #cf619a, #a1044f);
+    background-size: 1800% 1800%;
+    
+    animation: rainbow-animation 2s infinite;
+}
+
+@keyframes rainbow-animation {
+    0% {
+        background-position: 0% 82%
+    }
+    50% {
+        background-position: 100% 19%
+    }
+    100% {
+        background-position: 0% 82%
+    }
 }
 
 /*.navbar_mobile {
@@ -83,6 +108,10 @@
 
 
 @media screen and (min-width: 968px) {
+    .navbar_body {
+        max-width: var(--max-width);
+    }
+    
     .navbar_list {
         display: block;
     }

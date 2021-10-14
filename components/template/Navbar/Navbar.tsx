@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import NavbarItem from './NavbarItem';
 import style from './Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,27 +8,27 @@ const items = [
   {
     name: 'Home',
     icon: ['fas', 'home'],
-    href: './',
+    href: '/',
   },
   {
     name: 'Projetos',
     icon: ['fas', 'list-alt'],
-    href: './projetos',
+    href: '/projetos',
   },
   {
     name: 'Procurar',
     icon: ['fas', 'search'],
-    href: './search',
+    href: '/search',
   },
   {
     name: 'Top 12',
     icon: ['fas', 'star'],
-    href: './top',
+    href: '/top',
   },
   {
     name: 'Contato',
     icon: ['fas', 'envelope-open-text'],
-    href: './contato',
+    href: '/contato',
   },
 ];
 
@@ -35,9 +37,11 @@ export default function Navbar() {
     <nav className={style.navbar}>
       <div className={style.navbar_body}>
         <div className={style.navbar_navigation}>
-          <a href='# '>
-            <img src='./logo.svg' className={style.logo} />
-          </a>
+          <Link href="/">
+            <a>
+              <img src='/logo.svg' className={style.logo} />
+            </a>
+          </Link>
 
           <ul className={style.navbar_list}>
             {items.map((item) => {

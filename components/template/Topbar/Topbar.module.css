@@ -1,11 +1,20 @@
 .topbar {
+    background: white;
+    position: sticky;
+    top: 0;
+    box-shadow: 0px 0px 2px 0px black;
+    z-index: 1000;
+}
+
+.topbar_body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
 
-    height: 61px;
-    background: #0095ff;
+    justify-content: space-between;
+    width: 95%;
+    margin: 0 auto;
+    padding: .8rem 0;
 }
 
 .topbar_lists {
@@ -26,7 +35,7 @@
 }
 
 .social_medias li a:hover {
-    color: #242424;
+    color: #000000;
     transition: color 128ms;
 }
 
@@ -46,12 +55,13 @@
     text-transform: uppercase;
     padding: 1rem;
     
-    font-weight: 500;
+    font-size: .87rem;
+    font-weight: 600;
     transition: color 128ms;
 }
 
 .category_list li a:hover {
-    color: #242424;
+    color: #141414;
     transition: color 128ms;
 }
 
@@ -89,18 +99,26 @@
     transition: 300ms;
 }
 
-@media screen and (min-width: 968px) {
-    .user_authentication {
-        display: flex;
-        align-items: center;
-    }
-}
-
 @media screen and (min-width: 768px) {
+    .topbar_body {
+        justify-content: center;
+    }
+
     .category_list {
         display: block;
     }
 
 }
 
-/*#666666*/
+@media screen and (min-width: 968px) {
+    .topbar_body {
+        justify-content: space-between;
+        width: 85%;
+        max-width: var(--max-width);
+    }
+
+    .user_authentication {
+        display: flex;
+        align-items: center;
+    }
+}
