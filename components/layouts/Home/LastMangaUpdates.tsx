@@ -1,19 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import style from './Home.module.css'
 import MangaList from './MangaList';
 import MangaListItem from './MangaList/MangaListItem';
-import { createManga } from './MangaList/MangaList';
+import MangaData from '../../../lib/types';
 
+import style from './Home.module.css'
 
-export default function LastMangaUpdates() {
-    const mangas = [];
-    for (let i = 1; i <= 12; i++) {
-        mangas.push(<MangaListItem key={i} data={createManga()}/>);
-    }
-    return (
-    <section className={style.last_updates}>
+type MangaProps = {
+    mangas: MangaData[];
+}
+
+export default function LastMangaUpdates({mangas} : MangaProps) {
+    return (<section className={style.last_updates}>
         <div className={style.section_title}>
             <div className={style.icon}>
                 <FontAwesomeIcon icon={['fas', 'star']} color={'white'}/>
@@ -22,7 +21,9 @@ export default function LastMangaUpdates() {
         </div>
         <div className={style.last_updates_container}>
             <MangaList>
-                {mangas}
+                {mangas.map((item) => {
+                    return <MangaListItem key={item.id} data={item}/>
+                })}
             </MangaList>
         </div>
     </section>

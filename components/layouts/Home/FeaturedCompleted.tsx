@@ -2,26 +2,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import FeaturedManga from './FeaturedManga';
 import MangaList from './MangaList';
-
-import style from './Home.module.css';
 import MangaListItem from './MangaList/MangaListItem';
-import { createManga } from './MangaList/MangaList';
 
-function createFeaturedManga() {
-  const manga = createManga();
-  manga.description =
-    'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum itaque distinctio, dolores est vel dignissimos magni magnam illum quos, ullam repudiandae ut assumenda delectus obcaecati cum quia aspernatur, suscipit aut!';
-  manga.image_url =
-    'https://ichirinnohanayuriscan.com/wp-content/uploads/2020/04/cover-193x278.jpg';
-  return manga;
+import MangaData from '../../../lib/types';
+import style from './Home.module.css';
+
+
+type MangaProps = {
+  mangas: MangaData[];
 }
 
-export default function FeaturedCompleted() {
-  const mangas = [];
-  for (let i = 1; i <= 8; i++) {
-    mangas.push(<MangaListItem key={i} data={createManga()} />);
-  }
-
+function FeaturedCompleted({ mangas }: MangaProps) {
   return (
     <section className={style.feature_completed}>
       <div className={style.section_title}>
@@ -32,9 +23,15 @@ export default function FeaturedCompleted() {
       </div>
 
       <div className={style.item_container}>
-        <FeaturedManga data={createFeaturedManga()} />
-        <MangaList>{mangas}</MangaList>
+        {mangas.length !== 0 && <FeaturedManga data={mangas[0]} />}
+        <MangaList>
+          {mangas.slice(1).map((item) => {
+            return <MangaListItem key={item.id} data={item} />;
+          })}
+        </MangaList>
       </div>
     </section>
   );
 }
+
+export default FeaturedCompleted;

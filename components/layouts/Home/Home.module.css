@@ -100,7 +100,8 @@
 .manga_description {
   color: #656565;
   width: 100%;
-  line-height: 1.7;
+  font-size: 14px;
+  line-height: 2;
 }
 
 .readmore {
@@ -132,24 +133,40 @@
   align-items: flex-start;
 }
 
-.manga_info_card {
-  margin: 0.5rem 0;
+.manga_list_item .card_image img{
+  transition: .5s;
 }
 
-.manga_info_card h2 {
-  font-weight: 500;
-  margin: .3rem 0;
+.manga_list_item:hover .card_image img {
+  transform: scale(1.1);
+  filter: brightness(.7) contrast(1.2);
+  transition: .5s;
 }
 
-.manga_info_card h3 {
-  color: #656565;
-  
-  font-size: 0.8rem;
-  font-weight: 500;
+.card_image {
+  overflow: hidden;
 }
 
 .card_image img {
   width: 100%;
+}
+
+.manga_info_card {
+  margin: 0.5rem 0;
+}
+.manga_name {
+  margin: .3rem 0;
+}
+
+.manga_name a {
+  font-weight: 500;
+}
+
+.manga_category a {
+  color: #656565;
+  
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
 /* LastMangaUpdates.tsx */
