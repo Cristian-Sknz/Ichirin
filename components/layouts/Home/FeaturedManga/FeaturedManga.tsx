@@ -1,33 +1,34 @@
+import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import MangaData from '../../../../lib/types';
 import RatingStars from '../../../models/RatingStar';
+
+import { textLimiter } from '../../../../lib/Util';
 import style from '../Home.module.css';
-import { MangaData } from '../MangaList/MangaList';
 
 type FeaturedMangaProps = {
   data: MangaData;
 };
 
 export default function FeaturedManga({ data }: FeaturedMangaProps) {
-
-  function textLimiter(text: string, size: number) {
-    if (text.length > size){
-      return `${text.substring(0, size)}...`;
-    }
-    return text;
-  }
-
   return (
     <div className={style.featured_item_container}>
       <div className={style.manga_image}>
         <a href={data.url}>
-          <img src={data.image_url} alt='manga image' />
+        <Image src={data.image_url}
+              alt={data.name}
+              width={193}
+              height={278}
+              loading="eager"
+              />
         </a>
       </div>
       
       <div className={style.manga_info}>
         <div className={style.manga_title}>
           <h2 className={style.manga_name}>
-            <a href='# '>{data.name}</a>
+            <a href={data.url}>{data.name}</a>
           </h2>
           <h3 className={style.manga_category}>
             <a href='# '>{data.genre[0]?.name}</a>

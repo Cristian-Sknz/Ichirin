@@ -1,11 +1,10 @@
 import style from '../Home.module.css'
-import MangaListItem from './MangaListItem';
 
 type MangaListProps = {
-    children: MangaListItem[];
+    children: JSX.Element | JSX.Element[];
 }
 
-export default function MangaList({children}) {
+export default function MangaList({children} : MangaListProps) {
     return (<div className={style.manga_list_container}>
         <ul className={style.manga_list}>
             {children}

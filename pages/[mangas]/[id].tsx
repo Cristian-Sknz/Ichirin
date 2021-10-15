@@ -1,9 +1,12 @@
 import React from 'react';
-import { GetStaticPaths, GetStaticProps} from 'next';
 import Head from 'next/head';
+import { GetStaticPaths, GetStaticProps} from 'next';
 
 import Navbar from '../../components/template/Navbar';
 import Topbar from '../../components/template/Topbar';
+import Footer from '../../components/template/Footer';
+
+import MangaPreview from '../../components/layouts/Manga/MangaPreview';
 import MangaData from '../../lib/types';
 
 import { MangaTypes } from '../../lib/api';
@@ -23,7 +26,11 @@ export default function Obra({manga}: ObraProps) {
       </Head>
       <Navbar/>
       <Topbar/>
+      <>
+        <MangaPreview manga={manga}/>
+      </>
 
+      <Footer/>
     </>
   );
 }
