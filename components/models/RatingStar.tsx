@@ -2,10 +2,11 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type RatingStarsProp = {
+  className?: string;
   rating: number;
 };
 
-export default function RatingStars({ rating }: RatingStarsProp) {
+export default function RatingStars({className ,rating }: RatingStarsProp) {
   const stars = [];
   const starLength = Math.floor(rating);
 
@@ -26,7 +27,7 @@ export default function RatingStars({ rating }: RatingStarsProp) {
     );
   }
   return (
-    <div className='stars'>
+    <div className={(className)? className : 'rating-stars'}>
       {stars} {rating}
     </div>
   );

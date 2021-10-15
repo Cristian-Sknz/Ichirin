@@ -22,29 +22,6 @@
   margin: 4rem 0;
 }
 
-.section_title {
-  margin: 0 auto;
-  width: 100%;
-  padding: 0.3rem;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.185);
-  max-width: var(--max-width);
-}
-
-.icon {
-  display: inline-block;
-  background: black;
-  max-width: 30px;
-  padding: 0.4rem;
-}
-
-.section_title h2 {
-  display: inline-block;
-  margin-left: 1rem;
-  font-family: 'Poppins';
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
 .item_container {
   display: flex;
   flex-direction: column;
@@ -145,6 +122,11 @@
 
 .card_image {
   overflow: hidden;
+  position: relative;
+}
+
+.card_image a {
+  position: relative;
 }
 
 .card_image img {

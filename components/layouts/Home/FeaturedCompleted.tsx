@@ -6,6 +6,7 @@ import MangaListItem from './MangaList/MangaListItem';
 
 import MangaData from '../../../lib/types';
 import style from './Home.module.css';
+import SectionTitle from '../../models/SectionTitle';
 
 
 type MangaProps = {
@@ -15,13 +16,7 @@ type MangaProps = {
 function FeaturedCompleted({ mangas }: MangaProps) {
   return (
     <section className={style.feature_completed}>
-      <div className={style.section_title}>
-        <div className={style.icon}>
-          <FontAwesomeIcon icon={['fas', 'star']} color={'white'} />
-        </div>
-        <h2>Completos em Destaque</h2>
-      </div>
-
+      <SectionTitle title={'Completos em Destaque'}/>
       <div className={style.item_container}>
         {mangas.length !== 0 && <FeaturedManga data={mangas[0]} />}
         <MangaList>
