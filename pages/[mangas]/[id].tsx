@@ -1,6 +1,6 @@
+import { GetStaticPaths, GetStaticProps} from 'next';
 import React from 'react';
 import Head from 'next/head';
-import { GetStaticPaths, GetStaticProps} from 'next';
 
 import Navbar from '../../components/template/Navbar';
 import Topbar from '../../components/template/Topbar';
@@ -24,13 +24,15 @@ export default function Obra({manga}: ObraProps) {
         <meta name='description' content={`Leia o manga ${manga?.name} online.`} />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Navbar/>
-      <Topbar/>
+      
       <>
-        <MangaPreview manga={manga}/>
+        <Navbar/>
+        <Topbar/>
+        <>
+          <MangaPreview manga={manga}/>
+        </>
+        <Footer/>
       </>
-
-      <Footer/>
     </>
   );
 }

@@ -21,16 +21,20 @@ export default function Home({mangas} : InferGetStaticPropsType<typeof getStatic
       <>
         <Navbar/>
         <Topbar/>
-
-        <FeatureCarrousel/>
-        <FeaturedCompleted mangas={mangas.slice(0, 9)}/>
-        <LastMangaUpdates mangas={mangas.slice(9)}/>
+        <>
+          <FeatureCarrousel/>
+          <FeaturedCompleted mangas={mangas.slice(0, 9)}/>
+          <LastMangaUpdates mangas={mangas.slice(9)}/>
+        </>
         <Footer/>
       </>
     </>
   );
 }
 
+/** A Pagina inicial é estatica, ela ira se 
+ * atualizar a cada 30 segundos
+ */
 export const getStaticProps = async () => {
   const res = await fetch('http://localhost:3000/api/mangas');
   let mangas: MangaData[] = await res.json();
