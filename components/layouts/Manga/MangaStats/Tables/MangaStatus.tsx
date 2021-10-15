@@ -3,7 +3,7 @@ import MangaData from "../../../../../lib/types";
 import TableContent from "../Table/TableContent";
 import TableRow from "../Table/TableRow";
 
-import style from '../Manga.module.css';
+import style from '../../Manga.module.css'
 
 type MangaStatusProps = {
     manga: MangaData;

@@ -2,7 +2,7 @@ import React from "react";
 import TableContent from "../Table/TableContent";
 import TableRow from "../Table/TableRow";
 
-import style from '../Manga.module.css';
+import style from '../../Manga.module.css'
 import MangaData from "../../../../../lib/types";
 import RatingStars from "../../../../models/RatingStar";
 
