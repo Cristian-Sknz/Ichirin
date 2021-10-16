@@ -1562,7 +1562,7 @@
             "name":"Vida Adulta"
          }
       ],
-      "releaseYear":null,
+      "releaseYear":[],
       "rating":4.7
    },
    {
@@ -1742,7 +1742,7 @@
             "name":"Yuri"
          }
       ],
-      "releaseYear":null,
+      "releaseYear":[],
       "rating":4.9
    },
    {

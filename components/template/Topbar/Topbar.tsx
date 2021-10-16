@@ -3,11 +3,11 @@ import SocialMedia from './models/SocialMedia';
 import style from './Topbar.module.css';
 
 const category = [
-  { name: 'Mangá', link: './' },
-  { name: 'Manhwa', link: './' },
-  { name: 'Manhua', link: './' },
-  { name: 'Webtoon', link: './' },
-  { name: 'Nsfw', link: './' },
+  { name: 'Mangá', link: '/mangas' },
+  { name: 'Manhwa', link: '/manhwas' },
+  { name: 'Manhua', link: '/manhuas' },
+  { name: 'Webtoon', link: '/webtoon' },
+  { name: 'Nsfw', link: '/nsfw' },
 ];
 
 export default function Topbar() {
@@ -17,19 +17,16 @@ export default function Topbar() {
 
         <div className={style.topbar_lists}>
           <ul className={style.social_medias}>
-            <SocialMedia href='./' media='discord' />
-            <SocialMedia href='./' media='facebook' />
-            <SocialMedia href='./' media='facebook-messenger' />
+            <SocialMedia href='https://discord.gg/HgmMNPy' media='discord' />
+            <SocialMedia href='https://fb.me/ichirinnohanayuri' media='facebook' />
+            <SocialMedia href='https://m.me/ichirinnohanayuri' media='facebook-messenger' />
           </ul>
 
           <ul className={style.category_list}>
             {category.map((item) => {
-              return (
-                <LinkListItem
-                  key={item.name}
-                  name={item.name}
-                  href={item.link}
-                />
+              return (<LinkListItem key={item.name} 
+                   name={item.name}
+                   href={item.link}/>
               );
             })}
           </ul>
