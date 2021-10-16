@@ -7,7 +7,9 @@ type TableContentProps = {
 export default function TableContent({children }: TableContentProps) {
   return (
     <table className={style.table_content}>
-      {(children) && children}
+      <tbody>
+        {(children) && children}
+      </tbody>
     </table>
   );
 }

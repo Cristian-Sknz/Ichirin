@@ -2,7 +2,7 @@ export type MangaData = {
     id: number;
     name: string;
     image_url: string;
-    description: string;
+    description: string[];
 
     alternative_names: string[];
     isAdult: boolean;

@@ -11,6 +11,7 @@ import MangaData from '../../lib/types';
 
 import { MangaTypes } from '../../lib/api';
 import { removeAccents } from '../../lib/Util';
+import MangaDescription from '../../components/layouts/Manga/MangaDescription';
 
 type ObraProps = {
   manga : MangaData;
@@ -30,6 +31,7 @@ export default function Obra({manga}: ObraProps) {
         <Topbar/>
         <>
           <MangaPreview manga={manga}/>
+          <MangaDescription manga={manga}/>
         </>
         <Footer/>
       </>

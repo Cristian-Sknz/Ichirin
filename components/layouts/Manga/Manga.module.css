@@ -142,6 +142,24 @@
     margin: 0 .4rem;
 }
 
+/* MangaDescription.tsx */
+.manga_description {
+    font-family: 'Poppins';
+    padding: 2rem 10%;
+}
+
+.description {
+    margin: 0 auto;    
+    margin-top: 2rem;
+    max-width: var(--max-width);
+}
+
+.description p {
+    color: #9d989d;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
 @media screen and (min-width: 968px) {
     .manga_stats_box {
         flex-direction: row;
