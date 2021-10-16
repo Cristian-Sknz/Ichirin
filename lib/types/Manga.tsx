@@ -16,6 +16,7 @@ export type MangaData = {
     rating: number;
 
     url?: string;
+    urlName?: string;
 }
 export type MangaStatus = {
     id: number;

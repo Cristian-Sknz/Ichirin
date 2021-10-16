@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import MangaData from '../../../../lib/types';
@@ -15,20 +16,25 @@ export default function FeaturedManga({ data }: FeaturedMangaProps) {
   return (
     <div className={style.featured_item_container}>
       <div className={style.manga_image}>
-        <a href={data.url}>
-        <Image src={data.image_url}
+        <Link href={data.urlName}>
+          <a>
+            <Image
+              src={data.image_url}
               alt={data.name}
               width={193}
               height={278}
-              loading="eager"
-              />
-        </a>
+              loading='eager'
+            />
+          </a>
+        </Link>
       </div>
-      
+
       <div className={style.manga_info}>
         <div className={style.manga_title}>
           <h2 className={style.manga_name}>
-            <a href={data.url}>{data.name}</a>
+            <Link href={data.urlName}>
+              <a>{data.name}</a>
+            </Link>
           </h2>
           <h3 className={style.manga_category}>
             <a href='# '>{data.genre[0]?.name}</a>
@@ -39,11 +45,15 @@ export default function FeaturedManga({ data }: FeaturedMangaProps) {
         </div>
       </div>
 
-      <div className={style.manga_description}>{textLimiter(data.description, 308)}</div>
+      <div className={style.manga_description}>
+        {textLimiter(data.description.join(';'), 308)}
+      </div>
 
-      <a className={style.readmore} href={data.url}>
-        Continuar Lendo <FontAwesomeIcon icon={['fas', 'arrow-right']} />
-      </a>
+      <Link href={data.urlName}>
+        <a className={style.readmore}>
+          Continuar Lendo <FontAwesomeIcon icon={['fas', 'arrow-right']} />
+        </a>
+      </Link>
     </div>
   );
 }
