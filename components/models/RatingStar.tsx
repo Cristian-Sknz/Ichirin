@@ -16,7 +16,7 @@ export default function RatingStars({className ,rating }: RatingStarsProp) {
     if (starLength >= i) {
       type = ['fas', 'star'];
     } else if (halfstar) {
-      type = ['fas', 'star-half'];
+      type = ['fas', 'star-half-alt'];
       halfstar = false;
     } else {
       type = ['far', 'star'];

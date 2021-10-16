@@ -7,7 +7,7 @@ import {
     faListAlt, 
     faSearch, 
     faStar, 
-    faStarHalf 
+    faStarHalfAlt
 } from '@fortawesome/free-solid-svg-icons';
   
 import { 
@@ -19,13 +19,14 @@ import {
 
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 
-const AppIcons = [faHome,
+const AppIcons = [
+    faHome,
     faListAlt,
     faSearch,
     faStar,
     faEnvelopeOpenText,
     farStar, 
-    faStarHalf, 
+    faStarHalfAlt, 
     faArrowRight,
     faFacebook,
     faInstagram,
