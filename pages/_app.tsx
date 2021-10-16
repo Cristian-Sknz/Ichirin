@@ -1,22 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import NextNProgress from 'nextjs-progressbar';
 import { library, config } from '@fortawesome/fontawesome-svg-core';
 
 import AppIcons from '../lib/IconsImports';
+import Loading from '../components/template/Loading/Loading';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import '../styles/globals.css'
-import '../styles/reset.css'
-import '../styles/slick.css'
+import '../styles/globals.css';
+import '../styles/reset.css';
+import '../styles/slick.css';
 
 config.autoAddCss = false; /* eslint-disable import/first */
-
-
-for (var icon of AppIcons) {
-  library.add(icon);
-}
+AppIcons.forEach((icon) => library.add(icon));
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  const [loading, setLoading] = useState(true);
+
+  // Loading inicial do Ichirin
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1300);
+  }, []);
+
+  return (
+    <>
+      <NextNProgress
+        color='#a10160'
+        startPosition={0.3}
+        stopDelayMs={200}
+        height={2}
+        showOnShallow={true}
+      />
+      <Loading loading={loading} />
+      <Component {...pageProps} />
+    </>
+  );
 }
 
-export default MyApp
+export default MyApp;
