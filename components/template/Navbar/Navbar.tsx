@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import ALink from '../../models/ALink';
 
 import NavbarItem from './NavbarItem';
 import style from './Navbar.module.css';
@@ -37,12 +37,9 @@ export default function Navbar() {
     <nav className={style.navbar}>
       <div className={style.navbar_body}>
         <div className={style.navbar_navigation}>
-          <Link href="/">
-            <a>
-              <img src='/logo.svg' className={style.logo} />
-            </a>
-          </Link>
-
+          <ALink href={'/'}>
+            <img src='/logo.svg' className={style.logo} />
+          </ALink>
           <ul className={style.navbar_list}>
             {items.map((item) => {
               return (
