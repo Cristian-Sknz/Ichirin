@@ -160,6 +160,37 @@
     line-height: 1.5;
 }
 
+/* MangaChapters.tsx */
+.manga_chapters {
+    font-family: 'Poppins';
+    padding: 2rem 10%;
+}
+
+.manga_chapters h3 {
+    margin: 1rem;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #9d989d;
+}
+
+.manga_chapters_list {
+    margin: 0 auto;
+    margin-top: 2rem;
+    max-width: var(--max-width);
+}
+
+.manga_chapter_item a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+
+.manga_chapter_item a small {
+    font-size: .7rem;
+    color: #9d989d;
+}
+
 @media screen and (min-width: 968px) {
     .manga_stats_box {
         flex-direction: row;

@@ -7,11 +7,13 @@ import Topbar from '../../components/template/Topbar';
 import Footer from '../../components/template/Footer';
 
 import MangaPreview from '../../components/layouts/Manga/MangaPreview';
+import MangaDescription from '../../components/layouts/Manga/MangaDescription';
+import MangaChapters from '../../components/layouts/Manga/MangaChapters';
 import MangaData from '../../lib/types';
 
 import { MangaTypes } from '../../lib/api';
 import { removeAccents } from '../../lib/Util';
-import MangaDescription from '../../components/layouts/Manga/MangaDescription';
+
 
 type ObraProps = {
   manga : MangaData;
@@ -32,6 +34,7 @@ export default function Obra({manga}: ObraProps) {
         <>
           <MangaPreview manga={manga}/>
           <MangaDescription manga={manga}/>
+          <MangaChapters chapters={[]}/>
         </>
         <Footer/>
       </>
