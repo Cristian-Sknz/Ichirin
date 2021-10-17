@@ -16,7 +16,6 @@ export default function Home({mangas} : InferGetStaticPropsType<typeof getStatic
       <Head>
         <title>Ichirin no Hana Yuri</title>
         <meta name='description' content='Pagina inicial do Ichirin no Hana Yuri' />
-        <link rel='icon' href='/favicon.ico' />
       </Head>
       <>
         <Navbar/>

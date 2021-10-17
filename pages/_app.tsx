@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import NextNProgress from 'nextjs-progressbar';
 import { library, config } from '@fortawesome/fontawesome-svg-core';
+import NextNProgress from 'nextjs-progressbar';
+import Head from 'next/head'
 
 import AppIcons from '../lib/IconsImports';
 import Loading from '../components/template/Loading/Loading';
@@ -23,6 +24,10 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+    <Head>
+      <link rel='icon' href='/favicon.svg' />
+    </Head>
+
       <NextNProgress
         color='#a10160'
         startPosition={0.3}
@@ -30,6 +35,7 @@ function MyApp({ Component, pageProps }) {
         height={2}
         showOnShallow={true}
       />
+      
       <Loading loading={loading} />
       <Component {...pageProps} />
     </>

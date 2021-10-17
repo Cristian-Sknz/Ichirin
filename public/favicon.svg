@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" viewBox="0 0 410 70">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" viewBox="0 0 80 62">
     <defs>
         <!-- @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); -->
         <style type="text/css">
@@ -30,15 +30,15 @@
                 <title>Ichirin no Hana</title>
                 <g transform="matrix(1,0,-.245,1,17,0)">
                     <text dominant-baseline="text-before-edge" style="fill: #ffffff; fill-opacity: 1; font-size: 60px; font-family: 'Bebas Neue'; font-weight: normal; line-height: 38.43013px">
-                        <tspan style="letter-spacing: -0.42px; font-kerning: normal">Ichirin no hana</tspan>
+                        <tspan style="text-align:center; letter-spacing: -0.42px; font-kerning: normal">IH</tspan>
                     </text>
                 </g>
             </g>
             <g>
                 <title>Yuri</title>
-                <g transform="matrix(1,0,-.3,1,319,-3)">
-                    <text dominant-baseline="text-before-edge" style="fill: url(#IchirinLinearGradient); fill-opacity: 1; font-size: 68px; font-family: 'Bebas Neue'; font-weight: normal; line-height: 38.43013px">
-                        <tspan style="letter-spacing: -0.476px; font-kerning: normal">Yuri</tspan>
+                <g transform="matrix(1,0,-.3,1,57,-1.8)">
+                    <text dominant-baseline="text-before-edge" style="fill: url(#IchirinLinearGradient); fill-opacity: 1; font-size: 64px; font-family: 'Bebas Neue'; font-weight: normal; line-height: 38.43013px">
+                        <tspan style="text-align:center;  letter-spacing: -0.42px; font-kerning: normal">Y</tspan>
                     </text>
                 </g>
             </g>
