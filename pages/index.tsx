@@ -36,9 +36,12 @@ export default function Home({mangas} : InferGetStaticPropsType<typeof getStatic
  * atualizar a cada 30 segundos
  */
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/api/mangas');
-  let mangas: MangaData[] = await res.json();
-  mangas = mangas.slice(0, 45);
+  let mangas: MangaData[] = []
+  try {
+    const res = await fetch('http://localhost:3000/api/mangas');
+    mangas = await res.json();
+    mangas = mangas.slice(0, 45);
+  } catch (ignored) {}
 
   return {
     props: {
