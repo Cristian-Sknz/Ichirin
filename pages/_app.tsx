@@ -7,9 +7,9 @@ import AppIcons from '../lib/IconsImports';
 import Loading from '../components/template/Loading/Loading';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../styles/globals.css';
 import '../styles/reset.css';
-import '../styles/slick.css';
 
 config.autoAddCss = false; /* eslint-disable import/first */
 AppIcons.forEach((icon) => library.add(icon));

@@ -1,20 +1,26 @@
 /* FeatureCarrousel.tsx */
-.carrousel_container {
-  background-image: url('../../../styles/images/flower-background.jpg');
-  height: 374px;
-}
-
 .feature_carrousel {
-  margin: 0 auto;
-  min-width: 700px;
-  max-width: 991px;
-  width: 60%;
+  background-image: url('../../../styles/images/flower-background.jpg');
+  padding: 3rem;
 }
 
-.feature_carrousel img {
-  max-width: 570px;
-  height: 222px;
-  padding: 0 1rem;
+.carrousel_container {
+  max-width: 93%;
+  margin: 0 auto;
+}
+
+.image_container {
+  width: 525px;
+  height: 270px;
+  position: relative;
+  margin: 0 auto;
+  border: .3rem solid white !important;
+  border-radius: .5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.carrousel_image {
+  background: white;
 }
 
 /* FeaturedCompleted.tsx */

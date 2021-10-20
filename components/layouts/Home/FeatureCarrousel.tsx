@@ -1,40 +1,37 @@
-import Slider from 'react-slick';
-import style from './Home.module.css'
+import { Carousel } from 'react-responsive-carousel';
+import style from './Home.module.css';
+import Image from 'next/image';
 
 export default function FeatureCarrousel() {
-  return (<div className={style.carrousel_container}>
-
-  </div>);
-}
-
-/*
-
-  var settings = {
-    infinite: true,
-    speed: 500,
-    autoplay: true,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          infinite: true,
-          autoplay: true,
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      }
-    ]
+  const settings = {
+    showThumbs: false,
+    showIndicators: false,
+    showStatus: false,
+    showArrows: false,
+    infiniteLoop: true,
+    emulateTouch: true,
+    autoPlay: true,
+    interval: 5000,
   };
 
+  let itens = [1, 2, 3];
   return (
-    <div className={style.feature_carrousel}>
-      <Slider {...settings} >
-        <img src="./images/flower-background.jpg" width="200px"/>
-        <img src="./images/flower-background.jpg" width="200px"/>
-        <img src="./images/flower-background.jpg" width="200px"/>
-      </Slider>
-    </div>
+    <section className={style.feature_carrousel}>
+      <div className={style.carrousel_container}>
+        <Carousel {...settings}>
+          {itens.map((v) => {
+            return (
+              <div className={style.image_container} key={v}>
+                  <Image
+                    className={style.carrousel_image}
+                    src='https://ichirinnohanayuriscan.com/wp-content/uploads/2021/10/banner-1.jpg'
+                    layout={'fill'}
+                  />
+              </div>
+            );
+          })}
+        </Carousel>
+      </div>
+    </section>
   );
-  */
+}
