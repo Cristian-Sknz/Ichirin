@@ -3,7 +3,7 @@
     position: sticky;
     top: 0;
     box-shadow: 0px 0px 2px 0px black;
-    z-index: 1000;
+    z-index: var(--z-topbar);
 }
 
 .topbar_body {

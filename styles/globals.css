@@ -3,6 +3,10 @@
 
 :root {
     --max-width: 1224px;
+
+    --z-navbar: 120;
+    --z-topbar: 99;
+    --z-searchbox: 100;
 }
 
 body {
