@@ -12,8 +12,8 @@ export default function RatingStars({ className , rating }: RatingStarsProp) {
   const [stars, setStars] = useState<JSX.Element[]>([])
   const starLength = Math.floor(rating);
 
-  const createStar = useCallback((type : IconProp) => {
-    return <FontAwesomeIcon color={'yellow'} icon={type as IconProp} />
+  const createStar = useCallback((type : IconProp, key: number) => {
+    return <FontAwesomeIcon key={key} color={'yellow'} icon={type as IconProp} />
   }, []);
 
   useEffect(() => {
@@ -21,12 +21,12 @@ export default function RatingStars({ className , rating }: RatingStarsProp) {
     var halfstar = starLength < rating;
     for (let i =1; i <= 5; i++) {
       if (starLength >= i) {
-        array.push(createStar(starTypes[0]));
+        array.push(createStar(starTypes[0], i));
       } else if (halfstar) {
-        array.push(createStar(starTypes[1]));
+        array.push(createStar(starTypes[1], i));
         halfstar = false;
       } else {
-        array.push(createStar(starTypes[0]));
+        array.push(createStar(starTypes[0], i));
       }
     }
     setStars(array);
