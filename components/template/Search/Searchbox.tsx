@@ -33,7 +33,8 @@ function Searchbox({}, ref: React.RefObject<SearchBoxHandles>) {
       .then(async (res) => {
           setResults({ values: await res.json(), loading: true }); 
           inputRef.current.blur();
-      });
+      })
+      .catch((err) => setResults({values: [], loading: false}));
   }, []);
 
   return (
@@ -44,9 +45,7 @@ function Searchbox({}, ref: React.RefObject<SearchBoxHandles>) {
         ref={inputRef} />
       <SearchResults
         loading={results.loading}
-        items={results.values.slice(0, 10)}
-
-      />
+        items={results.values.slice(0, 10)} />
     </div>
   );
 }

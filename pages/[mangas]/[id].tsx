@@ -50,7 +50,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return { notFound: true };
   }
 
-  const res = await fetch(`/api/mangas/${id}?type=${type}`);
+  const res = await fetch(`http://localhost:3000/api/mangas/${id}?type=${type}`);
   if (res.status === 404) {
     return { notFound: true };
   }
