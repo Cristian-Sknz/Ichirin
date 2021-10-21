@@ -1,0 +1,27 @@
+[
+    {
+      "name": "Home",
+      "icon": ["fas", "home"],
+      "href": "/"
+    },
+    {
+      "name": "Projetos",
+      "icon": ["fas", "list-alt"],
+      "href": "/projetos"
+    },
+    {
+      "name": "Procurar",
+      "icon": ["fas", "search"],
+      "href": "/search"
+    },
+    {
+      "name": "Top 12",
+      "icon": ["fas", "star"],
+      "href": "/top"
+    },
+    {
+      "name": "Contato",
+      "icon": ["fas", "envelope-open-text"],
+      "href": "/contato"
+    }
+  ]

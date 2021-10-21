@@ -1,8 +1,9 @@
-import ALink from '../../models/ALink';
+
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AnchorLink from '../../../models/AnchorLink';
 
-type NavbarItemProps = {
+export type NavbarItemProps = {
     href: string;
     name: string;
     icon: string[];
@@ -11,9 +12,9 @@ type NavbarItemProps = {
 export default function NavbarItem({icon , href, name } : NavbarItemProps) {
   return (
     <li className="navbar-item">
-      <ALink href={href}>
+      <AnchorLink href={href}>
         <FontAwesomeIcon icon={icon as IconProp}/><span>{name}</span>
-      </ALink>
+      </AnchorLink>
     </li>
   );
 }

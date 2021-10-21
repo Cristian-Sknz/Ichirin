@@ -1,14 +1,7 @@
+import { TopbarItens } from '../../../lib/references';
 import LinkListItem from '../../models/LinkListItem';
 import SocialMedia from './models/SocialMedia';
 import style from './Topbar.module.css';
-
-const category = [
-  { name: 'Mangá', link: '/mangas' },
-  { name: 'Manhwa', link: '/manhwas' },
-  { name: 'Manhua', link: '/manhuas' },
-  { name: 'Webtoon', link: '/webtoon' },
-  { name: 'Nsfw', link: '/nsfw' },
-];
 
 export default function Topbar() {
   return (
@@ -23,7 +16,7 @@ export default function Topbar() {
           </ul>
 
           <ul className={style.category_list}>
-            {category.map((item) => {
+            {TopbarItens.map((item) => {
               return (<LinkListItem key={item.name} 
                    name={item.name}
                    href={item.link}/>

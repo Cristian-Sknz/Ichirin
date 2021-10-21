@@ -1,66 +1,39 @@
-import ALink from '../../models/ALink';
+import AnchorLink from '../../models/AnchorLink';
 
-import NavbarItem from './NavbarItem';
 import style from './Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-const items = [
-  {
-    name: 'Home',
-    icon: ['fas', 'home'],
-    href: '/',
-  },
-  {
-    name: 'Projetos',
-    icon: ['fas', 'list-alt'],
-    href: '/projetos',
-  },
-  {
-    name: 'Procurar',
-    icon: ['fas', 'search'],
-    href: '/search',
-  },
-  {
-    name: 'Top 12',
-    icon: ['fas', 'star'],
-    href: '/top',
-  },
-  {
-    name: 'Contato',
-    icon: ['fas', 'envelope-open-text'],
-    href: '/contato',
-  },
-];
+import Searchbox, { SearchBoxHandles } from '../Search';
+import NavbarList from './NavbarList/NavbarList';
+import { useCallback, useRef } from 'react';
+import { NavbarItens } from '../../../lib/references';
 
 export default function Navbar() {
+  const searchRef = useRef<SearchBoxHandles>(null);
+  const toggle = useRef(false);
+
+  const handleSearchButton = useCallback(() => {
+    searchRef.current.toggleModal();
+  },[])
+
   return (
-    <nav className={style.navbar}>
-      <div className={style.navbar_body}>
-        <div className={style.navbar_navigation}>
-          <ALink href={'/'}>
-            <img src='/logo.svg' className={style.logo} />
-          </ALink>
-          <ul className={style.navbar_list}>
-            {items.map((item) => {
-              return (
-                <NavbarItem
-                  name={item.name}
-                  href={item.href}
-                  icon={item.icon}
-                  key={item.name}
-                />);
-            })}
-          </ul>
-        </div>
+    <>
+      <nav className={style.navbar}>
+        <div className={style.navbar_body}>
+          <div className={style.navbar_navigation}>
+            <AnchorLink href={'/'}>
+              <img src='/logo.svg' className={style.logo} />
+            </AnchorLink>
+            <NavbarList items={NavbarItens} />
+          </div>
 
-        <div className={style.navbar_mobile}>
-          <a className={style.navbar_search} href='# '>
-            <FontAwesomeIcon icon={['fas', 'search']} />
-          </a>
-
-          {/*<button className={style.mobile_button}/>*/}
+          <div className={style.navbar_mobile}>
+            <a className={style.navbar_search} href='# ' onClick={handleSearchButton}>
+              <FontAwesomeIcon icon={['fas', 'search']} />
+            </a>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+      <Searchbox ref={searchRef}/>
+    </>
   );
 }

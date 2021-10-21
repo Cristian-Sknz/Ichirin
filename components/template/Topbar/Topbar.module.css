@@ -3,7 +3,7 @@
     position: sticky;
     top: 0;
     box-shadow: 0px 0px 2px 0px black;
-    z-index: 1000;
+    z-index: var(--z-topbar);
 }
 
 .topbar_body {
@@ -29,14 +29,15 @@
 }
 
 .social_medias li a {
+    background: transparent;
     color: #666666;
     font-size: 1.8rem;
-    transition: color 128ms;
+    transition: 128ms;
 }
 
 .social_medias li a:hover {
     color: #000000;
-    transition: color 128ms;
+    transition: 128ms;
 }
 
 .category_list {
@@ -79,12 +80,11 @@
     cursor: pointer;
 }
 
-.button:hover,.button a:hover {
+.button:hover {
     background-color: black;
     border-color: black;
     transition: 300ms;
 }
-
 
 .button a {
     color: #666666;

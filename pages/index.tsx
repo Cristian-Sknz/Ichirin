@@ -16,7 +16,6 @@ export default function Home({mangas} : InferGetStaticPropsType<typeof getStatic
       <Head>
         <title>Ichirin no Hana Yuri</title>
         <meta name='description' content='Pagina inicial do Ichirin no Hana Yuri' />
-        <link rel='icon' href='/favicon.ico' />
       </Head>
       <>
         <Navbar/>
@@ -32,13 +31,13 @@ export default function Home({mangas} : InferGetStaticPropsType<typeof getStatic
   );
 }
 
-/** A Pagina inicial é estatica, ela ira se 
- * atualizar a cada 30 segundos
- */
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/api/mangas');
-  let mangas: MangaData[] = await res.json();
-  mangas = mangas.slice(0, 45);
+  let mangas: MangaData[] = []
+  try {
+    const res = await fetch('http://localhost:3000/api/mangas');
+    mangas = await res.json();
+    mangas = mangas.slice(0, 45);
+  } catch (ignored) {}
 
   return {
     props: {

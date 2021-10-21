@@ -1,5 +1,7 @@
 .navbar {
     background-color: black;
+    position: relative;
+    z-index: var(--z-navbar);
 }
 
 .logo {
@@ -14,6 +16,7 @@
     width: 85%;
     margin: 0 auto;
     justify-content: space-between;
+    z-index: 1000;
 }
 
 .navbar_navigation {
@@ -79,7 +82,7 @@
 .navbar_search:hover {
     color: white;
 
-    background: linear-gradient(124deg, #d7360f, #fe9855, #cf619a, #a1044f);
+    background: linear-gradient(124deg, #a20161, #fe9855, #cf619a, #a1044f);
     background-size: 1800% 1800%;
     
     animation: rainbow-animation 2s infinite;
@@ -115,4 +118,13 @@
     .navbar_list {
         display: block;
     }
+}
+
+@media screen and (max-width: 320px) {
+    .logo {
+        content: url(/favicon.svg);
+        width: 85px;
+        height: 85px;
+    }
+    
 }
