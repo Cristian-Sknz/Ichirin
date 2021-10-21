@@ -21,3 +21,11 @@ export function convertNameToUrl(name : string) {
   return removeAccents(name.replace(/[^\x00-\x7F]/g, '').trim())
     .replace(/[^A-Z0-9]+/ig, ' ').trim().replace(/ /g, '-');
 }
+
+
+export function containsInName(name : string) : boolean {
+  const regex = new RegExp(name, 'g');
+  
+
+  return false;
+}

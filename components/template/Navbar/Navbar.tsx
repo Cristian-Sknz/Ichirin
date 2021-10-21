@@ -1,8 +1,10 @@
-import ALink from '../../models/ALink';
+import AnchorLink from '../../models/ALink';
 
-import NavbarItem from './NavbarItem';
 import style from './Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Searchbox, { SearchBoxHandles } from '../Search/Searchbox';
+import NavbarList from './NavbarList/NavbarList';
+import { useCallback, useRef } from 'react';
 
 const items = [
   {
@@ -33,34 +35,32 @@ const items = [
 ];
 
 export default function Navbar() {
+  const searchRef = useRef<SearchBoxHandles>(null);
+  const toggle = useRef(false);
+
+  const handleSearchButton = useCallback(() => {
+    searchRef.current.toggleModal();
+  },[])
+
   return (
-    <nav className={style.navbar}>
-      <div className={style.navbar_body}>
-        <div className={style.navbar_navigation}>
-          <ALink href={'/'}>
-            <img src='/logo.svg' className={style.logo} />
-          </ALink>
-          <ul className={style.navbar_list}>
-            {items.map((item) => {
-              return (
-                <NavbarItem
-                  name={item.name}
-                  href={item.href}
-                  icon={item.icon}
-                  key={item.name}
-                />);
-            })}
-          </ul>
-        </div>
+    <>
+      <nav className={style.navbar}>
+        <div className={style.navbar_body}>
+          <div className={style.navbar_navigation}>
+            <AnchorLink href={'/'}>
+              <img src='/logo.svg' className={style.logo} />
+            </AnchorLink>
+            <NavbarList items={items} />
+          </div>
 
-        <div className={style.navbar_mobile}>
-          <a className={style.navbar_search} href='# '>
-            <FontAwesomeIcon icon={['fas', 'search']} />
-          </a>
-
-          {/*<button className={style.mobile_button}/>*/}
+          <div className={style.navbar_mobile}>
+            <a className={style.navbar_search} href='# ' onClick={handleSearchButton}>
+              <FontAwesomeIcon icon={['fas', 'search']} />
+            </a>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+      <Searchbox ref={searchRef}/>
+    </>
   );
 }

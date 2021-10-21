@@ -1,22 +1,22 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, MouseEventHandler, useRef, useState } from 'react';
 import style from './Search.module.css';
 
 type SearchbarProps = {
   onChange?: Function;
-  onClose?: Function;
+  onClose?: MouseEventHandler<HTMLButtonElement>;
 };
 
 export default function Searchbar({ onChange, onClose }: SearchbarProps) {
-  var timeout;
+  const timeout = useRef<NodeJS.Timeout>(null);
 
   function onChangeEvent(e: ChangeEvent<HTMLInputElement>) {
-    if (timeout != null) clearTimeout(timeout);
-    timeout = setTimeout(() => onChange.call(null, e.target.value), 1000);
+    if (timeout.current != null) clearTimeout(timeout.current);
+    timeout.current = setTimeout(() => onChange.call(null, e.target.value), 1000);
   }
 
   return (
-    <form className={style.search_form}>
+    <form className={style.search_form} onSubmit={(e) => e.preventDefault()}>
       <div className={style.search_group}>
         <label htmlFor='search'>
           <FontAwesomeIcon icon={['fas', 'search']} />
@@ -29,7 +29,7 @@ export default function Searchbar({ onChange, onClose }: SearchbarProps) {
           autoComplete={'false'}
         />
       </div>
-      <button className={style.submit_button}>Fechar</button>
+      <button className={style.submit_button} onClick={onClose}>Fechar</button>
     </form>
   );
 }

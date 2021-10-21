@@ -1,4 +1,4 @@
-import ALink from '../../models/ALink';
+import AnchorLink from '../../models/ALink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import style from './Footer.module.css';
 
@@ -8,16 +8,16 @@ export default function Footer() {
         <div className={style.footer_body}>
             <ul className={style.footer_links}>
                 <li className={style.footer_link}>
-                    <ALink href={'/'}>Home</ALink>
+                    <AnchorLink href={'/'}>Home</AnchorLink>
                 </li>
                 <li className={style.footer_link}>
-                    <ALink href={'/sobre'}>Quem Somos</ALink>
+                    <AnchorLink href={'/sobre'}>Quem Somos</AnchorLink>
                 </li>
                 <li className={style.footer_link}>
-                    <ALink href={'/faq'}>FAQ</ALink>
+                    <AnchorLink href={'/faq'}>FAQ</AnchorLink>
                 </li>
                 <li className={style.footer_link}>
-                    <ALink href={'/privacy'}>Política de Privacidade</ALink>
+                    <AnchorLink href={'/privacy'}>Política de Privacidade</AnchorLink>
                 </li>
             </ul>
             <div className={style.copyright}>
