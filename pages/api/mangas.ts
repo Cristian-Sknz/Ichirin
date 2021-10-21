@@ -5,8 +5,8 @@ import { Mangas } from "../../lib/api";
 import { convertNameToUrl, removeAccents } from "../../lib/Util";
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
-  res.status(200).json(JSON.stringify(Mangas.map(addURL)));
-};
+  res.status(200).json(Mangas.map(addURL));
+}
 
 export function addURL(manga : MangaData) : MangaData {
   return {...manga, 

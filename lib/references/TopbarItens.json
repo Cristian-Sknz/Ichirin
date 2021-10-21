@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Mangá",
+        "link": "/mangas"
+    },
+    {
+        "name": "Manhwa",
+        "link": "/manhwas"
+    },
+    {
+        "name": "Manhua",
+        "link": "/manhuas"
+    },
+    {
+        "name": "Webtoon",
+        "link": "/webtoon"
+    },
+    {
+        "name": "Nsfw",
+        "link": "/nsfw"
+    }
+]

@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps} from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
 import Head from 'next/head';
 
@@ -14,29 +14,30 @@ import MangaData from '../../lib/types';
 import { MangaTypes } from '../../lib/api';
 import { removeAccents } from '../../lib/Util';
 
-
 type ObraProps = {
-  manga : MangaData;
-}
+  manga: MangaData;
+};
 
-export default function Obra({manga}: ObraProps) {
+export default function Obra({ manga }: ObraProps) {
   return (
     <>
       <Head>
         <title>{`${manga?.name} - Ichirin no Hana Yuri`}</title>
-        <meta name='description' content={`Leia o manga ${manga?.name} online.`} />
+        <meta
+          name='description'
+          content={`Leia o manga ${manga?.name} online.`}/>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      
+
       <>
-        <Navbar/>
-        <Topbar/>
+        <Navbar />
+        <Topbar />
         <>
-          <MangaPreview manga={manga}/>
-          <MangaDescription manga={manga}/>
-          <MangaChapters chapters={[]}/>
+          <MangaPreview manga={manga} />
+          <MangaDescription manga={manga} />
+          <MangaChapters chapters={[]} />
         </>
-        <Footer/>
+        <Footer />
       </>
     </>
   );
@@ -49,7 +50,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return { notFound: true };
   }
 
-  const res = await fetch(`http://localhost:3000/api/mangas/${id}?type=${type}`);
+  const res = await fetch(`/api/mangas/${id}?type=${type}`);
   if (res.status === 404) {
     return { notFound: true };
   }
@@ -65,8 +66,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-
-function identifyType(type: string) : string | undefined {
-  return MangaTypes.map(({name}) => removeAccents(name))
-        .filter((name) => removeAccents(name).toLowerCase() == type.toLowerCase())[0];
+function identifyType(type: string): string | undefined {
+  return MangaTypes.map(({ name }) => removeAccents(name)).filter(
+    (name) => removeAccents(name).toLowerCase() == type.toLowerCase()
+  )[0];
 }

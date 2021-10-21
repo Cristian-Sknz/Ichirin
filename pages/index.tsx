@@ -31,9 +31,6 @@ export default function Home({mangas} : InferGetStaticPropsType<typeof getStatic
   );
 }
 
-/** A Pagina inicial é estatica, ela ira se 
- * atualizar a cada 30 segundos
- */
 export const getStaticProps = async () => {
   let mangas: MangaData[] = []
   try {

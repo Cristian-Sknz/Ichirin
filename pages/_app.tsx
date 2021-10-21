@@ -11,13 +11,12 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../styles/globals.css';
 import '../styles/reset.css';
 
-config.autoAddCss = false; /* eslint-disable import/first */
+config.autoAddCss = false;
 AppIcons.forEach((icon) => library.add(icon));
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(true);
 
-  // Loading inicial do Ichirin
   useEffect(() => {
     setTimeout(() => setLoading(false), 1300);
   }, []);
@@ -33,8 +32,7 @@ function MyApp({ Component, pageProps }) {
         startPosition={0.3}
         stopDelayMs={200}
         height={2}
-        showOnShallow={true}
-      />
+        showOnShallow={true}/>
       
       <Loading loading={loading} />
       <Component {...pageProps} />

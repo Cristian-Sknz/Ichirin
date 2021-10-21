@@ -1,4 +1,5 @@
 import MangaData from '../../../../lib/types';
+import LoadingRing from '../../Loading/LoadingRing';
 import style from '../Search.module.css';
 import SearchItem from './SearchItem';
 
@@ -17,7 +18,7 @@ export default function SearchResults({ items, loading }: SearchResultsProps) {
       <li className={style.empty_result}>
         {(!loading) 
           ? <h3>Nenhum resultado foi encontrado!</h3>
-          : <h3>Carregando...</h3>
+          : <LoadingRing/>
         }
         
       </li>
