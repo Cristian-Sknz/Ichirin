@@ -1,4 +1,4 @@
-import AnchorLink from '../../models/ALink';
+import AnchorLink from '../../models/AnchorLink';
 
 import style from './Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

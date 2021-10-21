@@ -5,7 +5,7 @@ import RatingStars from '../../../models/RatingStar';
 import MangaData from '../../../../lib/types';
 
 import style from '../Home.module.css';
-import AnchorLink from '../../../models/ALink';
+import AnchorLink from '../../../models/AnchorLink';
 
 interface MangaListItemProps {
   data: MangaData;

@@ -1,7 +1,7 @@
 
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import AnchorLink from '../../../models/ALink';
+import AnchorLink from '../../../models/AnchorLink';
 
 export type NavbarItemProps = {
     href: string;

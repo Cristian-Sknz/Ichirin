@@ -1,8 +1,7 @@
 import Image from 'next/image'
-import { lazy } from 'react';
 import MangaData from '../../../../lib/types';
 import { textLimiter } from '../../../../lib/Util';
-import AnchorLink from '../../../models/ALink';
+import AnchorLink from '../../../models/AnchorLink';
 import RatingStars from '../../../models/RatingStar';
 import style from '../Search.module.css';
 
