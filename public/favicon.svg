@@ -4,32 +4,42 @@
         <!-- @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); -->
         <style type="text/css">
             @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue');
+            .ichirin-logo {
+                --main-text: #fff;
+            }
+            #IchirinLinearGradient {
+                --color-1: #a20161;
+                --color-2: #d161a2;
+                --color-3: #ffffff;
+                --color-4: #fe9855;
+                --color-5: #d42c00;
+            }
         </style>
         <linearGradient id='IchirinLinearGradient' x1='1' y1='1'>
-            <stop offset='.0' stop-color='#a20161' />
-            <stop offset='.39' stop-color='#a20161' />
+            <stop offset='.0' stop-color='var(--color-1)' />
+            <stop offset='.39' stop-color='var(--color-1)' />
 
-            <stop offset='.39' stop-color='#d161a2' />
-            <stop offset='.49' stop-color='#d161a2' />
+            <stop offset='.39' stop-color='var(--color-2)' />
+            <stop offset='.49' stop-color='var(--color-2)' />
 
-            <stop offset='.49' stop-color='#ffffff' />
-            <stop offset='.60' stop-color='#ffffff' />
+            <stop offset='.49' stop-color='var(--color-3)' />
+            <stop offset='.60' stop-color='var(--color-3)' />
 
-            <stop offset='.60' stop-color='#fe9855' />
-            <stop offset='.71' stop-color='#fe9855' />
+            <stop offset='.60' stop-color='var(--color-4)' />
+            <stop offset='.71' stop-color='var(--color-4)' />
 
-            <stop offset='.71' stop-color='#d42c00' />
-            <stop offset='1' stop-color='#d42c00' />
+            <stop offset='.71' stop-color='var(--color-5)' />
+            <stop offset='1' stop-color='var(--color-5)' />
         </linearGradient>
     </defs>
     <desc>SVG Criado por Cristian-SknZ</desc>
     <g>
-        <g>
+        <g class="ichirin-logo">
             <title>Textos</title>
             <g>
                 <title>Ichirin no Hana</title>
                 <g transform="matrix(1,0,-.245,1,17,0)">
-                    <text dominant-baseline="text-before-edge" style="fill: #ffffff; fill-opacity: 1; font-size: 60px; font-family: 'Bebas Neue'; font-weight: normal; line-height: 38.43013px">
+                    <text dominant-baseline="text-before-edge" style="fill: var(--main-text); fill-opacity: 1; font-size: 60px; font-family: 'Bebas Neue'; font-weight: normal; line-height: 38.43013px">
                         <tspan style="text-align:center; letter-spacing: -0.42px; font-kerning: normal">IH</tspan>
                     </text>
                 </g>
