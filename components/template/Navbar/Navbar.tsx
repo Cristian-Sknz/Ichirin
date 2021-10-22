@@ -1,11 +1,12 @@
+import { useCallback, useRef } from 'react';
+
 import AnchorLink from '../../models/AnchorLink';
+import NavbarList from './NavbarList/NavbarList';
+import Searchbox, { SearchBoxHandles } from '../Search';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NavbarItens } from '../../../lib/references';
 
 import style from './Navbar.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Searchbox, { SearchBoxHandles } from '../Search';
-import NavbarList from './NavbarList/NavbarList';
-import { useCallback, useRef } from 'react';
-import { NavbarItens } from '../../../lib/references';
 
 export default function Navbar() {
   const searchRef = useRef<SearchBoxHandles>(null);
