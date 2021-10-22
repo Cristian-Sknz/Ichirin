@@ -13,6 +13,20 @@ body {
     font-family: poppins, sans-serif;
 }
 
+body::-webkit-scrollbar {
+    width: .6rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: black
+}
+  
+body::-webkit-scrollbar-thumb {
+    background-color: white;
+    border: 3px solid rgba(255, 255, 255, 0.404);
+    border-radius: 20px;
+}
+
 h1, h2, h3, h4, p {
     font-family: poppins, sans-serif;
 }

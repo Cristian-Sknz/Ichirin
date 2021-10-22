@@ -24,6 +24,21 @@
     transition: 500ms ease-in;
 }
 
+.sidebar::-webkit-scrollbar {
+    width: .5rem;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: black;
+}
+  
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: white;
+    border: 3px solid rgba(255, 255, 255, 0.404);
+    border-radius: 20px;
+}
+
+
 .sidebar_close {
     color: white;
     position: absolute;

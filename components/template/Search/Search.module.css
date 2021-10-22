@@ -117,8 +117,8 @@
 }
   
 .search_results::-webkit-scrollbar-thumb {
-    background-color: rgb(255, 255, 255);
-    border: 3px solid rgba(255, 255, 255, 0.404);
+    background-color: white;
+    border: 3px solid rgba(255, 255, 255, 0.400);
     border-radius: 20px;
 }
 
