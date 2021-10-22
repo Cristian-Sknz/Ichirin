@@ -12,7 +12,8 @@
     background: black;
     font-family: 'Poppins';
     padding: 7rem 0;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     max-width: 0;
     transition: 500ms ease-out;
