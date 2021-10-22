@@ -99,6 +99,13 @@
     transition: 300ms;
 }
 
+.sidebar_icon {
+    font-size: 1.2rem;
+    margin: 0 1rem;
+    display: block;
+    cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
     .topbar_body {
         justify-content: center;
@@ -120,5 +127,9 @@
     .user_authentication {
         display: flex;
         align-items: center;
+    }
+
+    .sidebar_icon {
+        display: none;
     }
 }

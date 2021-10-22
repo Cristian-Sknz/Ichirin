@@ -7,7 +7,10 @@ import {
     faListAlt, 
     faSearch, 
     faStar, 
-    faStarHalfAlt
+    faStarHalfAlt,
+    faChevronUp,
+    faTimes,
+    faBars,
 } from '@fortawesome/free-solid-svg-icons';
   
 import { 
@@ -34,6 +37,9 @@ const AppIcons = [
     faFacebookMessenger,
     faHeart, 
     faComments,
+    faChevronUp,
+    faTimes,
+    faBars,
 ]
 
 export default AppIcons;

@@ -1,10 +1,20 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useCallback, useRef } from 'react';
 import { TopbarItens } from '../../../lib/references';
 import LinkListItem from '../../models/LinkListItem';
+import Sidebar, { SidebarHandles } from '../Sidebar/Sidebar';
 import SocialMedia from './models/SocialMedia';
 import style from './Topbar.module.css';
 
 export default function Topbar() {
+  const sidebarRef = useRef<SidebarHandles>(null);
+
+  const handleSidebarClick = useCallback(() => {
+    sidebarRef.current.toggleSidebar();
+  }, [sidebarRef]);
+
   return (
+    <>
     <div className={style.topbar}>
       <div className={style.topbar_body}>
 
@@ -16,10 +26,8 @@ export default function Topbar() {
           </ul>
 
           <ul className={style.category_list}>
-            {TopbarItens.map((item) => {
-              return (<LinkListItem key={item.name} 
-                   name={item.name}
-                   href={item.link}/>
+            {TopbarItens.map(({name, link}) => {
+              return (<LinkListItem key={name}  name={name}href={link}/>
               );
             })}
           </ul>
@@ -33,8 +41,13 @@ export default function Topbar() {
             <a href='# '>Cadastrar</a>
           </div>
         </div>
-        
+        <FontAwesomeIcon 
+          className={style.sidebar_icon}
+          icon={['fas', 'bars']} 
+          onClick={handleSidebarClick}/>
       </div>
     </div>
+    <Sidebar ref={sidebarRef}/>
+    </>
   );
 }
