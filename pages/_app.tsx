@@ -23,10 +23,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-    <Head>
-      <link rel='icon' href='/favicon.svg' />
-    </Head>
-
       <NextNProgress
         color='#a10160'
         startPosition={0.3}
