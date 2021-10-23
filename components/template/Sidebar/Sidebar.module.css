@@ -4,12 +4,12 @@
     position: fixed;
     align-items: center;
 
-    width: 425px;
+    width: 300px;
     height: 100%;
     z-index: 5000;
     top: 0;
     
-    background: black;
+    background: #000000f2;
     font-family: 'Poppins';
     padding: 7rem 0;
     overflow-x: hidden;
@@ -20,7 +20,7 @@
 }
 
 .sidebar.active {
-    max-width: 425px;
+    max-width: 300px;
     transition: 700ms;
     transition: 500ms ease-in;
 }

@@ -32,7 +32,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 85%;
   margin: 0 auto;
   max-width: var(--max-width);
 }
@@ -203,5 +202,11 @@
   .item_container {
     flex-direction: row;
     align-items: flex-start;
+  }
+}
+
+@media screen and (min-width: 475px){
+  .item_container {
+    width: 85%;
   }
 }
