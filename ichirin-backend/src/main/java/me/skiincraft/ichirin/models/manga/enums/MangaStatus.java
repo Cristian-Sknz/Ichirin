@@ -1,4 +1,6 @@
-package me.skiincraft.ichirin.models.enums;
+package me.skiincraft.ichirin.models.manga.enums;
+
+import java.util.Arrays;
 
 public enum MangaStatus {
 
@@ -14,5 +16,9 @@ public enum MangaStatus {
     MangaStatus(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public static MangaStatus getById(int id) {
+        return Arrays.stream(values()).filter(status -> status.id == id).findFirst().orElse(null);
     }
 }

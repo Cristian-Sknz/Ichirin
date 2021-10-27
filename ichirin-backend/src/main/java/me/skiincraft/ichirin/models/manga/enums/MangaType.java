@@ -1,4 +1,6 @@
-package me.skiincraft.ichirin.models.enums;
+package me.skiincraft.ichirin.models.manga.enums;
+
+import java.util.Arrays;
 
 public enum MangaType {
     MANGA(0, "Mangá"),
@@ -13,6 +15,10 @@ public enum MangaType {
     MangaType(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public static MangaType getById(int id) {
+        return Arrays.stream(values()).filter(type -> type.id == id).findFirst().orElse(null);
     }
 
     public int getId() {

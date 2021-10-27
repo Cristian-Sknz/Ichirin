@@ -1,4 +1,4 @@
-package me.skiincraft.ichirin.data.converter;
+package me.skiincraft.ichirin.util;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
