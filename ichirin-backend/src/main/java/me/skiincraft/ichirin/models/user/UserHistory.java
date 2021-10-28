@@ -19,12 +19,10 @@ import java.util.Set;
 public class UserHistory {
 
     @Id
-    @Column(name = "id") private long id;
+    @Column(name = "user_id") private long id;
 
-    @MapsId
-    @OneToOne
-    @JsonIgnore
-    @JoinColumn(name = "id")
+    @MapsId @OneToOne
+    @JsonIgnore @JoinColumn(name = "user_id")
     private IchirinUser user;
     private OffsetDateTime lastUpdate;
 

@@ -29,7 +29,7 @@ public class IchirinUser {
 
     /*@ManyToMany
     private Set<MangaFavorite> favorites;*/
-    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private UserHistory history;
 
