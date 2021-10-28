@@ -2,11 +2,14 @@ package me.skiincraft.ichirin.service;
 
 import me.skiincraft.ichirin.data.manga.MangaChapterDTO;
 import me.skiincraft.ichirin.data.manga.MangaDTO;
+import me.skiincraft.ichirin.exception.IchirinAPIException;
+import me.skiincraft.ichirin.exception.IchirinNotFoundException;
 import me.skiincraft.ichirin.models.manga.Manga;
 import me.skiincraft.ichirin.models.manga.MangaChapter;
 import me.skiincraft.ichirin.repository.manga.MangaChapterRepository;
 import me.skiincraft.ichirin.repository.manga.MangaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,9 @@ public class MangaService {
 
     private final MangaRepository repository;
     private final MangaChapterRepository chapterRepository;
+
+    @Autowired
+    private MessageSource source;
 
     @Autowired
     public MangaService(MangaRepository repository, MangaChapterRepository chapterRepository) {
@@ -28,11 +34,19 @@ public class MangaService {
     }
 
     public Manga getManga(long mangaId) {
-        return repository.findById(mangaId).get();
+        var optional = repository.findById(mangaId);
+        if (optional.isEmpty()) {
+            throw new IchirinNotFoundException("exception.manga.not-found", source);
+        }
+        return optional.get();
     }
 
     public Manga createManga(MangaDTO dto) {
-        return repository.save(new Manga(dto));
+        try {
+            return repository.save(new Manga(dto));
+        } catch (Exception e) {
+            throw new IchirinAPIException("exception.manga.creation", source, e);
+        }
     }
 
     public Page<MangaChapter> getMangaChapters(long mangaId, Pageable pageable) {
@@ -40,7 +54,12 @@ public class MangaService {
     }
 
     public MangaChapter getMangaChapter(long mangaId, float chapter) {
-        return chapterRepository.findByMangaAndChapter(getManga(mangaId), chapter).get();
+        var optional = chapterRepository.findByMangaAndChapter(getManga(mangaId), chapter);
+        if (optional.isEmpty()) {
+            throw new IchirinNotFoundException("exception.manga.not-found", source);
+        }
+
+        return optional.get();
     }
 
     public MangaChapter createMangaChapter(long mangaId, MangaChapterDTO dto) {

@@ -12,6 +12,9 @@ import java.util.Optional;
 @Repository
 public interface UserHistoryRepository extends JpaRepository<UserHistory, Long> {
 
+    @Query("SELECT u FROM UserHistory u LEFT JOIN FETCH u.mangas WHERE u.user = :user")
+    UserHistory findByUser(@Param("user") IchirinUser user);
+
     @Query("SELECT u FROM UserHistory u LEFT JOIN FETCH u.mangas WHERE u.id = :id")
     Optional<UserHistory> findById(@Param("id") long id);
 }
