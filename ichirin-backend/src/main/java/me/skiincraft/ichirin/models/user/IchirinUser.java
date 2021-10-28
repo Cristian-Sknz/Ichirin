@@ -3,10 +3,12 @@ package me.skiincraft.ichirin.models.user;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import me.skiincraft.ichirin.data.IchirinUserDTO;
 import me.skiincraft.ichirin.repository.user.IchirinUserRepository;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.time.Clock;
 import java.time.OffsetDateTime;
+import java.util.Objects;
 
 /** <h2>IchirinUser</h2>
  *  <p>Está entidade será um usuário no banco de dados onde serão guardado as
@@ -22,7 +24,7 @@ public class IchirinUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
     private String nickname;
     private String email;
@@ -147,5 +149,18 @@ public class IchirinUser {
         if (this.createdTime == null)
             this.createdTime = OffsetDateTime.now(Clock.systemUTC());
         this.lastLogin = OffsetDateTime.now(Clock.systemUTC());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        IchirinUser that = (IchirinUser) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

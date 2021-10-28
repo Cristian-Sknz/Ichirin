@@ -2,10 +2,12 @@ package me.skiincraft.ichirin.models.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import me.skiincraft.ichirin.models.manga.MangaFavorite;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.time.Clock;
 import java.time.OffsetDateTime;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -13,7 +15,7 @@ public class UserFavorite {
 
 
     @Id
-    @Column(name = "user_id") private long id;
+    @Column(name = "user_id") private Long id;
 
     @Column(name = "last_update")
     private OffsetDateTime lastUpdate;
@@ -71,5 +73,18 @@ public class UserFavorite {
     @PreUpdate
     public void update() {
         this.lastUpdate = OffsetDateTime.now(Clock.systemUTC());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        UserFavorite that = (UserFavorite) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }
