@@ -10,7 +10,7 @@ public class IchirinUserDTO {
     @NotBlank
     @Length(min = 5, max = 40)
     private String name;
-    @Length(min = 5, max = 40)
+    @Length(min = 4, max = 40)
     private String nickname;
     @Email
     private String email;

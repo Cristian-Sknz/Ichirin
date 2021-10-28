@@ -1,8 +1,10 @@
 package me.skiincraft.ichirin.models.manga;
 
-import me.skiincraft.ichirin.data.MangaDTO;
+import me.skiincraft.ichirin.data.manga.MangaChapterDTO;
+import me.skiincraft.ichirin.data.manga.MangaDTO;
 
 import javax.persistence.*;
+import java.time.Clock;
 import java.time.OffsetDateTime;
 
 /** <h2>MangaChapter</h2>
@@ -22,17 +24,29 @@ import java.time.OffsetDateTime;
 public class MangaChapter {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String chapterName;
     private int season;
-    private int chapter;
+    private float chapter;
 
     @ManyToOne
-    @MapsId
+    @JoinColumn(name = "manga_id")
     private Manga manga;
     private OffsetDateTime releaseDate;
 
-    public int getId() {
+    public MangaChapter() {
+    }
+
+    public MangaChapter(Manga manga, MangaChapterDTO dto) {
+        this.chapterName = dto.getName();
+        this.chapter = dto.getChapter();
+        this.releaseDate = OffsetDateTime.now(Clock.systemUTC());
+        this.season = dto.getSeason();
+        this.manga = manga;
+    }
+
+    public long getId() {
         return id;
     }
 
@@ -52,11 +66,11 @@ public class MangaChapter {
         this.season = season;
     }
 
-    public int getChapter() {
+    public float getChapter() {
         return chapter;
     }
 
-    public void setChapter(int chapter) {
+    public void setChapter(float chapter) {
         this.chapter = chapter;
     }
 

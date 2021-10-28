@@ -2,10 +2,8 @@ package me.skiincraft.ichirin.models.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import me.skiincraft.ichirin.data.IchirinUserDTO;
-import me.skiincraft.ichirin.models.manga.MangaFavorite;
 
 import javax.persistence.*;
-import java.util.Set;
 
 /** <h2>IchirinUser</h2>
  *  <p>Está entidade será um usuário no banco de dados onde serão guardado as
@@ -15,10 +13,12 @@ import java.util.Set;
  * @see me.skiincraft.ichirin.service.UserService Service
  * @see IchirinUserDTO Data Transfer Object
  */
+
 @Entity
 public class IchirinUser {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private String nickname;
@@ -27,9 +27,10 @@ public class IchirinUser {
     @JsonIgnore
     private String password;
 
-    @ManyToMany
-    private Set<MangaFavorite> favorites;
-    @OneToOne
+    /*@ManyToMany
+    private Set<MangaFavorite> favorites;*/
+    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private UserHistory history;
 
     @Embedded
@@ -45,6 +46,7 @@ public class IchirinUser {
         this.email = user.getEmail();
         this.nickname = user.getNickname();
         this.password = user.getPassword();
+        this.setHistory(new UserHistory(this));
     }
 
     public long getId() {
@@ -83,12 +85,12 @@ public class IchirinUser {
         this.password = password;
     }
 
-    public Set<MangaFavorite> getFavorites() {
-        return favorites;
+    public UserConfiguration getConfiguration() {
+        return configuration;
     }
 
-    public void setFavorites(Set<MangaFavorite> favorites) {
-        this.favorites = favorites;
+    public void setConfiguration(UserConfiguration configuration) {
+        this.configuration = configuration;
     }
 
     public UserHistory getHistory() {
@@ -98,13 +100,4 @@ public class IchirinUser {
     public void setHistory(UserHistory history) {
         this.history = history;
     }
-
-    public UserConfiguration getConfiguration() {
-        return configuration;
-    }
-
-    public void setConfiguration(UserConfiguration configuration) {
-        this.configuration = configuration;
-    }
-
 }

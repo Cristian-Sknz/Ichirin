@@ -1,6 +1,6 @@
 package me.skiincraft.ichirin.models.manga.embedded;
 
-import me.skiincraft.ichirin.data.MangaDTO;
+import me.skiincraft.ichirin.data.manga.MangaDTO;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -21,7 +21,8 @@ public class MangaDates {
     }
 
     public MangaDates(MangaDTO dto) {
-        this.releaseDate = LocalDateTime.parse(dto.getReleaseDate());
+        // TODO LocalDateTime.now() é temporário
+        this.releaseDate = LocalDateTime.now();
         this.createdTime = this.lastUpdate = OffsetDateTime.now();
     }
 

@@ -1,12 +1,10 @@
 package me.skiincraft.ichirin.models.manga;
 
-import me.skiincraft.ichirin.data.MangaDTO;
+import me.skiincraft.ichirin.data.manga.MangaDTO;
 import me.skiincraft.ichirin.models.manga.embedded.MangaDates;
 import me.skiincraft.ichirin.models.manga.embedded.MangaInformation;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /** <h2>Manga</h2>
  *  <p>Está entidade será a referência de todos os mangas,
@@ -22,7 +20,7 @@ public class Manga {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     private String name;
     @Column(name = "image_url")
@@ -31,16 +29,13 @@ public class Manga {
 
     @Embedded
     private MangaInformation information;
+
     @Embedded
     private MangaDates dates;
-
-    @OneToMany
-    private Set<MangaChapter> chapters;
 
     public Manga() {
         this.information = new MangaInformation();
         this.dates = new MangaDates();
-        this.chapters = new HashSet<>();
     }
 
     public Manga(MangaDTO dto) {
@@ -49,10 +44,9 @@ public class Manga {
         this.summary = dto.getSummary();
         this.information = new MangaInformation(dto);
         this.dates = new MangaDates(dto);
-        this.chapters = new HashSet<>();
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -96,11 +90,4 @@ public class Manga {
         this.dates = dates;
     }
 
-    public Set<MangaChapter> getChapters() {
-        return chapters;
-    }
-
-    public void setChapters(Set<MangaChapter> chapters) {
-        this.chapters = chapters;
-    }
 }

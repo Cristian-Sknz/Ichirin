@@ -1,14 +1,10 @@
 package me.skiincraft.ichirin.models.manga.embedded;
 
-import me.skiincraft.ichirin.data.MangaDTO;
-import me.skiincraft.ichirin.util.StringCollectionConverter;
+import me.skiincraft.ichirin.data.manga.MangaDTO;
 import me.skiincraft.ichirin.models.manga.enums.MangaStatus;
 import me.skiincraft.ichirin.models.manga.enums.MangaType;
 
-import javax.persistence.Convert;
-import javax.persistence.Embeddable;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,11 +18,11 @@ public class MangaInformation {
 
     private String rating;
 
-    @Convert(converter = StringCollectionConverter.class)
+    @ElementCollection
     private List<String> alternativeNames;
-    @Convert(converter = StringCollectionConverter.class)
+    @ElementCollection
     private List<String> authors;
-    @Convert(converter = StringCollectionConverter.class)
+    @ElementCollection
     private List<String> artists;
 
     public MangaInformation() {
@@ -40,5 +36,53 @@ public class MangaInformation {
         this.status = MangaStatus.getById(dto.getMangaStatus());
         this.authors = dto.getAuthors();
         this.artists = dto.getArtists();
+    }
+
+    public MangaType getType() {
+        return type;
+    }
+
+    public void setType(MangaType type) {
+        this.type = type;
+    }
+
+    public MangaStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(MangaStatus status) {
+        this.status = status;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    public List<String> getAlternativeNames() {
+        return alternativeNames;
+    }
+
+    public void setAlternativeNames(List<String> alternativeNames) {
+        this.alternativeNames = alternativeNames;
+    }
+
+    public List<String> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<String> authors) {
+        this.authors = authors;
+    }
+
+    public List<String> getArtists() {
+        return artists;
+    }
+
+    public void setArtists(List<String> artists) {
+        this.artists = artists;
     }
 }

@@ -2,9 +2,7 @@ package me.skiincraft.ichirin.models.manga;
 
 import me.skiincraft.ichirin.models.user.IchirinUser;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Set;
 
 /** <h2>MangaFavorite</h2>
@@ -13,9 +11,13 @@ import java.util.Set;
  * @see Manga Manga
  * @see IchirinUser User
  */
-@Entity
+
 public class MangaFavorite {
 
+    @Id
+    private long id;
+
+    @MapsId
     @OneToOne
     private Manga manga;
     @ManyToMany

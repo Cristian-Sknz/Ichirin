@@ -1,4 +1,4 @@
-package me.skiincraft.ichirin.data;
+package me.skiincraft.ichirin.data.manga;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -22,7 +22,10 @@ public class MangaDTO {
     @Max(4)
     private int mangaStatus;
 
+    @Size(min = 1, max = 4)
+    @NotNull
     private List<String> alternativeNames;
+
     @Size(min = 1, max = 4)
     @NotNull
     private List<String> authors;

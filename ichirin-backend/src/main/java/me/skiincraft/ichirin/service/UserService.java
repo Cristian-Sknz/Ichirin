@@ -4,19 +4,20 @@ import me.skiincraft.ichirin.data.IchirinUserDTO;
 import me.skiincraft.ichirin.models.user.IchirinUser;
 import me.skiincraft.ichirin.repository.IchirinUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class UserService {
 
-    public final IchirinUserRepository repository;
-    public final BCryptPasswordEncoder passwordEncoder;
+    private final IchirinUserRepository repository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(IchirinUserRepository repository, BCryptPasswordEncoder passwordEncoder) {
+    public UserService(IchirinUserRepository repository,
+                       BCryptPasswordEncoder passwordEncoder) {
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
     }
@@ -26,7 +27,11 @@ public class UserService {
         return repository.save(new IchirinUser(dto));
     }
 
-    public Optional<IchirinUser> getUser(long id) {
-        return repository.findById(id);
+    public IchirinUser getUser(long userId) {
+        return repository.findById(userId).get();
+    }
+
+    public Page<IchirinUser> getAllUsers(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 }
