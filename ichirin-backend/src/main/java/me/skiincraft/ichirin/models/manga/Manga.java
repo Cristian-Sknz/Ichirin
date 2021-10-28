@@ -3,6 +3,7 @@ package me.skiincraft.ichirin.models.manga;
 import me.skiincraft.ichirin.data.manga.MangaDTO;
 import me.skiincraft.ichirin.models.manga.embedded.MangaDates;
 import me.skiincraft.ichirin.models.manga.embedded.MangaInformation;
+import me.skiincraft.ichirin.repository.manga.MangaRepository;
 
 import javax.persistence.*;
 
@@ -10,7 +11,7 @@ import javax.persistence.*;
  *  <p>Está entidade será a referência de todos os mangas,
  *  com todas as informações e capítulos.</p>
  *
- * @see me.skiincraft.ichirin.repository.MangaRepository Repository
+ * @see MangaRepository Repository
  * @see me.skiincraft.ichirin.service.MangaService Service
  * @see MangaDTO Data Transfer Object
  */
@@ -33,6 +34,10 @@ public class Manga {
     @Embedded
     private MangaDates dates;
 
+    @OneToOne(mappedBy = "manga", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private MangaFavorite favorites;
+
     public Manga() {
         this.information = new MangaInformation();
         this.dates = new MangaDates();
@@ -44,6 +49,7 @@ public class Manga {
         this.summary = dto.getSummary();
         this.information = new MangaInformation(dto);
         this.dates = new MangaDates(dto);
+        this.favorites = new MangaFavorite(this);
     }
 
     public long getId() {
@@ -90,4 +96,7 @@ public class Manga {
         this.dates = dates;
     }
 
+    public MangaFavorite getFavorites() {
+        return favorites;
+    }
 }

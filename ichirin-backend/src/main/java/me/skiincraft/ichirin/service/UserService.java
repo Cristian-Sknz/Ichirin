@@ -2,7 +2,7 @@ package me.skiincraft.ichirin.service;
 
 import me.skiincraft.ichirin.data.IchirinUserDTO;
 import me.skiincraft.ichirin.models.user.IchirinUser;
-import me.skiincraft.ichirin.repository.IchirinUserRepository;
+import me.skiincraft.ichirin.repository.user.IchirinUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

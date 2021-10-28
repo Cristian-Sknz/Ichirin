@@ -2,6 +2,7 @@ package me.skiincraft.ichirin.models.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import me.skiincraft.ichirin.data.IchirinUserDTO;
+import me.skiincraft.ichirin.repository.user.IchirinUserRepository;
 
 import javax.persistence.*;
 
@@ -9,7 +10,7 @@ import javax.persistence.*;
  *  <p>Está entidade será um usuário no banco de dados onde serão guardado as
  *  informações privadas, configurações, histórico e favoritos.</p>
  *
- * @see me.skiincraft.ichirin.repository.IchirinUserRepository Repository
+ * @see IchirinUserRepository Repository
  * @see me.skiincraft.ichirin.service.UserService Service
  * @see IchirinUserDTO Data Transfer Object
  */
@@ -27,9 +28,15 @@ public class IchirinUser {
     @JsonIgnore
     private String password;
 
-    /*@ManyToMany
-    private Set<MangaFavorite> favorites;*/
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @PrimaryKeyJoinColumn
+    private UserFavorite favorite;
+
+    @OneToOne(mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     @PrimaryKeyJoinColumn
     private UserHistory history;
 
@@ -46,6 +53,7 @@ public class IchirinUser {
         this.email = user.getEmail();
         this.nickname = user.getNickname();
         this.password = user.getPassword();
+        this.setFavorite(new UserFavorite(this));
         this.setHistory(new UserHistory(this));
     }
 
@@ -99,5 +107,13 @@ public class IchirinUser {
 
     public void setHistory(UserHistory history) {
         this.history = history;
+    }
+
+    public UserFavorite getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(UserFavorite userFavorite) {
+        this.favorite = userFavorite;
     }
 }

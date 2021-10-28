@@ -1,6 +1,8 @@
 package me.skiincraft.ichirin.models.manga;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import me.skiincraft.ichirin.models.user.IchirinUser;
+import me.skiincraft.ichirin.models.user.UserFavorite;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -11,16 +13,56 @@ import java.util.Set;
  * @see Manga Manga
  * @see IchirinUser User
  */
-
+@Entity
 public class MangaFavorite {
 
     @Id
-    private long id;
+    @Column(name = "manga_id") private long id;
 
-    @MapsId
-    @OneToOne
+    @MapsId @OneToOne
+    @JsonIgnore @JoinColumn(name = "manga_id")
     private Manga manga;
-    @ManyToMany
-    private Set<IchirinUser> users;
 
+    @ManyToMany(mappedBy = "mangas")
+    private Set<UserFavorite> users;
+
+    public MangaFavorite() {
+    }
+
+    public MangaFavorite(Manga manga) {
+        this.manga = manga;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Manga getManga() {
+        return manga;
+    }
+
+    public void setManga(Manga manga) {
+        this.manga = manga;
+    }
+
+    public Set<UserFavorite> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<UserFavorite> users) {
+        this.users = users;
+    }
+
+    @Override
+    public String toString() {
+        return "MangaFavorite{" +
+                "id=" + id +
+                ", manga=" + manga +
+                ", users=" + users +
+                '}';
+    }
 }

@@ -1,384 +1,465 @@
 {
-	"info": {
-		"_postman_id": "cb05bc36-f2d6-4cbc-911e-3fe2bdcc3bd9",
-		"name": "Ichirin API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Mangas",
-			"item": [
-				{
-					"name": "Chapters",
-					"item": [
-						{
-							"name": "Get List of all Manga Chapters",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/api/mangas/1/chapters",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"mangas",
-										"1",
-										"chapters"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create a new Manga Chapter",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"Um belo dia de verão\",\r\n    \"summary\": \"Neste capitulo as coisas esquentam com a chegada do verão\",\r\n    \"season\": 1,\r\n    \"chapter\": 1\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/api/mangas/1/chapters",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"mangas",
-										"1",
-										"chapters"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get a Manga Chapter",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/api/mangas/1/chapters/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"mangas",
-										"1",
-										"chapters",
-										"1"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Favorites [WIP]",
-					"item": [
-						{
-							"name": "Get favorite Manga Users",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/api/mangas/1/favorites",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"mangas",
-										"1",
-										"favorites"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Comments [WIP]",
-					"item": []
-				},
-				{
-					"name": "Get List of all Mangas",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/mangas",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"mangas"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create a new Manga",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Soulmate\",\r\n    \"imageUrl\": \"url\",\r\n    \"summary\": \"djdawdawpdjawpjdpawjdpwajdpwjdpjwp\",\r\n    \"mangaType\": 1,\r\n    \"mangaStatus\": 1,\r\n    \"alternativeNames\": [\r\n        \"A\"\r\n    ],\r\n    \"authors\": [\r\n        \"Author 1\",\r\n        \"Author 2\"\r\n    ],\r\n    \"artists\": [\r\n        \"Artist 1\",\r\n        \"Artist 2\"\r\n    ],\r\n    \"releaseDate\": \"hoahfowahfoawhofahwofw\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/mangas",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"mangas"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Users",
-			"item": [
-				{
-					"name": "History",
-					"item": [
-						{
-							"name": "Get User History",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/api/users/1/history",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"users",
-										"1",
-										"history"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Add Mangas To User History",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/api/users/1/history/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"users",
-										"1",
-										"history",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get all Users History",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/api/users/history",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"users",
-										"history"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Remove manga from User History",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": ""
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Favorites [WIP]",
-					"item": [
-						{
-							"name": "Get User Favorites",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/api/users/1/favorites",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"users",
-										"1",
-										"favorites"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Add to User Favorites",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/api/users/1/favorites/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"users",
-										"1",
-										"favorites",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Remove manga from User Favorite",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": ""
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Comments [WIP]",
-					"item": []
-				},
-				{
-					"name": "Get a List of All Users",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/api/users",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"users"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Register a new User",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Cristian Ferreira\",\r\n    \"nickname\":\"SknZ\",\r\n    \"email\": \"myemail@mail.com\",\r\n    \"password\": \"mypassword\"\r\n\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/signin",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"signin"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "[WIP] Login",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": null
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "cb05bc36-f2d6-4cbc-911e-3fe2bdcc3bd9",
+    "name": "Ichirin API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Mangas",
+      "item": [
+        {
+          "name": "Chapters",
+          "item": [
+            {
+              "name": "Get List of all Manga Chapters",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/mangas/{{mangaId}}/chapters",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "mangas",
+                    "{{mangaId}}",
+                    "chapters"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create a new Manga Chapter",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Um belo dia de verão\",\r\n    \"summary\": \"Neste capitulo as coisas esquentam com a chegada do verão\",\r\n    \"season\": 1,\r\n    \"chapter\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/mangas/{{mangaId}}/chapters",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "mangas",
+                    "{{mangaId}}",
+                    "chapters"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "[WIP] Delete a Manga Chapter",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/mangas/{{mangaId}}/chapters/{{chapterId}}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "mangas",
+                    "{{mangaId}}",
+                    "chapters",
+                    "{{chapterId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get a Manga Chapter",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/mangas/{{mangaId}}/chapters/{{chapterId}}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "mangas",
+                    "{{mangaId}}",
+                    "chapters",
+                    "{{chapterId}}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Favorites",
+          "item": [
+            {
+              "name": "Get favorite Manga Users",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/mangas/{{mangaId}}/favorites",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "mangas",
+                    "{{mangaId}}",
+                    "favorites"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Comments [WIP]",
+          "item": []
+        },
+        {
+          "name": "Get List of all Mangas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/mangas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "mangas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create a new Manga",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Soulmate\",\r\n    \"imageUrl\": \"url\",\r\n    \"summary\": \"Soulmate foi o primeiro manga que veio a cabeça\",\r\n    \"mangaType\": 0,\r\n    \"mangaStatus\": 1,\r\n    \"alternativeNames\": [\r\n        \"A\"\r\n    ],\r\n    \"authors\": [\r\n        \"Author 1\",\r\n        \"Author 2\"\r\n    ],\r\n    \"artists\": [\r\n        \"Artist 1\",\r\n        \"Artist 2\"\r\n    ],\r\n    \"releaseDate\": \"28/10/2021\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/mangas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "mangas"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "History",
+          "item": [
+            {
+              "name": "Get User History",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/{{userId}}/history",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "{{userId}}",
+                    "history"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Add Mangas To User History",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/{{userId}}/history/{{mangaId}}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "{{userId}}",
+                    "history",
+                    "{{mangaId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get all Users History",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/history",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "history"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Remove manga from User History",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/{{userId}}/history/{{mangaId}}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "{{userId}}",
+                    "history",
+                    "{{mangaId}}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Favorites",
+          "item": [
+            {
+              "name": "Get favorite User Mangas",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/{{userId}}/favorites",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "{{userId}}",
+                    "favorites"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Add Manga to User Favorites",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/{{userId}}/favorites/{{mangaId}}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "{{userId}}",
+                    "favorites",
+                    "{{mangaId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Remove Manga from User Favorite",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/{{userId}}/favorites/{{mangaId}}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "{{userId}}",
+                    "favorites",
+                    "{{mangaId}}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Comments [WIP]",
+          "item": []
+        },
+        {
+          "name": "Get a List of All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Register a new User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Cristian Ferreira\",\r\n    \"nickname\": \"SknZ\",\r\n    \"email\": \"myemail@mail.com\",\r\n    \"password\": \"mypassword\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/signin",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "signin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "[WIP] Login",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": null
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "userId",
+      "value": "1"
+    },
+    {
+      "key": "mangaId",
+      "value": "1"
+    },
+    {
+      "key": "chapterId",
+      "value": "1"
+    }
+  ]
 }

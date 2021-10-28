@@ -4,6 +4,8 @@ import me.skiincraft.ichirin.data.manga.MangaChapterDTO;
 import me.skiincraft.ichirin.data.manga.MangaDTO;
 import me.skiincraft.ichirin.models.manga.Manga;
 import me.skiincraft.ichirin.models.manga.MangaChapter;
+import me.skiincraft.ichirin.models.manga.MangaFavorite;
+import me.skiincraft.ichirin.service.FavoriteService;
 import me.skiincraft.ichirin.service.MangaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,10 +18,12 @@ import org.springframework.web.bind.annotation.*;
 public class MangaController {
 
     private final MangaService mangaService;
+    private final FavoriteService favoriteService;
 
     @Autowired
-    public MangaController(MangaService mangaService) {
+    public MangaController(MangaService mangaService, FavoriteService favoriteService) {
         this.mangaService = mangaService;
+        this.favoriteService = favoriteService;
     }
 
     @GetMapping("")
@@ -27,14 +31,14 @@ public class MangaController {
         return mangaService.getMangas(pageable);
     }
 
-    @GetMapping("/{mangaId}")
-    public Manga getManga(int id) {
-        return null;
-    }
-
     @PostMapping("")
     public Manga newManga(@RequestBody @Validated MangaDTO dto) {
         return mangaService.createManga(dto);
+    }
+
+    @GetMapping("/{mangaId}")
+    public Manga getManga(int id) {
+        return mangaService.getManga(id);
     }
 
     @PostMapping("/{mangaId}/chapters")
@@ -48,9 +52,14 @@ public class MangaController {
     }
 
     @GetMapping("/{mangaId}/chapters/{chapter}")
-    public MangaChapter getMangaChapter(@PathVariable Long mangaId, @PathVariable Float chapter) {
+    public MangaChapter getMangaChapter(@PathVariable Long mangaId,
+                                        @PathVariable Float chapter) {
         return mangaService.getMangaChapter(mangaId, chapter);
     }
 
+    @GetMapping("/{mangaId}/favorites")
+    public MangaFavorite getMangaFavorite(@PathVariable Long mangaId) {
+        return favoriteService.getMangaFavorite(mangaId);
+    }
 }
 

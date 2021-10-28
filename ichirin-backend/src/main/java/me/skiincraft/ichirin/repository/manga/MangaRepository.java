@@ -1,4 +1,4 @@
-package me.skiincraft.ichirin.repository;
+package me.skiincraft.ichirin.repository.manga;
 
 import me.skiincraft.ichirin.models.manga.Manga;
 import org.springframework.data.jpa.repository.JpaRepository;

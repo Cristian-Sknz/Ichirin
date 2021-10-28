@@ -1,6 +1,7 @@
 package me.skiincraft.ichirin.controller;
 
 import me.skiincraft.ichirin.models.user.IchirinUser;
+import me.skiincraft.ichirin.service.FavoriteService;
 import me.skiincraft.ichirin.service.UserHistoryService;
 import me.skiincraft.ichirin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.*;
 public class UserController extends DynamicUserController {
 
     @Autowired
-    public UserController(UserService userService, UserHistoryService userHistoryService) {
-        super(userService, userHistoryService);
+    public UserController(UserService userService,
+                          UserHistoryService userHistoryService,
+                          FavoriteService favoriteService) {
+        super(userService, userHistoryService, favoriteService);
     }
 
     @GetMapping(value = "/@me")

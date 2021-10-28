@@ -1,4 +1,4 @@
-package me.skiincraft.ichirin.repository;
+package me.skiincraft.ichirin.repository.user;
 
 import me.skiincraft.ichirin.models.user.IchirinUser;
 import org.springframework.data.jpa.repository.JpaRepository;
