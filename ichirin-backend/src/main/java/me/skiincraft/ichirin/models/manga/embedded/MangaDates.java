@@ -1,20 +1,22 @@
 package me.skiincraft.ichirin.models.manga.embedded;
 
 import me.skiincraft.ichirin.data.manga.MangaDTO;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 @Embeddable
 public class MangaDates {
 
-    @CreatedDate
-    private OffsetDateTime createdTime;
+    @Column(name = "created_date")
+    private OffsetDateTime createdDate;
     private LocalDateTime releaseDate;
-    @LastModifiedDate
+    @Column(name = "last_update")
     private OffsetDateTime lastUpdate;
 
     public MangaDates() {
@@ -23,15 +25,14 @@ public class MangaDates {
     public MangaDates(MangaDTO dto) {
         // TODO LocalDateTime.now() é temporário
         this.releaseDate = LocalDateTime.now();
-        this.createdTime = this.lastUpdate = OffsetDateTime.now();
     }
 
     public OffsetDateTime getCreatedTime() {
-        return createdTime;
+        return createdDate;
     }
 
     public void setCreatedTime(OffsetDateTime createdTime) {
-        this.createdTime = createdTime;
+        this.createdDate = createdTime;
     }
 
     public LocalDateTime getReleaseDate() {
@@ -48,5 +49,13 @@ public class MangaDates {
 
     public void setLastUpdate(OffsetDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    @PrePersist
+    @PreUpdate
+    public void update() {
+        if (this.createdDate == null)
+            this.createdDate = OffsetDateTime.now(Clock.systemUTC());
+        this.lastUpdate = OffsetDateTime.now(Clock.systemUTC());
     }
 }

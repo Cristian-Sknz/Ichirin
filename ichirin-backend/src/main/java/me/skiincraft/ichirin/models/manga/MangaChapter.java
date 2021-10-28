@@ -33,7 +33,15 @@ public class MangaChapter {
     @ManyToOne
     @JoinColumn(name = "manga_id")
     private Manga manga;
+
+    @Column(name = "created_date")
+    private OffsetDateTime createdDate;
+
+    @Column(name = "release_date")
     private OffsetDateTime releaseDate;
+
+    @Column(name = "last_update")
+    private OffsetDateTime lastUpdate;
 
     public MangaChapter() {
     }
@@ -88,5 +96,29 @@ public class MangaChapter {
 
     public void setReleaseDate(OffsetDateTime releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public OffsetDateTime getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public OffsetDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setLastUpdate(OffsetDateTime lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public void setCreatedDate(OffsetDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    @PrePersist
+    @PreUpdate
+    public void update() {
+        if (this.createdDate == null)
+            this.createdDate = OffsetDateTime.now(Clock.systemUTC());
+        this.lastUpdate = OffsetDateTime.now(Clock.systemUTC());
     }
 }

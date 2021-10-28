@@ -15,13 +15,16 @@ public class UserFavorite {
     @Id
     @Column(name = "user_id") private long id;
 
+    @Column(name = "last_update")
+    private OffsetDateTime lastUpdate;
+
     @MapsId @OneToOne
     @JsonIgnore @JoinColumn(name = "user_id")
     private IchirinUser user;
 
     @ManyToMany
     private Set<MangaFavorite> mangas;
-    private OffsetDateTime lastUpdate;
+
 
     public UserFavorite() {
         this.lastUpdate = OffsetDateTime.now(Clock.systemUTC());
@@ -64,13 +67,9 @@ public class UserFavorite {
         this.lastUpdate = lastUpdate;
     }
 
-    @Override
-    public String toString() {
-        return "UserFavorite{" +
-                "id=" + id +
-                ", user=" + user +
-                ", mangas=" + mangas +
-                ", lastUpdate=" + lastUpdate +
-                '}';
+    @PrePersist
+    @PreUpdate
+    public void update() {
+        this.lastUpdate = OffsetDateTime.now(Clock.systemUTC());
     }
 }

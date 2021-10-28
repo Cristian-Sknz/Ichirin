@@ -21,10 +21,12 @@ public class UserHistory {
     @Id
     @Column(name = "user_id") private long id;
 
+    @Column(name = "last_update")
+    private OffsetDateTime lastUpdate;
+
     @MapsId @OneToOne
     @JsonIgnore @JoinColumn(name = "user_id")
     private IchirinUser user;
-    private OffsetDateTime lastUpdate;
 
     @ManyToMany
     @JoinTable(name = "user_history_mangas",
@@ -71,5 +73,11 @@ public class UserHistory {
 
     public void setMangas(Set<Manga> mangas) {
         this.mangas = mangas;
+    }
+
+    @PrePersist
+    @PreUpdate
+    public void update() {
+        this.lastUpdate = OffsetDateTime.now(Clock.systemUTC());
     }
 }
