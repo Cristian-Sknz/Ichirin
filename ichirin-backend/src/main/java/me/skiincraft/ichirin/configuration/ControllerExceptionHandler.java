@@ -1,5 +1,7 @@
 package me.skiincraft.ichirin.configuration;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpHeaders;
@@ -34,12 +36,16 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
         body.put("timestamp", OffsetDateTime.now());
         body.put("status", status.value());
 
-        List<String> errors = ex.getBindingResult()
+        List<ObjectNode> errors = ex.getBindingResult()
                 .getFieldErrors()
                 .stream()
-                .map(x -> Optional.ofNullable(x.getDefaultMessage()).orElse("validation.default.message"))
-                .map(message -> messageSource.getMessage(message, null, Locale.getDefault()))
-                .collect(Collectors.toList());
+                .map(x -> {
+                    ObjectNode node = new ObjectMapper().createObjectNode();
+                    node.put("field", x.getField());
+                    node.put("message",  messageSource.getMessage(Optional.ofNullable(x.getDefaultMessage())
+                            .orElse("validation.default.message"), null, Locale.getDefault()));
+                    return node;
+                }).collect(Collectors.toList());
 
         body.put("errors", errors);
         return new ResponseEntity<>(body, headers, status);

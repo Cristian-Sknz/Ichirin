@@ -7,15 +7,20 @@ import javax.validation.constraints.NotBlank;
 
 public class IchirinUserDTO {
 
-    @NotBlank
+    @NotBlank(message = "validation.user.name")
     @Length(min = 5, max = 40)
     private String name;
-    @Length(min = 4, max = 40)
+
+    @NotBlank(message = "validation.user.nickname")
+    @Length(min = 4, max = 40, message = "validation.user.nickname.length")
     private String nickname;
-    @Email
+
+    @NotBlank(message = "validation.user.email")
+    @Email(message = "validation.user.email")
     private String email;
-    @NotBlank
-    @Length(min = 8, max = 64)
+
+    @NotBlank(message = "validation.user.password")
+    @Length(min = 8, max = 64, message = "validation.user.password")
     private String password;
 
     public IchirinUserDTO() {
