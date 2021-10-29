@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import me.skiincraft.ichirin.exception.IchirinAPIException;
 import me.skiincraft.ichirin.exception.IchirinNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpHeaders;
@@ -30,11 +32,27 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
     private final ObjectMapper mapper;
     private final MessageSource messageSource;
+    private final Logger logger = LoggerFactory.getLogger(ControllerExceptionHandler.class);
 
     @Autowired
     public ControllerExceptionHandler(ObjectMapper mapper, MessageSource messageSource) {
         this.mapper = mapper;
         this.messageSource = messageSource;
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Object> handleAnyException(Exception e, WebRequest req) {
+        ObjectNode node = mapper.createObjectNode();
+        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+        node.put("timestamp", OffsetDateTime.now(Clock.systemUTC()).toString());
+        node.put("status", status.value());
+        node.put("message", messageSource.getMessage("exception.internal.error", null, Locale.getDefault()));
+
+        if (req instanceof ServletWebRequest) {
+            node.put("path", ((ServletWebRequest) req).getRequest().getServletPath());
+        }
+        logger.error("Internal error: ", e);
+        return new ResponseEntity<>(node, status);
     }
 
     @ExceptionHandler(IchirinAPIException.class)
@@ -47,6 +65,7 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
         node.put("status", status.value());
         node.put("message", e.getMessage());
 
+        logger.error("Internal error: ", e);
         sendResponse(node, status, req, res);
     }
 
