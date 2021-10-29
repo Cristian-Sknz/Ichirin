@@ -12,7 +12,7 @@
 > Este projeto está funcionando apenas em ambiente de desenvolvimento, pois não está concluido e não está pronto para produção.
 
 ### Desenvolvimento
-Você pode ver o progresso do projeto em [pull-requests](https://github.com/Cristian-Sknz/Ichirin/pulls)
+Você pode ver o progresso do projeto em [Issues](https://github.com/Cristian-Sknz/Ichirin/issues)
 ## Como iniciar em modo de desenvolvimento?
 
 ### :dizzy: Back-end: Java e Gradle
