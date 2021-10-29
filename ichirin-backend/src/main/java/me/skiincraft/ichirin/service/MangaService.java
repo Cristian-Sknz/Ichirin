@@ -24,7 +24,8 @@ public class MangaService {
     private MessageSource source;
 
     @Autowired
-    public MangaService(MangaRepository repository, MangaChapterRepository chapterRepository) {
+    public MangaService(MangaRepository repository,
+                        MangaChapterRepository chapterRepository) {
         this.repository = repository;
         this.chapterRepository = chapterRepository;
     }
@@ -66,4 +67,11 @@ public class MangaService {
         return chapterRepository.save(new MangaChapter(getManga(mangaId), dto));
     }
 
+    public Page<Manga> getMangasByCategory(long categoryId, Pageable pageable) {
+        return repository.findAllByCategoryId(categoryId, pageable);
+    }
+
+    public MangaRepository getRepository() {
+        return repository;
+    }
 }

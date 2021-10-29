@@ -8,6 +8,7 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 /** <h2>Manga</h2>
  *  <p>Está entidade será a referência de todos os mangas,
@@ -36,9 +37,16 @@ public class Manga {
     @Embedded
     private MangaDates dates;
 
-    @OneToOne(mappedBy = "manga", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "manga",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     @PrimaryKeyJoinColumn
     private MangaFavorite favorites;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<MangaCategory> category;
+
+
 
     public Manga() {
         this.information = new MangaInformation();
@@ -54,7 +62,7 @@ public class Manga {
         this.favorites = new MangaFavorite(this);
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -100,6 +108,14 @@ public class Manga {
 
     public MangaFavorite getFavorites() {
         return favorites;
+    }
+
+    public void setCategory(Set<MangaCategory> category) {
+        this.category = category;
+    }
+
+    public Set<MangaCategory> getCategory() {
+        return category;
     }
 
     @Override
