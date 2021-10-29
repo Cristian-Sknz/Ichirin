@@ -12,7 +12,8 @@
 > Este projeto está funcionando apenas em ambiente de desenvolvimento, pois não está concluido e não está pronto para produção.
 
 ### Desenvolvimento
-Você pode ver o progresso do projeto em [Issues](https://github.com/Cristian-Sknz/Ichirin/issues)
+Você pode ver o progresso do projeto em [Issues](https://github.com/Cristian-Sknz/Ichirin/issues).
+As modificações que não estão totalmente prontas, não serão commitados na [`master`](https://github.com/Cristian-Sknz/Ichirin/tree/master), tente dar uma olhada em outras branches para ver o progresso do projeto.
 ## Como iniciar em modo de desenvolvimento?
 
 ### :dizzy: Back-end: Java e Gradle
