@@ -35,7 +35,7 @@ public abstract class DynamicUserController {
     }
 
     @GetMapping(value = "/{userId}")
-    public IchirinUser getUserById(long userId) {
+    public IchirinUser getUserById(@PathVariable Long userId) {
         return userService.getUser(userId);
     }
 

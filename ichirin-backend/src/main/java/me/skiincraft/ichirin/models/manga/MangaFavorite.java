@@ -3,8 +3,10 @@ package me.skiincraft.ichirin.models.manga;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import me.skiincraft.ichirin.models.user.IchirinUser;
 import me.skiincraft.ichirin.models.user.UserFavorite;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 /** <h2>MangaFavorite</h2>
@@ -17,7 +19,7 @@ import java.util.Set;
 public class MangaFavorite {
 
     @Id
-    @Column(name = "manga_id") private long id;
+    @Column(name = "manga_id") private Long id;
 
     @MapsId @OneToOne
     @JsonIgnore @JoinColumn(name = "manga_id")
@@ -64,5 +66,18 @@ public class MangaFavorite {
                 ", manga=" + manga +
                 ", users=" + users +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        MangaFavorite that = (MangaFavorite) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

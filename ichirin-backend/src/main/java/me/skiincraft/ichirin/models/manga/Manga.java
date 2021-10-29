@@ -4,8 +4,11 @@ import me.skiincraft.ichirin.data.manga.MangaDTO;
 import me.skiincraft.ichirin.models.manga.embedded.MangaDates;
 import me.skiincraft.ichirin.models.manga.embedded.MangaInformation;
 import me.skiincraft.ichirin.repository.manga.MangaRepository;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.Objects;
+import java.util.Set;
 
 /** <h2>Manga</h2>
  *  <p>Está entidade será a referência de todos os mangas,
@@ -21,7 +24,7 @@ public class Manga {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String name;
     @Column(name = "image_url")
@@ -34,9 +37,16 @@ public class Manga {
     @Embedded
     private MangaDates dates;
 
-    @OneToOne(mappedBy = "manga", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "manga",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     @PrimaryKeyJoinColumn
     private MangaFavorite favorites;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<MangaCategory> category;
+
+
 
     public Manga() {
         this.information = new MangaInformation();
@@ -52,7 +62,7 @@ public class Manga {
         this.favorites = new MangaFavorite(this);
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -98,5 +108,26 @@ public class Manga {
 
     public MangaFavorite getFavorites() {
         return favorites;
+    }
+
+    public void setCategory(Set<MangaCategory> category) {
+        this.category = category;
+    }
+
+    public Set<MangaCategory> getCategory() {
+        return category;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Manga manga = (Manga) o;
+        return id != null && Objects.equals(id, manga.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

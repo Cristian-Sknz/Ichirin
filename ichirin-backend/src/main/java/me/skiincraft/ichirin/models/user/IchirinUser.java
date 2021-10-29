@@ -3,8 +3,12 @@ package me.skiincraft.ichirin.models.user;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import me.skiincraft.ichirin.data.IchirinUserDTO;
 import me.skiincraft.ichirin.repository.user.IchirinUserRepository;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.time.Clock;
+import java.time.OffsetDateTime;
+import java.util.Objects;
 
 /** <h2>IchirinUser</h2>
  *  <p>Está entidade será um usuário no banco de dados onde serão guardado as
@@ -20,13 +24,19 @@ public class IchirinUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
     private String nickname;
     private String email;
 
     @JsonIgnore
     private String password;
+
+    @Column(name = "created_time")
+    private OffsetDateTime createdTime;
+
+    @Column(name = "last_login")
+    private OffsetDateTime lastLogin;
 
     @OneToOne(mappedBy = "user",
             cascade = CascadeType.ALL,
@@ -81,6 +91,22 @@ public class IchirinUser {
         return email;
     }
 
+    public OffsetDateTime getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(OffsetDateTime createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public OffsetDateTime getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(OffsetDateTime lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -115,5 +141,26 @@ public class IchirinUser {
 
     public void setFavorite(UserFavorite userFavorite) {
         this.favorite = userFavorite;
+    }
+
+    @PrePersist
+    @PreUpdate
+    public void update() {
+        if (this.createdTime == null)
+            this.createdTime = OffsetDateTime.now(Clock.systemUTC());
+        this.lastLogin = OffsetDateTime.now(Clock.systemUTC());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        IchirinUser that = (IchirinUser) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

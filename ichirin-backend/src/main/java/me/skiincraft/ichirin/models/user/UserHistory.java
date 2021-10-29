@@ -3,10 +3,12 @@ package me.skiincraft.ichirin.models.user;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import me.skiincraft.ichirin.data.IchirinUserDTO;
 import me.skiincraft.ichirin.models.manga.Manga;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.time.Clock;
 import java.time.OffsetDateTime;
+import java.util.Objects;
 import java.util.Set;
 
 /** <h2>UserHistory</h2>
@@ -19,12 +21,14 @@ import java.util.Set;
 public class UserHistory {
 
     @Id
-    @Column(name = "user_id") private long id;
+    @Column(name = "user_id") private Long id;
+
+    @Column(name = "last_update")
+    private OffsetDateTime lastUpdate;
 
     @MapsId @OneToOne
     @JsonIgnore @JoinColumn(name = "user_id")
     private IchirinUser user;
-    private OffsetDateTime lastUpdate;
 
     @ManyToMany
     @JoinTable(name = "user_history_mangas",
@@ -71,5 +75,24 @@ public class UserHistory {
 
     public void setMangas(Set<Manga> mangas) {
         this.mangas = mangas;
+    }
+
+    @PrePersist
+    @PreUpdate
+    public void update() {
+        this.lastUpdate = OffsetDateTime.now(Clock.systemUTC());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        UserHistory history = (UserHistory) o;
+        return id != null && Objects.equals(id, history.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

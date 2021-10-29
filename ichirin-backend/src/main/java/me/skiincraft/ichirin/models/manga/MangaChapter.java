@@ -2,10 +2,12 @@ package me.skiincraft.ichirin.models.manga;
 
 import me.skiincraft.ichirin.data.manga.MangaChapterDTO;
 import me.skiincraft.ichirin.data.manga.MangaDTO;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.time.Clock;
 import java.time.OffsetDateTime;
+import java.util.Objects;
 
 /** <h2>MangaChapter</h2>
  *  <p>Está entidade será um capitulo de algum manga, com as informações básicas como:
@@ -25,7 +27,7 @@ public class MangaChapter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String chapterName;
     private int season;
     private float chapter;
@@ -33,7 +35,15 @@ public class MangaChapter {
     @ManyToOne
     @JoinColumn(name = "manga_id")
     private Manga manga;
+
+    @Column(name = "created_date")
+    private OffsetDateTime createdDate;
+
+    @Column(name = "release_date")
     private OffsetDateTime releaseDate;
+
+    @Column(name = "last_update")
+    private OffsetDateTime lastUpdate;
 
     public MangaChapter() {
     }
@@ -88,5 +98,42 @@ public class MangaChapter {
 
     public void setReleaseDate(OffsetDateTime releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public OffsetDateTime getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public OffsetDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setLastUpdate(OffsetDateTime lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public void setCreatedDate(OffsetDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    @PrePersist
+    @PreUpdate
+    public void update() {
+        if (this.createdDate == null)
+            this.createdDate = OffsetDateTime.now(Clock.systemUTC());
+        this.lastUpdate = OffsetDateTime.now(Clock.systemUTC());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        MangaChapter that = (MangaChapter) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

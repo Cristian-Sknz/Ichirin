@@ -6,6 +6,7 @@ import me.skiincraft.ichirin.models.manga.Manga;
 import me.skiincraft.ichirin.models.manga.MangaChapter;
 import me.skiincraft.ichirin.models.manga.MangaFavorite;
 import me.skiincraft.ichirin.service.FavoriteService;
+import me.skiincraft.ichirin.service.MangaCategoryService;
 import me.skiincraft.ichirin.service.MangaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,11 +20,15 @@ public class MangaController {
 
     private final MangaService mangaService;
     private final FavoriteService favoriteService;
+    private final MangaCategoryService categoryService;
 
     @Autowired
-    public MangaController(MangaService mangaService, FavoriteService favoriteService) {
+    public MangaController(MangaService mangaService,
+                           FavoriteService favoriteService,
+                           MangaCategoryService categoryService) {
         this.mangaService = mangaService;
         this.favoriteService = favoriteService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("")
@@ -42,12 +47,14 @@ public class MangaController {
     }
 
     @PostMapping("/{mangaId}/chapters")
-    public MangaChapter newMangaChapter(@PathVariable Long mangaId, @RequestBody @Validated MangaChapterDTO dto) {
+    public MangaChapter newMangaChapter(@PathVariable Long mangaId,
+                                        @RequestBody @Validated MangaChapterDTO dto) {
         return mangaService.createMangaChapter(mangaId, dto);
     }
 
     @GetMapping("/{mangaId}/chapters")
-    public Page<MangaChapter> getMangaChapters(@PathVariable(name = "mangaId") long mangaId, Pageable pageable) {
+    public Page<MangaChapter> getMangaChapters(@PathVariable(name = "mangaId") long mangaId,
+                                               Pageable pageable) {
         return mangaService.getMangaChapters(mangaId, pageable);
     }
 
@@ -60,6 +67,18 @@ public class MangaController {
     @GetMapping("/{mangaId}/favorites")
     public MangaFavorite getMangaFavorite(@PathVariable Long mangaId) {
         return favoriteService.getMangaFavorite(mangaId);
+    }
+
+    @PostMapping("/{mangaId}/category/{categoryId}")
+    public Manga addCategoryToManga(@PathVariable Long mangaId,
+                                    @PathVariable Long categoryId) {
+        return categoryService.addCategoryToManga(mangaId, categoryId);
+    }
+
+    @DeleteMapping("/{mangaId}/category/{categoryId}")
+    public Manga removeCategoryFromManga(@PathVariable Long mangaId,
+                                         @PathVariable Long categoryId) {
+        return categoryService.removeCategoryFromManga(mangaId, categoryId);
     }
 }
 
