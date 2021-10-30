@@ -4,8 +4,8 @@ import Image from 'next/image';
 import RatingStars from '../../../models/RatingStar';
 import MangaData from '../../../../lib/types';
 
-import style from '../Home.module.css';
 import AnchorLink from '../../../models/AnchorLink';
+import style from '../Home.module.css';
 
 interface MangaListItemProps {
   data: MangaData;
@@ -17,13 +17,13 @@ export default function MangaListItem({ data }: MangaListItemProps) {
       <div className={style.card_image}>
         <AnchorLink href={data.urlName}>
           {data.isAdult && <p className={style.manga_item_isAdult}>18+</p>}
-          <Image
+          {<Image
             src={data.image_url}
             alt={data.name}
             width={160}
             height={230}
             loading='lazy'
-          />
+          />}
           <p className={style.manga_item_type}>{data.type.name}</p>
         </AnchorLink>
       </div>

@@ -18,6 +18,7 @@ export default function SearchItem({item} : SearchItemProps) {
                         src={item.image_url}
                         loading={'lazy'}
                         layout={'fill'}
+                        alt={item.name}
                     />
                 </div>
                 <div className={style.search_item_info}>
