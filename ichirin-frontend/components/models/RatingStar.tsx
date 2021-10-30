@@ -1,6 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useCallback, useEffect, useState } from 'react';
 
 type RatingStarsProp = {
   className?: string;
@@ -9,14 +8,13 @@ type RatingStarsProp = {
 
 export default function RatingStars({ className , rating }: RatingStarsProp) {
   const starTypes : IconProp[] = [['fas','star'], ['fas', 'star-half-alt'], ['far', 'star']];
-  const [stars, setStars] = useState<JSX.Element[]>([])
   const starLength = Math.floor(rating);
 
-  const createStar = useCallback((type : IconProp, key: number) => {
+  const createStar = (type : IconProp, key: number) => {
     return <FontAwesomeIcon key={key} color={'yellow'} icon={type as IconProp} />
-  }, []);
+  };
 
-  useEffect(() => {
+  const formatStars = () => {
     const array = [];
     var halfstar = starLength < rating;
     for (let i =1; i <= 5; i++) {
@@ -28,13 +26,12 @@ export default function RatingStars({ className , rating }: RatingStarsProp) {
       } else {
         array.push(createStar(starTypes[0], i));
       }
-    }
-    setStars(array);
-  }, [])
-
+    };
+    return array;
+  }
   return (
     <div className={(className) ? className : 'rating-stars'}>
-      {stars} {rating}
+      {formatStars()} {rating}
     </div>
   );
 }
