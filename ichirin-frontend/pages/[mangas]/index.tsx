@@ -1,7 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import MangaLists from '../../components/layouts/MangaLists/MangaLists';
+import Navbar from '../../components/template/Navbar';
+import Topbar from '../../components/template/Topbar';
 
-export default function MangaType(props) {
+function MangaType(props) {
   return (
     <>
       <Head>
@@ -11,6 +14,11 @@ export default function MangaType(props) {
           content='Pagina inicial do Ichirin no Hana Yuri'
         />
       </Head>
+      <>
+      <Navbar/>
+      <Topbar/>
+      <MangaLists/>
+      </>
     </>
   );
 }
@@ -26,3 +34,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
+
+
+export default MangaType;

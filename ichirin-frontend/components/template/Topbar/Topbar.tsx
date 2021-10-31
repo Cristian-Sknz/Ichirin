@@ -1,9 +1,11 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useCallback, useRef } from 'react';
-import { TopbarItens } from '../../../lib/references';
-import LinkListItem from '../../models/LinkListItem';
+import { FontAwesomeIcon as Icon} from '@fortawesome/react-fontawesome';
+
 import Sidebar, { SidebarHandles } from '../Sidebar/Sidebar';
+import LinkListItem from '../../models/LinkListItem';
 import SocialMedia from './models/SocialMedia';
+
+import { TopbarItens } from '../../../lib/references';
 import style from './Topbar.module.css';
 
 export default function Topbar() {
@@ -41,8 +43,7 @@ export default function Topbar() {
             <a href='# '>Cadastrar</a>
           </div>
         </div>
-        <FontAwesomeIcon 
-          className={style.sidebar_icon}
+        <Icon className={style.sidebar_icon}
           icon={['fas', 'bars']} 
           onClick={handleSidebarClick}/>
       </div>

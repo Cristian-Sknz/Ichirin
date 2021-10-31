@@ -6,7 +6,7 @@ type NavbarListProps = {
   items: NavbarItemProps[];
 };
 
-export default function NavbarList({ items }: NavbarListProps) {
+function NavbarList({ items }: NavbarListProps) {
   return (
     <ul className={style.navbar_list}>
       {items.map((item) => {
@@ -22,3 +22,5 @@ export default function NavbarList({ items }: NavbarListProps) {
     </ul>
   );
 }
+
+export default NavbarList;

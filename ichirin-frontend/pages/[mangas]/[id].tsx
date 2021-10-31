@@ -18,7 +18,7 @@ type ObraProps = {
   manga: MangaData;
 };
 
-export default function Obra({ manga }: ObraProps) {
+function Obra({ manga }: ObraProps) {
   return (
     <>
       <Head>
@@ -28,7 +28,6 @@ export default function Obra({ manga }: ObraProps) {
           content={`Leia o manga ${manga?.name} online.`}/>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-
       <>
         <Navbar />
         <Topbar />
@@ -71,3 +70,6 @@ function identifyType(type: string): string | undefined {
     (name) => removeAccents(name).toLowerCase() == type.toLowerCase()
   )[0];
 }
+
+
+export default Obra;

@@ -1,9 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
+import Image from 'next/image'
 import AnchorLink from '../components/models/AnchorLink';
 import style from '../styles/Error.module.css';
 
-export default function Error404Page() {
+function Error404Page() {
   return (
     <>
       <Head>
@@ -14,7 +15,12 @@ export default function Error404Page() {
       </Head>
       <div className={style.error_container}>
         <AnchorLink href={'/'}>
-          <img src={'/logo.svg'} className={style.logo} />
+          <Image src={'/logo.svg'} 
+            className={style.logo} 
+            alt={'Ichirin Logo'}
+            width={512}
+            height={87}
+            />
         </AnchorLink>
         <h1>Ooops! Página não encontrada.</h1>
         <p>
@@ -29,3 +35,5 @@ export default function Error404Page() {
     </>
   );
 }
+
+export default Error404Page;

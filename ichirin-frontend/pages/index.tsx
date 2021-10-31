@@ -10,7 +10,7 @@ import Topbar from '../components/template/Topbar';
 import Footer from '../components/template/Footer';
 import MangaData from '../lib/types';
 
-export default function Home({mangas} : InferGetStaticPropsType<typeof getStaticProps>) {
+function Home({mangas} : InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Head>
@@ -32,7 +32,7 @@ export default function Home({mangas} : InferGetStaticPropsType<typeof getStatic
 }
 
 export const getStaticProps = async () => {
-  let mangas: MangaData[] = []
+  let mangas: MangaData[] = new Array();
   try {
     const res = await fetch('http://localhost:3000/api/mangas');
     mangas = await res.json();
@@ -46,3 +46,5 @@ export const getStaticProps = async () => {
     revalidate: 30,
   }
 }
+
+export default Home;

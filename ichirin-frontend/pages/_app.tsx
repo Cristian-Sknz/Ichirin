@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { library, config } from '@fortawesome/fontawesome-svg-core';
 import NextNProgress from 'nextjs-progressbar';
-import Head from 'next/head'
+import { 
+  library as IconLibrary, 
+  config as FontAwesomeConfiguration 
+} from '@fortawesome/fontawesome-svg-core';
 
 import AppIcons from '../lib/IconsImports';
 import Loading from '../components/template/Loading/Loading';
@@ -11,8 +13,8 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../styles/globals.css';
 import '../styles/reset.css';
 
-config.autoAddCss = false;
-AppIcons.forEach((icon) => library.add(icon));
+FontAwesomeConfiguration.autoAddCss = false;
+AppIcons.forEach((icon) => IconLibrary.add(icon));
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(true);

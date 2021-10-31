@@ -56,8 +56,7 @@
 }
 
 .logo {
-    padding: 1rem;
-    width: 250px;
+    padding: 1rem !important;
 }
     
 .user_authentication {

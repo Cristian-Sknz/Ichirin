@@ -46,15 +46,12 @@
 }
 
 .manga_image {
-    display: flex;
+    max-width: 192px;
+    width: 80%;
     background: white;
     padding: 2% 1%;
-    
 }
 
-.manga_image img {
-    margin: auto 0;
-}
 
 .manga_stats {
     background: rgb(255, 255, 255, 70%);
@@ -204,6 +201,13 @@
 }
 
 @media screen and (min-width: 769px) {
+    .manga_image {
+        max-width: 192px;
+        width: 30%;
+        background: white;
+        padding: 2% 1%;
+    }
+
     .section_body {
         align-items: flex-start;
     }
@@ -220,6 +224,7 @@
         padding: 2rem 1rem;
         margin: 0;
         margin-left: 2%;
+        width: 80%;
     }
 
     .manga_container {

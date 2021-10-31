@@ -28,14 +28,14 @@ function Searchbox({}, ref: React.RefObject<SearchBoxHandles>) {
 
   const handleInputChange = useCallback((value: string) => {
     if (value.length < 3) return;
+    inputRef.current.blur();
     setResults({ values: [], loading: true });
     fetch(`/api/mangas/search?title=${value}`)
       .then(async (res) => {
-          setResults({ values: await res.json(), loading: true }); 
-          inputRef.current.blur();
+          setResults({ values: await res.json(), loading: false }); 
       })
       .catch((err) => setResults({values: [], loading: false}));
-  }, []);
+  }, [setResults]);
 
   return (
     <div className={`${style.searchbox} ${open ? style.active : ''}`}>
