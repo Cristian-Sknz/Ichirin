@@ -1,0 +1,105 @@
+.manga_lists {
+    width: 85%;
+    margin: 2.5rem auto;
+    max-width: var(--max-width);
+    font-family: 'Poppins', sans-serif;
+}
+
+.manga_lists > h1 {
+  color: #333;
+  font-size: 1.2rem;
+  margin: 2rem 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+.lists_filter {
+  margin: .3rem;
+  text-align: center;
+}
+
+
+.list_filter_item:last-child {
+  margin: 0;
+}
+
+.list_filter_item {
+    display: inline-block;
+    margin: .3rem .5rem;
+    font-size: 1rem;
+    color: #8b8b8b;
+    font-weight: 400;
+    padding: 0 0.2rem;
+    position: relative;
+}
+
+.list_filter_item a {
+  color: #8b8b8b;
+  font-size: .9rem;
+}
+
+.list_filter_item a:hover {
+  color: black;
+}
+
+.list_filter_item:hover a::after {
+  opacity: 1;
+}
+
+.list_filter_item a::after {
+  transition: opacity 200ms ease;
+  content: "";
+  height: 3px;
+  width: 100%;
+  background-color: black;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  opacity: 0;
+  top: 25px;
+}
+
+.section_title {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section_title {
+  margin: 0 auto;
+  width: 100%;
+  padding: 0.3rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.185);
+  max-width: var(--max-width);
+}
+
+.icon {
+  display: inline-block;
+  background: black;
+  max-width: 30px;
+  padding: 0.4rem;
+}
+
+.section_title h2 {
+  display: inline-block;
+  margin-left: 1rem;
+  font-family: 'Poppins';
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 968px) {
+  .manga_lists > h1 {
+    text-align: left;
+  }
+  .section_title {
+    flex-direction: row;
+  }
+  .lists_filter {
+    margin: 0;
+  }
+  .list_filter_item {
+    margin: 0 .5rem;
+  }
+}

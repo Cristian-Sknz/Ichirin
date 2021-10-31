@@ -4,6 +4,8 @@ import MangaLists from '../../components/layouts/MangaLists/MangaLists';
 import Navbar from '../../components/template/Navbar';
 import Topbar from '../../components/template/Topbar';
 
+import MangaData from '../../lib/types';
+
 function MangaType(props) {
   return (
     <>
@@ -17,14 +19,21 @@ function MangaType(props) {
       <>
       <Navbar/>
       <Topbar/>
-      <MangaLists/>
+      <MangaLists mangas={props.value}/>
       </>
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  return { props: { value: null } };
+  let mangas: MangaData[] = new Array();
+  try {
+    const res = await fetch('http://localhost:3000/api/mangas');
+    mangas = await res.json();
+    mangas = mangas.slice(0, 9);
+  } catch (ignored) {}
+  
+  return { props: { value: mangas } };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
