@@ -1,17 +1,17 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 type RatingStarsProp = {
   className?: string;
   rating: number;
 };
 
-export default function RatingStars({ className , rating }: RatingStarsProp) {
+function RatingStars({ className , rating }: RatingStarsProp) {
   const starTypes : IconProp[] = [['fas','star'], ['fas', 'star-half-alt'], ['far', 'star']];
   const starLength = Math.floor(rating);
 
   const createStar = (type : IconProp, key: number) => {
-    return <FontAwesomeIcon key={key} color={'yellow'} icon={type as IconProp} />
+    return <Icon key={key} color={'yellow'} icon={type as IconProp} />
   };
 
   const formatStars = () => {
@@ -35,3 +35,5 @@ export default function RatingStars({ className , rating }: RatingStarsProp) {
     </div>
   );
 }
+
+export default RatingStars;

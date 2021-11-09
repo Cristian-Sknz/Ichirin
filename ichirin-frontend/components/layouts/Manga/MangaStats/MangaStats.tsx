@@ -10,7 +10,7 @@ type MangaStatsProps = {
   manga: MangaData;
 };
 
-export default function MangaStats({ manga }: MangaStatsProps) {
+function MangaStats({ manga }: MangaStatsProps) {
   return (
     <div className={style.manga_stats}>
       <div className={style.manga_stats_box}>
@@ -24,3 +24,5 @@ export default function MangaStats({ manga }: MangaStatsProps) {
     </div>
   );
 }
+
+export default MangaStats;

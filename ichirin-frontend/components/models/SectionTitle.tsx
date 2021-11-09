@@ -1,5 +1,5 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import style from './Models.module.css';
 
 type SectionTitleProps = {
@@ -7,14 +7,16 @@ type SectionTitleProps = {
     children?: JSX.Element | JSX.Element[];
 }
 
-export default function SectionTitle({title, children} : SectionTitleProps) {
+function SectionTitle({title, children} : SectionTitleProps) {
   return (
     <div className={style.section_title}>
       <div className={style.icon}>
-        <FontAwesomeIcon icon={['fas', 'star']} color={'white'} />
+        <Icon icon={['fas', 'star']} color={'white'} />
       </div>
       <h2>{title}</h2>
       {children}
     </div>
   );
 }
+
+export default SectionTitle;

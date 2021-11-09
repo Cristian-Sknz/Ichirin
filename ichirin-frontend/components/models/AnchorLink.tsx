@@ -5,11 +5,12 @@ interface AnchorLink extends LinkProps {
     children?: JSX.Element | JSX.Element[] | any;
 }
 
-export default function AnchorLink(props : AnchorLink) {
+function AnchorLink(props : AnchorLink) {
     return (
         <Link {...props} prefetch={false}>
             <a className={props.className}>{props.children}</a>
         </Link>
-    );
-    
+    );    
 }
+
+export default AnchorLink;

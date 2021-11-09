@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import MangaData from '../../../lib/types';
 import MangaStats from './MangaStats';
 
@@ -7,7 +9,7 @@ type MangaPreviewProps = {
   manga: MangaData;
 };
 
-export default function MangaPreview({ manga }: MangaPreviewProps) {
+function MangaPreview({ manga }: MangaPreviewProps) {
   return (
     <article className={style.manga_section}>
       <div className={style.section_body}>
@@ -19,7 +21,12 @@ export default function MangaPreview({ manga }: MangaPreviewProps) {
 
         <div className={style.manga_container}>
           <div className={style.manga_image}>
-            <img src={manga.image_url} />
+            <Image src={manga.image_url} 
+              width={193}
+              height={278}
+              alt={manga.name}
+              layout={'responsive'}
+            />
           </div>
           <MangaStats manga={manga} />
         </div>
@@ -28,3 +35,5 @@ export default function MangaPreview({ manga }: MangaPreviewProps) {
     </article>
   );
 }
+
+export default MangaPreview;

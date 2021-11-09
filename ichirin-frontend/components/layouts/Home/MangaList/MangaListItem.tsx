@@ -1,17 +1,16 @@
-import * as React from 'react';
 import Image from 'next/image';
 
 import RatingStars from '../../../models/RatingStar';
+import AnchorLink from '../../../models/AnchorLink';
 import MangaData from '../../../../lib/types';
 
-import AnchorLink from '../../../models/AnchorLink';
 import style from '../Home.module.css';
 
 interface MangaListItemProps {
   data: MangaData;
 }
 
-export default function MangaListItem({ data }: MangaListItemProps) {
+function MangaListItem({ data }: MangaListItemProps) {
   return (
     <li className={style.manga_list_item}>
       <div className={style.card_image}>
@@ -41,3 +40,5 @@ export default function MangaListItem({ data }: MangaListItemProps) {
     </li>
   );
 }
+
+export default MangaListItem;

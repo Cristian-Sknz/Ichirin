@@ -1,25 +1,23 @@
 import MangaData from '../../../lib/types';
 import SectionTitle from '../../models/SectionTitle';
+
 import style from './Manga.module.css';
 
 type MangaDescriptionProps = {
   manga: MangaData;
 };
 
-export default function MangaDescription({ manga }: MangaDescriptionProps) {
+function MangaDescription({ manga }: MangaDescriptionProps) {
   return (
     <section className={style.manga_description}>
       <SectionTitle title={'Resumo'} />
       <div className={style.description}>
-        {manga.description.map((text, index) => {
-          return (
+        {manga.description.map((text, index) => (
             <DescriptionLine
               text={text}
               breakline={index !== manga.description.length - 1}
               key={index}
-            />
-          );
-        })}
+            />))}
       </div>
     </section>
   );
@@ -37,3 +35,5 @@ function DescriptionLine({ text, breakline }: DescriptionLineProp) {
     </>
   );
 }
+
+export default MangaDescription;

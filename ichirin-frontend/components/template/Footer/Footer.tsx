@@ -1,8 +1,8 @@
 import AnchorLink from '../../models/AnchorLink';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon as Icon} from '@fortawesome/react-fontawesome';
 import style from './Footer.module.css';
 
-export default function Footer() {
+function Footer() {
     return (
     <footer className={style.footer}>
         <div className={style.footer_body}>
@@ -22,9 +22,11 @@ export default function Footer() {
             </ul>
             <div className={style.copyright}>
                 <p>© 2021 Ichirin No Hana Yuri.</p>
-                <p>Criado com <FontAwesomeIcon icon={['fas', 'heart']} color={'red'}/> por Cristian-SknZ</p>
+                <p>Criado com <Icon icon={['fas', 'heart']} color={'red'}/> por Cristian-SknZ</p>
             </div>
         </div>
     </footer>
     );
 }
+
+export default Footer;

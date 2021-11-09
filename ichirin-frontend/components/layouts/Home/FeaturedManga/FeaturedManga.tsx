@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon as Icon} from '@fortawesome/react-fontawesome';
 
 import MangaData from '../../../../lib/types';
 import RatingStars from '../../../models/RatingStar';
@@ -46,9 +46,9 @@ export default function FeaturedManga({ data }: FeaturedMangaProps) {
       <div className={style.manga_description}>
         {textLimiter(data.description.join(';'), 308)}
       </div>
-AnchorLink
+      
       <AnchorLink href={data.urlName} className={style.readmore}>
-          Continuar Lendo <FontAwesomeIcon icon={['fas', 'arrow-right']} />
+          Continuar Lendo <Icon icon={['fas', 'arrow-right']} />
       </AnchorLink>
     </div>
   );

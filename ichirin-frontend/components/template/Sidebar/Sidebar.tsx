@@ -1,12 +1,14 @@
+import React, { forwardRef, useImperativeHandle, useState } from 'react';
+import Image from 'next/image'
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+
 import NavbarItem from '../Navbar/NavbarList/NavbarItem';
 import DropdownItem from './Dropdown/DropdownItem';
 import SidebarDropdown from './Dropdown/SidebarDropdown';
-import style from './Sidebar.module.css';
 
-import { NavbarItens, TopbarItens } from '../../../lib/references';
 import AnchorLink from '../../models/AnchorLink';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { forwardRef, useImperativeHandle, useState } from 'react';
+import { NavbarItens, TopbarItens } from '../../../lib/references';
+import style from './Sidebar.module.css';
 
 export type SidebarHandles = {
   toggleSidebar: () => void;
@@ -14,18 +16,22 @@ export type SidebarHandles = {
 
 function Sidebar({}, ref: React.RefObject<SidebarHandles>) {
   const [open, setOpen] = useState<boolean>(false);
-  useImperativeHandle(ref, () => {
-    return { toggleSidebar: () => setOpen(!open) };
-  });
+  useImperativeHandle(ref, () => ({ toggleSidebar: () => setOpen(!open) }));
 
   return (
     <div className={`${style.sidebar} ${(open) ? style.active : ''}`}>
-      <FontAwesomeIcon 
-        className={style.sidebar_close} 
-        icon={['fas', 'times']} onClick={() => setOpen(false)}/>
-
+      <Icon className={style.sidebar_close} 
+        icon={['fas', 'times']} 
+        onClick={() => setOpen(false)}
+      />
       <AnchorLink href={'/'}>
-        <img src='/logo.svg' className={style.logo} />
+        <Image 
+          src='/logo.svg' 
+          className={style.logo} 
+          width={250} 
+          height={72}
+          alt={'Ichirin Logo'}
+        />
       </AnchorLink>
 
       <div className={style.user_authentication}>

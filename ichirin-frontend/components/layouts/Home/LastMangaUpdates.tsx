@@ -11,7 +11,7 @@ type MangaProps = {
   mangas: MangaData[];
 }
 
-export default function LastMangaUpdates({ mangas }: MangaProps) {
+function LastMangaUpdates({ mangas }: MangaProps) {
   return (
     <section className={style.last_updates}>
       <SectionTitle title={'Ultimas Atualizações'} />
@@ -25,3 +25,4 @@ export default function LastMangaUpdates({ mangas }: MangaProps) {
     </section>
   );
 }
+export default LastMangaUpdates;

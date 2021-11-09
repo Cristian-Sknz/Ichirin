@@ -9,7 +9,7 @@ type SearchItemProps = {
     item: MangaData;
 }
 
-export default function SearchItem({item} : SearchItemProps) {
+function SearchItem({item} : SearchItemProps) {
     return (
         <li className={style.search_item}>
             <AnchorLink href={item.urlName}>
@@ -35,3 +35,5 @@ export default function SearchItem({item} : SearchItemProps) {
         </li>
     )
 }
+
+export default SearchItem;

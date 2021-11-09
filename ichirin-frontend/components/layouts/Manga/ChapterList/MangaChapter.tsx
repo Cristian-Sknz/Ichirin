@@ -1,4 +1,5 @@
 import { memo } from 'react';
+
 import style from '../Manga.module.css';
 import { MangaChapterData } from '../MangaChapters';
 

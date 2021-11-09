@@ -1,8 +1,9 @@
-import { Carousel } from 'react-responsive-carousel';
-import style from './Home.module.css';
 import Image from 'next/image';
 
-export default function FeatureCarrousel() {
+import { Carousel } from 'react-responsive-carousel';
+import style from './Home.module.css';
+
+function FeatureCarrousel() {
   const settings = {
     showThumbs: false,
     showIndicators: false,
@@ -26,6 +27,7 @@ export default function FeatureCarrousel() {
                     className={style.carrousel_image}
                     src='https://ichirinnohanayuriscan.com/wp-content/uploads/2021/10/banner-1.jpg'
                     layout={'fill'}
+                    alt={'Feature Item'}
                   />
               </div>
             );
@@ -35,3 +37,5 @@ export default function FeatureCarrousel() {
     </section>
   );
 }
+
+export default FeatureCarrousel;

@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon as Icon} from '@fortawesome/react-fontawesome';
 import { useCallback, useState } from 'react';
 import style from '../Sidebar.module.css';
 
@@ -18,12 +18,13 @@ export default function SidebarDropdown({title , children, defaultValue }: Sideb
   return (
     <div className={`${style.sidebar_dropdown} ${active ? style.active : ''}`}>
       <h2 onClick={handleDropdownClick}>
-      <FontAwesomeIcon 
-          className={style.sidebar_dropdown_icon}
+      <Icon className={style.sidebar_dropdown_icon}
           icon={['fas', 'chevron-up']}/>
         {title} 
       </h2>
-      <ul className={`${style.dropdown_list}`} children={children}/>
+      <ul className={`${style.dropdown_list}`}>
+        {children}
+      </ul>
     </div>
   );
 }

@@ -8,7 +8,7 @@ type SearchResultsProps = {
   loading: boolean;
 };
 
-export default function SearchResults({ items, loading }: SearchResultsProps) {
+function SearchResults({ items, loading }: SearchResultsProps) {
   return (
   <ul className={style.search_results}>
     {items.length != 0 &&
@@ -20,9 +20,10 @@ export default function SearchResults({ items, loading }: SearchResultsProps) {
           ? <h3>Nenhum resultado foi encontrado!</h3>
           : <LoadingRing/>
         }
-        
       </li>
     }
   </ul>
   );
 }
+
+export default SearchResults;
