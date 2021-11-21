@@ -34,6 +34,7 @@ public class MangaInformation {
     public MangaInformation(MangaDTO dto) {
         this.type = MangaType.getById(dto.getMangaType());
         this.status = MangaStatus.getById(dto.getMangaStatus());
+        this.alternativeNames = dto.getAlternativeNames();
         this.authors = dto.getAuthors();
         this.artists = dto.getArtists();
     }
