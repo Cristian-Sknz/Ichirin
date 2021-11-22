@@ -10,9 +10,10 @@ import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
-/** <h2>Manga</h2>
- *  <p>Está entidade será a referência de todos os mangas,
- *  com todas as informações e capítulos.</p>
+/**
+ * <h2>Manga</h2>
+ * <p>Está entidade será a referência de todos os mangas,
+ * com todas as informações e capítulos.</p>
  *
  * @see MangaRepository Repository
  * @see me.skiincraft.ichirin.service.MangaService Service
@@ -37,16 +38,20 @@ public class Manga {
     @Embedded
     private MangaDates dates;
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<MangaCategory> category;
+
     @OneToOne(mappedBy = "manga",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     @PrimaryKeyJoinColumn
     private MangaFavorite favorites;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<MangaCategory> category;
-
-
+    @OneToOne(mappedBy = "manga",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @PrimaryKeyJoinColumn
+    private MangaComments comments;
 
     public Manga() {
         this.information = new MangaInformation();
@@ -60,6 +65,7 @@ public class Manga {
         this.information = new MangaInformation(dto);
         this.dates = new MangaDates(dto);
         this.favorites = new MangaFavorite(this);
+        this.comments = new MangaComments(this);
     }
 
     public Long getId() {
@@ -116,6 +122,14 @@ public class Manga {
 
     public Set<MangaCategory> getCategory() {
         return category;
+    }
+
+    public MangaComments getComments() {
+        return comments;
+    }
+
+    public void setComments(MangaComments comments) {
+        this.comments = comments;
     }
 
     @Override

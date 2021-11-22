@@ -10,9 +10,10 @@ import java.time.Clock;
 import java.time.OffsetDateTime;
 import java.util.Objects;
 
-/** <h2>IchirinUser</h2>
- *  <p>Está entidade será um usuário no banco de dados onde serão guardado as
- *  informações privadas, configurações, histórico e favoritos.</p>
+/**
+ * <h2>IchirinUser</h2>
+ * <p>Está entidade será um usuário no banco de dados onde serão guardado as
+ * informações privadas, configurações, histórico e favoritos.</p>
  *
  * @see IchirinUserRepository Repository
  * @see me.skiincraft.ichirin.service.UserService Service
@@ -54,6 +55,7 @@ public class IchirinUser {
     private UserConfiguration configuration;
 
     public IchirinUser() {
+        this.id = 0L;
         this.configuration = new UserConfiguration();
     }
 

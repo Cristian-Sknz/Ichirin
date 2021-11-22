@@ -1,6 +1,7 @@
 package me.skiincraft.ichirin.controller;
 
 import me.skiincraft.ichirin.models.user.IchirinUser;
+import me.skiincraft.ichirin.service.CommentaryService;
 import me.skiincraft.ichirin.service.FavoriteService;
 import me.skiincraft.ichirin.service.UserHistoryService;
 import me.skiincraft.ichirin.service.UserService;
@@ -14,8 +15,9 @@ public class UserController extends DynamicUserController {
     @Autowired
     public UserController(UserService userService,
                           UserHistoryService userHistoryService,
+                          CommentaryService commentaryService,
                           FavoriteService favoriteService) {
-        super(userService, userHistoryService, favoriteService);
+        super(userService, userHistoryService, commentaryService, favoriteService);
     }
 
     @GetMapping(value = "/@me")

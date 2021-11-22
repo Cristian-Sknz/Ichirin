@@ -50,6 +50,10 @@ public class MangaService {
         }
     }
 
+    public void deleteManga(Long mangaId) {
+        repository.delete(getManga(mangaId));
+    }
+
     public Page<MangaChapter> getMangaChapters(long mangaId, Pageable pageable) {
         return chapterRepository.findAllByManga(getManga(mangaId), pageable);
     }

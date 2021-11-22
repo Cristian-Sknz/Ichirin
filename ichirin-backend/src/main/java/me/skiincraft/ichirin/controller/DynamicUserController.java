@@ -1,17 +1,19 @@
 package me.skiincraft.ichirin.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import me.skiincraft.ichirin.data.UserCommentaryDTO;
 import me.skiincraft.ichirin.models.user.IchirinUser;
+import me.skiincraft.ichirin.models.user.UserCommentary;
 import me.skiincraft.ichirin.models.user.UserFavorite;
 import me.skiincraft.ichirin.models.user.UserHistory;
+import me.skiincraft.ichirin.service.CommentaryService;
 import me.skiincraft.ichirin.service.FavoriteService;
 import me.skiincraft.ichirin.service.UserHistoryService;
 import me.skiincraft.ichirin.service.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -19,13 +21,16 @@ public abstract class DynamicUserController {
 
     protected UserService userService;
     protected UserHistoryService userHistoryService;
+    protected CommentaryService commentaryService;
     protected FavoriteService favoriteService;
 
     public DynamicUserController(UserService userService,
                                  UserHistoryService userHistoryService,
+                                 CommentaryService commentaryService,
                                  FavoriteService favoriteService) {
         this.userService = userService;
         this.userHistoryService = userHistoryService;
+        this.commentaryService = commentaryService;
         this.favoriteService = favoriteService;
     }
 
@@ -52,7 +57,7 @@ public abstract class DynamicUserController {
 
     @DeleteMapping(value = "/{userId}/favorites/{mangaId}")
     public UserFavorite removeToUserFavorites(@PathVariable Long userId,
-                                             @PathVariable Long mangaId) {
+                                              @PathVariable Long mangaId) {
         return favoriteService.removeFromUserFavorites(userId, mangaId);
     }
 
@@ -69,12 +74,46 @@ public abstract class DynamicUserController {
 
     @DeleteMapping(value = "/{userId}/history/{mangaId}")
     public UserHistory removeFromUserHistory(@PathVariable Long userId,
-                                        @PathVariable Long mangaId) {
+                                             @PathVariable Long mangaId) {
         return userHistoryService.removeFromUserHistory(userId, mangaId);
     }
 
     @GetMapping(value = "/history")
     public Collection<UserHistory> getAllHistories() {
         return userHistoryService.getAllUserHistory();
+    }
+
+    @GetMapping(value = "/{userId}/comments")
+    public Collection<UserCommentary> getUserCommentaries(@PathVariable Long userId) {
+        return commentaryService.getUserComments(userId);
+    }
+
+    @GetMapping(value = "/{userId}/comments/{mangaId}")
+    public Collection<UserCommentary> getUserCommentariesByManga(@PathVariable Long userId,
+                                                                 @PathVariable Long mangaId) {
+        return commentaryService.getUserComments(userId, mangaId);
+    }
+
+    @GetMapping(value = "/{userId}/comments/{mangaId}/{commentId}")
+    public UserCommentary getUserCommentary(@PathVariable Long userId,
+                                            @PathVariable Long mangaId,
+                                            @PathVariable Long commentId) {
+        return commentaryService.getUserCommentary(userId, mangaId, commentId);
+    }
+
+    @PostMapping(value = "/{userId}/comments/{mangaId}")
+    public UserCommentary createUserCommentary(@PathVariable Long userId,
+                                               @PathVariable Long mangaId,
+                                               @Validated @RequestBody UserCommentaryDTO userCommentary) {
+        return commentaryService.createUserCommentary(userId, userCommentary.setMangaId(mangaId));
+    }
+
+    @DeleteMapping(value = "/{userId}/comments/{mangaId}/{commentId}")
+    public Object deleteUserCommentary(@PathVariable Long userId,
+                                       @PathVariable Long mangaId,
+                                       @PathVariable Long commentId) {
+        commentaryService.deleteUserCommentary(userId, mangaId, commentId);
+        return new ObjectMapper().createObjectNode().put("response", "ok");
+        // TODO mudar as respostas de DELETE
     }
 }
