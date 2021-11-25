@@ -1,6 +1,8 @@
 package me.skiincraft.ichirin.models.manga;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 import me.skiincraft.ichirin.models.user.UserCommentary;
 
 import javax.persistence.*;
@@ -9,6 +11,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "tb_manga_comments")
+@Getter
+@Setter
 public class MangaComments {
 
     @Id
@@ -26,31 +30,8 @@ public class MangaComments {
             orphanRemoval = true)
     private Set<UserCommentary> userCommentaries;
 
-    public MangaComments() {
-    }
-
     public MangaComments(Manga manga) {
         this.manga = manga;
         this.userCommentaries = new HashSet<>();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Manga getManga() {
-        return manga;
-    }
-
-    public void setManga(Manga manga) {
-        this.manga = manga;
-    }
-
-    public Set<UserCommentary> getUserCommentaries() {
-        return userCommentaries;
-    }
-
-    public void setUserCommentaries(Set<UserCommentary> userCommentaries) {
-        this.userCommentaries = userCommentaries;
     }
 }

@@ -1,5 +1,9 @@
 package me.skiincraft.ichirin.models.manga;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import me.skiincraft.ichirin.data.manga.MangaChapterDTO;
 import me.skiincraft.ichirin.data.manga.MangaDTO;
 import org.hibernate.Hibernate;
@@ -23,6 +27,10 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "tb_mangas_chapters")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class MangaChapter {
 
     @Id
@@ -35,18 +43,12 @@ public class MangaChapter {
     @ManyToOne
     @JoinColumn(name = "manga_id")
     private Manga manga;
-
     @Column(name = "created_date")
     private OffsetDateTime createdDate;
-
     @Column(name = "release_date")
     private OffsetDateTime releaseDate;
-
     @Column(name = "last_update")
     private OffsetDateTime lastUpdate;
-
-    public MangaChapter() {
-    }
 
     public MangaChapter(Manga manga, MangaChapterDTO dto) {
         this.chapterName = dto.getName();
@@ -54,66 +56,6 @@ public class MangaChapter {
         this.releaseDate = OffsetDateTime.now(Clock.systemUTC());
         this.season = dto.getSeason();
         this.manga = manga;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getChapterName() {
-        return chapterName;
-    }
-
-    public void setChapterName(String chapterName) {
-        this.chapterName = chapterName;
-    }
-
-    public int getSeason() {
-        return season;
-    }
-
-    public void setSeason(int season) {
-        this.season = season;
-    }
-
-    public float getChapter() {
-        return chapter;
-    }
-
-    public void setChapter(float chapter) {
-        this.chapter = chapter;
-    }
-
-    public Manga getManga() {
-        return manga;
-    }
-
-    public void setManga(Manga manga) {
-        this.manga = manga;
-    }
-
-    public OffsetDateTime getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(OffsetDateTime releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public OffsetDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public OffsetDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setLastUpdate(OffsetDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    public void setCreatedDate(OffsetDateTime createdDate) {
-        this.createdDate = createdDate;
     }
 
     @PrePersist

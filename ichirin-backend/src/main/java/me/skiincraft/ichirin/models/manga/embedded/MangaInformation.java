@@ -1,5 +1,6 @@
 package me.skiincraft.ichirin.models.manga.embedded;
 
+import lombok.Data;
 import me.skiincraft.ichirin.data.manga.MangaDTO;
 import me.skiincraft.ichirin.models.manga.enums.MangaStatus;
 import me.skiincraft.ichirin.models.manga.enums.MangaType;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Embeddable
+@Data
 public class MangaInformation {
 
     @Enumerated(EnumType.ORDINAL)
@@ -37,53 +39,5 @@ public class MangaInformation {
         this.alternativeNames = dto.getAlternativeNames();
         this.authors = dto.getAuthors();
         this.artists = dto.getArtists();
-    }
-
-    public MangaType getType() {
-        return type;
-    }
-
-    public void setType(MangaType type) {
-        this.type = type;
-    }
-
-    public MangaStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(MangaStatus status) {
-        this.status = status;
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
-    public List<String> getAlternativeNames() {
-        return alternativeNames;
-    }
-
-    public void setAlternativeNames(List<String> alternativeNames) {
-        this.alternativeNames = alternativeNames;
-    }
-
-    public List<String> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(List<String> authors) {
-        this.authors = authors;
-    }
-
-    public List<String> getArtists() {
-        return artists;
-    }
-
-    public void setArtists(List<String> artists) {
-        this.artists = artists;
     }
 }

@@ -1,5 +1,7 @@
 package me.skiincraft.ichirin.models.manga.embedded;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import me.skiincraft.ichirin.data.manga.MangaDTO;
 
 import javax.persistence.Column;
@@ -11,6 +13,8 @@ import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 @Embeddable
+@Data
+@NoArgsConstructor
 public class MangaDates {
 
     @Column(name = "created_date")
@@ -19,36 +23,9 @@ public class MangaDates {
     @Column(name = "last_update")
     private OffsetDateTime lastUpdate;
 
-    public MangaDates() {
-    }
-
     public MangaDates(MangaDTO dto) {
         // TODO LocalDateTime.now() é temporário
         this.releaseDate = LocalDateTime.now();
-    }
-
-    public OffsetDateTime getCreatedTime() {
-        return createdDate;
-    }
-
-    public void setCreatedTime(OffsetDateTime createdTime) {
-        this.createdDate = createdTime;
-    }
-
-    public LocalDateTime getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(LocalDateTime releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public OffsetDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(OffsetDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     @PrePersist

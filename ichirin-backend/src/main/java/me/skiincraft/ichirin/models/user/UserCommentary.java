@@ -1,13 +1,19 @@
 package me.skiincraft.ichirin.models.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import me.skiincraft.ichirin.models.manga.MangaComments;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.time.Clock;
 import java.time.OffsetDateTime;
+import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@ToString
 public class UserCommentary {
 
     @Id
@@ -34,44 +40,21 @@ public class UserCommentary {
         this.content = content;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public OffsetDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(OffsetDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public MangaComments getManga() {
-        return manga;
-    }
-
-    public void setManga(MangaComments manga) {
-        this.manga = manga;
-    }
-
-    public IchirinUser getUser() {
-        return user;
-    }
-
-    public void setUser(IchirinUser user) {
-        this.user = user;
-    }
-
     @PrePersist
     public void prePersist() {
         this.createdDate = OffsetDateTime.now(Clock.systemUTC());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        UserCommentary that = (UserCommentary) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

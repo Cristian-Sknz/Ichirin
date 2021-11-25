@@ -1,10 +1,15 @@
 package me.skiincraft.ichirin.data;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+@Data
+@NoArgsConstructor
 public class IchirinUserDTO {
 
     @NotBlank(message = "validation.user.name")
@@ -22,39 +27,5 @@ public class IchirinUserDTO {
     @NotBlank(message = "validation.user.password")
     @Length(min = 8, max = 64, message = "validation.user.password")
     private String password;
-
-    public IchirinUserDTO() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    
 }

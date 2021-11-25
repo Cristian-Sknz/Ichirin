@@ -69,9 +69,9 @@ public class CommentaryService {
                 .orElseThrow(() -> new IchirinNotFoundException("exception.comments.not-found", source));
     }
 
-    public UserCommentary createUserCommentary(long userId, UserCommentaryDTO dto) {
+    public UserCommentary createUserCommentary(long userId, long mangaId, UserCommentaryDTO dto) {
         IchirinUser user = userService.getUser(userId);
-        Manga manga = mangaService.getManga(dto.getMangaId());
+        Manga manga = mangaService.getManga(mangaId);
         var comments = mangaCommentsRepository.findByMangaAndFetch(manga);
         var commentary = new UserCommentary(user, comments, dto.getContent());
 

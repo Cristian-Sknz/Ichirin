@@ -1,5 +1,6 @@
 package me.skiincraft.ichirin.models.manga;
 
+import lombok.*;
 import me.skiincraft.ichirin.data.manga.MangaDTO;
 import me.skiincraft.ichirin.models.manga.embedded.MangaDates;
 import me.skiincraft.ichirin.models.manga.embedded.MangaInformation;
@@ -21,6 +22,10 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "tb_mangas")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class Manga {
 
     @Id
@@ -47,11 +52,6 @@ public class Manga {
     @PrimaryKeyJoinColumn
     private MangaComments comments;
 
-    public Manga() {
-        this.information = new MangaInformation();
-        this.dates = new MangaDates();
-    }
-
     public Manga(MangaDTO dto) {
         this.name = dto.getName();
         this.imageUrl = dto.getImageUrl();
@@ -59,66 +59,6 @@ public class Manga {
         this.information = new MangaInformation(dto);
         this.dates = new MangaDates(dto);
         this.comments = new MangaComments(this);
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public MangaInformation getInformation() {
-        return information;
-    }
-
-    public void setInformation(MangaInformation information) {
-        this.information = information;
-    }
-
-    public MangaDates getDates() {
-        return dates;
-    }
-
-    public void setDates(MangaDates dates) {
-        this.dates = dates;
-    }
-
-    public void setCategory(Set<MangaCategory> category) {
-        this.category = category;
-    }
-
-    public Set<MangaCategory> getCategory() {
-        return category;
-    }
-
-    public MangaComments getComments() {
-        return comments;
-    }
-
-    public void setComments(MangaComments comments) {
-        this.comments = comments;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package me.skiincraft.ichirin.models.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import me.skiincraft.ichirin.data.IchirinUserDTO;
 import me.skiincraft.ichirin.repository.user.IchirinUserRepository;
 import org.hibernate.Hibernate;
@@ -21,6 +22,9 @@ import java.util.Objects;
  */
 
 @Entity
+@Getter
+@Setter
+@ToString
 public class IchirinUser {
 
     @Id
@@ -67,82 +71,6 @@ public class IchirinUser {
         this.password = user.getPassword();
         this.setFavorite(new UserFavorite(this));
         this.setHistory(new UserHistory(this));
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public OffsetDateTime getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(OffsetDateTime createdTime) {
-        this.createdTime = createdTime;
-    }
-
-    public OffsetDateTime getLastLogin() {
-        return lastLogin;
-    }
-
-    public void setLastLogin(OffsetDateTime lastLogin) {
-        this.lastLogin = lastLogin;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public UserConfiguration getConfiguration() {
-        return configuration;
-    }
-
-    public void setConfiguration(UserConfiguration configuration) {
-        this.configuration = configuration;
-    }
-
-    public UserHistory getHistory() {
-        return history;
-    }
-
-    public void setHistory(UserHistory history) {
-        this.history = history;
-    }
-
-    public UserFavorite getFavorite() {
-        return favorite;
-    }
-
-    public void setFavorite(UserFavorite userFavorite) {
-        this.favorite = userFavorite;
     }
 
     @PrePersist

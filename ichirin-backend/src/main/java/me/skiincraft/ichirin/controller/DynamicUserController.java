@@ -105,7 +105,7 @@ public abstract class DynamicUserController {
     public UserCommentary createUserCommentary(@PathVariable Long userId,
                                                @PathVariable Long mangaId,
                                                @Validated @RequestBody UserCommentaryDTO userCommentary) {
-        return commentaryService.createUserCommentary(userId, userCommentary.setMangaId(mangaId));
+        return commentaryService.createUserCommentary(userId, mangaId, userCommentary);
     }
 
     @DeleteMapping(value = "/{userId}/comments/{mangaId}/{commentId}")

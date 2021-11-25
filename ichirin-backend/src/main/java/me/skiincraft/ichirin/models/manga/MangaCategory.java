@@ -1,5 +1,9 @@
 package me.skiincraft.ichirin.models.manga;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
@@ -9,6 +13,10 @@ import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class MangaCategory {
 
     @Id
@@ -16,22 +24,7 @@ public class MangaCategory {
     private Long id;
     private String name;
 
-    public MangaCategory() {
-    }
-
     public MangaCategory(String name) {
-        this.name = name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
     }
 
