@@ -1,7 +1,7 @@
 package me.skiincraft.ichirin.models.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import me.skiincraft.ichirin.models.manga.MangaFavorite;
+import me.skiincraft.ichirin.models.manga.Manga;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -25,7 +25,10 @@ public class UserFavorite {
     private IchirinUser user;
 
     @ManyToMany
-    private Set<MangaFavorite> mangas;
+    @JoinTable(name = "user_favorite_mangas",
+            joinColumns = { @JoinColumn(name = "manga_id") },
+            inverseJoinColumns = { @JoinColumn(name = "favorite_id") })
+    private Set<Manga> mangas;
 
 
     public UserFavorite() {
@@ -53,12 +56,20 @@ public class UserFavorite {
         this.user = user;
     }
 
-    public Set<MangaFavorite> getMangas() {
+    public Set<Manga> getMangas() {
         return mangas;
     }
 
-    public void setMangas(Set<MangaFavorite> mangas) {
+    public void setMangas(Set<Manga> mangas) {
         this.mangas = mangas;
+    }
+
+    public void addManga(Manga manga) {
+        this.mangas.add(manga);
+    }
+
+    public void removeManga(Manga manga) {
+        this.mangas.remove(manga);
     }
 
     public OffsetDateTime getLastUpdate() {

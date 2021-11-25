@@ -37,6 +37,10 @@ public class UserService {
         }
     }
 
+    public void removeUser(long userId) {
+        repository.delete(getUser(userId));
+    }
+
     public IchirinUser getUser(long userId) {
         var optional = repository.findById(userId);
         if (optional.isEmpty()) {

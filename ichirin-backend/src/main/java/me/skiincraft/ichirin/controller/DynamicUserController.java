@@ -52,13 +52,13 @@ public abstract class DynamicUserController {
     @PostMapping(value = "/{userId}/favorites/{mangaId}")
     public UserFavorite addToUserFavorites(@PathVariable Long userId,
                                            @PathVariable Long mangaId) {
-        return favoriteService.addToUserFavorites(userId, mangaId);
+        return favoriteService.addUserFavorite(userId, mangaId);
     }
 
     @DeleteMapping(value = "/{userId}/favorites/{mangaId}")
     public UserFavorite removeToUserFavorites(@PathVariable Long userId,
                                               @PathVariable Long mangaId) {
-        return favoriteService.removeFromUserFavorites(userId, mangaId);
+        return favoriteService.removeUserFavorite(userId, mangaId);
     }
 
     @GetMapping(value = "/{userId}/history")
@@ -69,13 +69,13 @@ public abstract class DynamicUserController {
     @PostMapping(value = "/{userId}/history/{mangaId}")
     public UserHistory addToUserHistory(@PathVariable Long userId,
                                         @PathVariable Long mangaId) {
-        return userHistoryService.addToUserHistory(userId, mangaId);
+        return userHistoryService.addManga(userId, mangaId);
     }
 
     @DeleteMapping(value = "/{userId}/history/{mangaId}")
     public UserHistory removeFromUserHistory(@PathVariable Long userId,
                                              @PathVariable Long mangaId) {
-        return userHistoryService.removeFromUserHistory(userId, mangaId);
+        return userHistoryService.removeManga(userId, mangaId);
     }
 
     @GetMapping(value = "/history")

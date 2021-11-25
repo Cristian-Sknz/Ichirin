@@ -45,12 +45,6 @@ public class Manga {
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     @PrimaryKeyJoinColumn
-    private MangaFavorite favorites;
-
-    @OneToOne(mappedBy = "manga",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    @PrimaryKeyJoinColumn
     private MangaComments comments;
 
     public Manga() {
@@ -64,7 +58,6 @@ public class Manga {
         this.summary = dto.getSummary();
         this.information = new MangaInformation(dto);
         this.dates = new MangaDates(dto);
-        this.favorites = new MangaFavorite(this);
         this.comments = new MangaComments(this);
     }
 
@@ -110,10 +103,6 @@ public class Manga {
 
     public void setDates(MangaDates dates) {
         this.dates = dates;
-    }
-
-    public MangaFavorite getFavorites() {
-        return favorites;
     }
 
     public void setCategory(Set<MangaCategory> category) {

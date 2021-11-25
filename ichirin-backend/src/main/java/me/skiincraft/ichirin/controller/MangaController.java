@@ -6,8 +6,8 @@ import me.skiincraft.ichirin.data.manga.MangaDTO;
 import me.skiincraft.ichirin.models.manga.Manga;
 import me.skiincraft.ichirin.models.manga.MangaChapter;
 import me.skiincraft.ichirin.models.manga.MangaComments;
-import me.skiincraft.ichirin.models.manga.MangaFavorite;
 import me.skiincraft.ichirin.models.user.UserCommentary;
+import me.skiincraft.ichirin.models.user.UserFavorite;
 import me.skiincraft.ichirin.service.CommentaryService;
 import me.skiincraft.ichirin.service.FavoriteService;
 import me.skiincraft.ichirin.service.MangaCategoryService;
@@ -79,8 +79,9 @@ public class MangaController {
     }
 
     @GetMapping("/{mangaId}/favorites")
-    public MangaFavorite getMangaFavorite(@PathVariable Long mangaId) {
-        return favoriteService.getMangaFavorite(mangaId);
+    public Page<UserFavorite> getMangaFavorite(@PathVariable Long mangaId,
+                                               Pageable pageable) {
+        return favoriteService.getMangaFavorite(mangaId, pageable);
     }
 
     @PostMapping("/{mangaId}/category/{categoryId}")

@@ -8,6 +8,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 @Service
 public class UserHistoryService {
@@ -36,17 +37,28 @@ public class UserHistoryService {
         return repository.findByUser(userService.getUser(userId));
     }
 
-    public UserHistory addToUserHistory(long userId, long mangaId) {
+    public UserHistory addManga(long userId, long mangaId) {
         UserHistory history = getUserHistory(userId);
         Manga manga = mangaService.getManga(mangaId);
-        history.getMangas().add(manga);
-
+        history.addManga(manga);
         return repository.save(history);
     }
 
-    public UserHistory removeFromUserHistory(long userId, long mangaId) {
+    public UserHistory removeManga(long userId, long mangaId) {
         UserHistory history = getUserHistory(userId);
-        history.getMangas().removeIf((manga) -> manga.getId() == mangaId);
+        Manga manga = mangaService.getManga(mangaId);
+        history.removeManga(manga);
         return repository.save(history);
+    }
+
+    public void removeManga(long mangaId) {
+        removeManga(mangaService.getManga(mangaId));
+    }
+
+    public void removeManga(Manga manga) {
+        var userHistories = repository.findAllByManga(manga);
+        repository.saveAll(userHistories.stream()
+                .peek((item) -> item.removeManga(manga))
+                .collect(Collectors.toList()));
     }
 }

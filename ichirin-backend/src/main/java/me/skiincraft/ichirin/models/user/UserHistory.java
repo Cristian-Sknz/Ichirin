@@ -77,6 +77,14 @@ public class UserHistory {
         this.mangas = mangas;
     }
 
+    public void addManga(Manga manga) {
+        this.mangas.add(manga);
+    }
+
+    public void removeManga(Manga manga) {
+        this.mangas.remove(manga);
+    }
+
     @PrePersist
     @PreUpdate
     public void update() {
