@@ -5,10 +5,13 @@ import lombok.*;
 import me.skiincraft.ichirin.data.IchirinUserDTO;
 import me.skiincraft.ichirin.repository.user.IchirinUserRepository;
 import org.hibernate.Hibernate;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.Clock;
 import java.time.OffsetDateTime;
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -25,7 +28,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-public class IchirinUser {
+public class IchirinUser implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -71,6 +74,36 @@ public class IchirinUser {
         this.password = user.getPassword();
         this.setFavorite(new UserFavorite(this));
         this.setHistory(new UserHistory(this));
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     @PrePersist
