@@ -28,7 +28,7 @@ Eu recomendo você utilizar o [**IntelliJ IDEA**](https://www.jetbrains.com/pt-b
 
   Aqui está disponivel uma coleção com as rotas e algumas respostas prontas da API, você pode baixar e importar no seu Postman:
   <p>
-    <a href="https://github.com/Cristian-Sknz/Ichirin/raw/master/ichirin-backend/Ichirin%20API%20Postman%20Collection.json">Ichirin API Postman Collection</a>
+    <a href="https://github.com/Cristian-Sknz/Ichirin/raw/master/Ichirin%20API%20Postman%20Collection.json">Ichirin API Postman Collection</a>
   <p/>
 </div>
 
