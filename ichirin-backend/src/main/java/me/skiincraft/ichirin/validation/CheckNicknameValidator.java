@@ -18,6 +18,6 @@ public class CheckNicknameValidator implements ConstraintValidator<CheckNickname
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return repository.existsByNickname(value);
+        return !repository.existsByNickname(value);
     }
 }

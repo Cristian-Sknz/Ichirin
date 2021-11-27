@@ -1,6 +1,7 @@
 package me.skiincraft.ichirin.validation.annotation;
 
 import me.skiincraft.ichirin.validation.CheckEmailValidator;
+import me.skiincraft.ichirin.validation.CheckNicknameValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -9,7 +10,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = CheckEmailValidator.class)
+@Constraint(validatedBy = CheckNicknameValidator.class)
 @Target(value = {ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CheckNickname {

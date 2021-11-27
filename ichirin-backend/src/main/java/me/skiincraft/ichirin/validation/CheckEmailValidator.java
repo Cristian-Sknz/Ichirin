@@ -18,6 +18,6 @@ public class CheckEmailValidator implements ConstraintValidator<CheckEmail, Stri
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return repository.existsByEmail(value);
+        return !repository.existsByEmail(value);
     }
 }
