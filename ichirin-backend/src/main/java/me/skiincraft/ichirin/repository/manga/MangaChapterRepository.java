@@ -1,7 +1,7 @@
 package me.skiincraft.ichirin.repository.manga;
 
-import me.skiincraft.ichirin.models.manga.Manga;
-import me.skiincraft.ichirin.models.manga.MangaChapter;
+import me.skiincraft.ichirin.entity.manga.Manga;
+import me.skiincraft.ichirin.entity.manga.MangaChapter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

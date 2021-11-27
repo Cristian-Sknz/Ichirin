@@ -1,9 +1,9 @@
-package me.skiincraft.ichirin.models.user;
+package me.skiincraft.ichirin.entity.user;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import me.skiincraft.ichirin.models.user.enums.ReadingStyle;
+import me.skiincraft.ichirin.entity.user.enums.ReadingStyle;
 
 import javax.persistence.Embeddable;
 

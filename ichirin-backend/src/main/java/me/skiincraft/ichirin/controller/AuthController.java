@@ -1,7 +1,7 @@
 package me.skiincraft.ichirin.controller;
 
-import me.skiincraft.ichirin.data.IchirinUserDTO;
-import me.skiincraft.ichirin.models.user.IchirinUser;
+import me.skiincraft.ichirin.models.dto.IchirinUserDTO;
+import me.skiincraft.ichirin.entity.user.IchirinUser;
 import me.skiincraft.ichirin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;

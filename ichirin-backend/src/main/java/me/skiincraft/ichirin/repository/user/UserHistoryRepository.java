@@ -1,8 +1,8 @@
 package me.skiincraft.ichirin.repository.user;
 
-import me.skiincraft.ichirin.models.manga.Manga;
-import me.skiincraft.ichirin.models.user.IchirinUser;
-import me.skiincraft.ichirin.models.user.UserHistory;
+import me.skiincraft.ichirin.entity.manga.Manga;
+import me.skiincraft.ichirin.entity.user.IchirinUser;
+import me.skiincraft.ichirin.entity.user.UserHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

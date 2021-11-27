@@ -1,7 +1,7 @@
 package me.skiincraft.ichirin.repository.manga;
 
-import me.skiincraft.ichirin.models.manga.Manga;
-import me.skiincraft.ichirin.models.manga.MangaComments;
+import me.skiincraft.ichirin.entity.manga.Manga;
+import me.skiincraft.ichirin.entity.manga.MangaComments;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

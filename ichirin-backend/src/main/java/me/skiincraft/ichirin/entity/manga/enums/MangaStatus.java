@@ -1,4 +1,4 @@
-package me.skiincraft.ichirin.models.manga.enums;
+package me.skiincraft.ichirin.entity.manga.enums;
 
 import java.util.Arrays;
 

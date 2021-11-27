@@ -2,7 +2,7 @@ package me.skiincraft.ichirin.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import me.skiincraft.ichirin.models.manga.MangaCategory;
+import me.skiincraft.ichirin.entity.manga.MangaCategory;
 import me.skiincraft.ichirin.service.MangaCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

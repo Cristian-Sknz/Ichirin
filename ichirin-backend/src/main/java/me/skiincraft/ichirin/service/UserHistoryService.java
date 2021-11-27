@@ -1,7 +1,7 @@
 package me.skiincraft.ichirin.service;
 
-import me.skiincraft.ichirin.models.manga.Manga;
-import me.skiincraft.ichirin.models.user.UserHistory;
+import me.skiincraft.ichirin.entity.manga.Manga;
+import me.skiincraft.ichirin.entity.user.UserHistory;
 import me.skiincraft.ichirin.repository.user.UserHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

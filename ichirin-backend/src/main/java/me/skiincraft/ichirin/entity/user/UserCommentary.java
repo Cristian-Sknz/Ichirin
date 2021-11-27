@@ -1,8 +1,8 @@
-package me.skiincraft.ichirin.models.user;
+package me.skiincraft.ichirin.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import me.skiincraft.ichirin.models.manga.MangaComments;
+import me.skiincraft.ichirin.entity.manga.MangaComments;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;

@@ -1,6 +1,6 @@
 package me.skiincraft.ichirin.repository.user;
 
-import me.skiincraft.ichirin.models.user.IchirinUser;
+import me.skiincraft.ichirin.entity.user.IchirinUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

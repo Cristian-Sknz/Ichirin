@@ -1,6 +1,6 @@
 package me.skiincraft.ichirin.service;
 
-import me.skiincraft.ichirin.models.manga.Manga;
+import me.skiincraft.ichirin.entity.manga.Manga;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,9 @@
-package me.skiincraft.ichirin.models.manga;
+package me.skiincraft.ichirin.entity.manga;
 
 import lombok.*;
-import me.skiincraft.ichirin.data.manga.MangaDTO;
-import me.skiincraft.ichirin.models.manga.embedded.MangaDates;
-import me.skiincraft.ichirin.models.manga.embedded.MangaInformation;
+import me.skiincraft.ichirin.models.dto.MangaDTO;
+import me.skiincraft.ichirin.entity.manga.embedded.MangaDates;
+import me.skiincraft.ichirin.entity.manga.embedded.MangaInformation;
 import me.skiincraft.ichirin.repository.manga.MangaRepository;
 import org.hibernate.Hibernate;
 

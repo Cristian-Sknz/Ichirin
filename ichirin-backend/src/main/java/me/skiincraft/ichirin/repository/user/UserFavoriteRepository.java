@@ -1,8 +1,8 @@
 package me.skiincraft.ichirin.repository.user;
 
-import me.skiincraft.ichirin.models.manga.Manga;
-import me.skiincraft.ichirin.models.user.IchirinUser;
-import me.skiincraft.ichirin.models.user.UserFavorite;
+import me.skiincraft.ichirin.entity.manga.Manga;
+import me.skiincraft.ichirin.entity.user.IchirinUser;
+import me.skiincraft.ichirin.entity.user.UserFavorite;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

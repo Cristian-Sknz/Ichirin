@@ -1,4 +1,4 @@
-package me.skiincraft.ichirin.data;
+package me.skiincraft.ichirin.models.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

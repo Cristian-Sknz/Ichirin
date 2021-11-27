@@ -1,13 +1,13 @@
 package me.skiincraft.ichirin.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import me.skiincraft.ichirin.data.manga.MangaChapterDTO;
-import me.skiincraft.ichirin.data.manga.MangaDTO;
-import me.skiincraft.ichirin.models.manga.Manga;
-import me.skiincraft.ichirin.models.manga.MangaChapter;
-import me.skiincraft.ichirin.models.manga.MangaComments;
-import me.skiincraft.ichirin.models.user.UserCommentary;
-import me.skiincraft.ichirin.models.user.UserFavorite;
+import me.skiincraft.ichirin.models.dto.MangaChapterDTO;
+import me.skiincraft.ichirin.models.dto.MangaDTO;
+import me.skiincraft.ichirin.entity.manga.Manga;
+import me.skiincraft.ichirin.entity.manga.MangaChapter;
+import me.skiincraft.ichirin.entity.manga.MangaComments;
+import me.skiincraft.ichirin.entity.user.UserCommentary;
+import me.skiincraft.ichirin.entity.user.UserFavorite;
 import me.skiincraft.ichirin.service.CommentaryService;
 import me.skiincraft.ichirin.service.FavoriteService;
 import me.skiincraft.ichirin.service.MangaCategoryService;

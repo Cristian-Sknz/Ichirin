@@ -1,9 +1,9 @@
-package me.skiincraft.ichirin.models.manga;
+package me.skiincraft.ichirin.entity.manga;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import me.skiincraft.ichirin.models.user.UserCommentary;
+import me.skiincraft.ichirin.entity.user.UserCommentary;
 
 import javax.persistence.*;
 import java.util.HashSet;

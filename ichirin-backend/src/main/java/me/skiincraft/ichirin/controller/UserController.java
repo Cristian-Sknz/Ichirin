@@ -1,6 +1,6 @@
 package me.skiincraft.ichirin.controller;
 
-import me.skiincraft.ichirin.models.user.IchirinUser;
+import me.skiincraft.ichirin.entity.user.IchirinUser;
 import me.skiincraft.ichirin.service.CommentaryService;
 import me.skiincraft.ichirin.service.FavoriteService;
 import me.skiincraft.ichirin.service.UserHistoryService;

@@ -1,9 +1,9 @@
 package me.skiincraft.ichirin.service;
 
-import me.skiincraft.ichirin.data.IchirinUserDTO;
+import me.skiincraft.ichirin.models.dto.IchirinUserDTO;
 import me.skiincraft.ichirin.exception.IchirinAPIException;
 import me.skiincraft.ichirin.exception.IchirinNotFoundException;
-import me.skiincraft.ichirin.models.user.IchirinUser;
+import me.skiincraft.ichirin.entity.user.IchirinUser;
 import me.skiincraft.ichirin.repository.user.IchirinUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

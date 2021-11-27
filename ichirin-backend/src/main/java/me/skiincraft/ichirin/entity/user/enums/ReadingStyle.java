@@ -1,4 +1,4 @@
-package me.skiincraft.ichirin.models.user.enums;
+package me.skiincraft.ichirin.entity.user.enums;
 
 public enum ReadingStyle {
 

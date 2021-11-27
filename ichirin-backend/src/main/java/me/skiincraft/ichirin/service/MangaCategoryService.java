@@ -1,8 +1,8 @@
 package me.skiincraft.ichirin.service;
 
 import me.skiincraft.ichirin.exception.IchirinNotFoundException;
-import me.skiincraft.ichirin.models.manga.Manga;
-import me.skiincraft.ichirin.models.manga.MangaCategory;
+import me.skiincraft.ichirin.entity.manga.Manga;
+import me.skiincraft.ichirin.entity.manga.MangaCategory;
 import me.skiincraft.ichirin.repository.manga.MangaCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

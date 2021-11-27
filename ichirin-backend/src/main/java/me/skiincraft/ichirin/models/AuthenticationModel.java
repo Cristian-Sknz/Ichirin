@@ -1,4 +1,4 @@
-package me.skiincraft.ichirin.data;
+package me.skiincraft.ichirin.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

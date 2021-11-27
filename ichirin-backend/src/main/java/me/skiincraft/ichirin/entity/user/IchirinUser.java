@@ -1,8 +1,8 @@
-package me.skiincraft.ichirin.models.user;
+package me.skiincraft.ichirin.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import me.skiincraft.ichirin.data.IchirinUserDTO;
+import me.skiincraft.ichirin.models.dto.IchirinUserDTO;
 import me.skiincraft.ichirin.repository.user.IchirinUserRepository;
 import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;

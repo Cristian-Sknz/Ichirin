@@ -1,4 +1,4 @@
-package me.skiincraft.ichirin.models.manga;
+package me.skiincraft.ichirin.entity.manga;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

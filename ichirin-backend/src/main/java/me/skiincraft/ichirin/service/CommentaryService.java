@@ -1,11 +1,11 @@
 package me.skiincraft.ichirin.service;
 
-import me.skiincraft.ichirin.data.UserCommentaryDTO;
+import me.skiincraft.ichirin.models.dto.UserCommentaryDTO;
 import me.skiincraft.ichirin.exception.IchirinNotFoundException;
-import me.skiincraft.ichirin.models.manga.Manga;
-import me.skiincraft.ichirin.models.manga.MangaComments;
-import me.skiincraft.ichirin.models.user.IchirinUser;
-import me.skiincraft.ichirin.models.user.UserCommentary;
+import me.skiincraft.ichirin.entity.manga.Manga;
+import me.skiincraft.ichirin.entity.manga.MangaComments;
+import me.skiincraft.ichirin.entity.user.IchirinUser;
+import me.skiincraft.ichirin.entity.user.UserCommentary;
 import me.skiincraft.ichirin.repository.manga.MangaCommentsRepository;
 import me.skiincraft.ichirin.repository.user.UserCommentaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;

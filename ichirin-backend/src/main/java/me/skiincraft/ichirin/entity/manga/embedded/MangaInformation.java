@@ -1,9 +1,9 @@
-package me.skiincraft.ichirin.models.manga.embedded;
+package me.skiincraft.ichirin.entity.manga.embedded;
 
 import lombok.Data;
-import me.skiincraft.ichirin.data.manga.MangaDTO;
-import me.skiincraft.ichirin.models.manga.enums.MangaStatus;
-import me.skiincraft.ichirin.models.manga.enums.MangaType;
+import me.skiincraft.ichirin.models.dto.MangaDTO;
+import me.skiincraft.ichirin.entity.manga.enums.MangaStatus;
+import me.skiincraft.ichirin.entity.manga.enums.MangaType;
 
 import javax.persistence.*;
 import java.util.ArrayList;

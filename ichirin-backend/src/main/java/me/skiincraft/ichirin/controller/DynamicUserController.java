@@ -1,11 +1,11 @@
 package me.skiincraft.ichirin.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import me.skiincraft.ichirin.data.UserCommentaryDTO;
-import me.skiincraft.ichirin.models.user.IchirinUser;
-import me.skiincraft.ichirin.models.user.UserCommentary;
-import me.skiincraft.ichirin.models.user.UserFavorite;
-import me.skiincraft.ichirin.models.user.UserHistory;
+import me.skiincraft.ichirin.models.dto.UserCommentaryDTO;
+import me.skiincraft.ichirin.entity.user.IchirinUser;
+import me.skiincraft.ichirin.entity.user.UserCommentary;
+import me.skiincraft.ichirin.entity.user.UserFavorite;
+import me.skiincraft.ichirin.entity.user.UserHistory;
 import me.skiincraft.ichirin.service.CommentaryService;
 import me.skiincraft.ichirin.service.FavoriteService;
 import me.skiincraft.ichirin.service.UserHistoryService;

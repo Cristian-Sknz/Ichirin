@@ -1,10 +1,10 @@
 package me.skiincraft.ichirin.service;
 
-import me.skiincraft.ichirin.data.manga.MangaChapterDTO;
-import me.skiincraft.ichirin.data.manga.MangaDTO;
+import me.skiincraft.ichirin.models.dto.MangaChapterDTO;
+import me.skiincraft.ichirin.models.dto.MangaDTO;
 import me.skiincraft.ichirin.exception.IchirinNotFoundException;
-import me.skiincraft.ichirin.models.manga.Manga;
-import me.skiincraft.ichirin.models.manga.MangaChapter;
+import me.skiincraft.ichirin.entity.manga.Manga;
+import me.skiincraft.ichirin.entity.manga.MangaChapter;
 import me.skiincraft.ichirin.repository.manga.MangaChapterRepository;
 import me.skiincraft.ichirin.repository.manga.MangaRepository;
 import me.skiincraft.ichirin.util.ApplicationServices;

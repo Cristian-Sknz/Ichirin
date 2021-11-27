@@ -1,7 +1,7 @@
 package me.skiincraft.ichirin.service;
 
-import me.skiincraft.ichirin.models.manga.Manga;
-import me.skiincraft.ichirin.models.user.UserFavorite;
+import me.skiincraft.ichirin.entity.manga.Manga;
+import me.skiincraft.ichirin.entity.user.UserFavorite;
 import me.skiincraft.ichirin.repository.user.UserFavoriteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

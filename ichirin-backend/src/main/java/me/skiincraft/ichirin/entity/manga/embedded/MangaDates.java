@@ -1,8 +1,8 @@
-package me.skiincraft.ichirin.models.manga.embedded;
+package me.skiincraft.ichirin.entity.manga.embedded;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import me.skiincraft.ichirin.data.manga.MangaDTO;
+import me.skiincraft.ichirin.models.dto.MangaDTO;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

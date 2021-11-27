@@ -1,11 +1,11 @@
-package me.skiincraft.ichirin.models.manga;
+package me.skiincraft.ichirin.entity.manga;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import me.skiincraft.ichirin.data.manga.MangaChapterDTO;
-import me.skiincraft.ichirin.data.manga.MangaDTO;
+import me.skiincraft.ichirin.models.dto.MangaChapterDTO;
+import me.skiincraft.ichirin.models.dto.MangaDTO;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
