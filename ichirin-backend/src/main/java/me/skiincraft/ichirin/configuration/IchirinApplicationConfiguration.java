@@ -1,13 +1,28 @@
 package me.skiincraft.ichirin.configuration;
 
+import org.hibernate.validator.HibernateValidator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory;
+
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 @Configuration
 public class IchirinApplicationConfiguration {
+
+    private final AutowireCapableBeanFactory autowireCapableBeanFactory;
+
+    @Autowired
+    public IchirinApplicationConfiguration(AutowireCapableBeanFactory autowireCapableBeanFactory) {
+        this.autowireCapableBeanFactory = autowireCapableBeanFactory;
+    }
 
     @Bean
     public MessageSource messageSource() {
@@ -23,6 +38,16 @@ public class IchirinApplicationConfiguration {
         LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
         bean.setValidationMessageSource(messageSource());
         return bean;
+    }
+
+    @Bean
+    public Validator validator() {
+        ValidatorFactory factory = Validation.byProvider(HibernateValidator.class)
+                .configure()
+                .constraintValidatorFactory(new SpringConstraintValidatorFactory(autowireCapableBeanFactory))
+                .buildValidatorFactory();
+
+        return factory.getValidator();
     }
 
 }

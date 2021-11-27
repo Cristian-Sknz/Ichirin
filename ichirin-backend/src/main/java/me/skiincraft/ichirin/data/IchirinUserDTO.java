@@ -2,7 +2,8 @@ package me.skiincraft.ichirin.data;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import me.skiincraft.ichirin.validation.annotation.CheckEmail;
+import me.skiincraft.ichirin.validation.annotation.CheckNickname;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
@@ -18,10 +19,12 @@ public class IchirinUserDTO {
 
     @NotBlank(message = "validation.user.nickname")
     @Length(min = 4, max = 40, message = "validation.user.nickname.length")
+    @CheckNickname
     private String nickname;
 
     @NotBlank(message = "validation.user.email")
     @Email(message = "validation.user.email")
+    @CheckEmail
     private String email;
 
     @NotBlank(message = "validation.user.password")

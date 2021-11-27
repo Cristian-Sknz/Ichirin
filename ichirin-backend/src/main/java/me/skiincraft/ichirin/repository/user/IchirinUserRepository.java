@@ -10,5 +10,7 @@ import java.util.Optional;
 public interface IchirinUserRepository extends JpaRepository<IchirinUser, Long> {
 
     Optional<IchirinUser> findByEmailIgnoreCase(String email);
+    boolean existsByEmail(String email);
+    boolean existsByNickname(String nickname);
 
 }

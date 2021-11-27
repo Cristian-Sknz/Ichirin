@@ -2,7 +2,6 @@ package me.skiincraft.ichirin.security.filter;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.TokenExpiredException;
 import me.skiincraft.ichirin.configuration.ControllerExceptionHandler;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -34,7 +33,8 @@ public class ValidationFilter extends BasicAuthenticationFilter {
             var authenticationToken = getAuthenticationToken(token);
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             chain.doFilter(request, response);
-        } catch (TokenExpiredException e) {
+        } catch (Exception e) {
+            SecurityContextHolder.clearContext();
             getExceptionHandler().handleAuthenticationException(request, response, e);
         }
     }

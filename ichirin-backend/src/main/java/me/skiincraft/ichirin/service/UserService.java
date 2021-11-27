@@ -42,11 +42,8 @@ public class UserService {
     }
 
     public IchirinUser getUser(long userId) {
-        var optional = repository.findById(userId);
-        if (optional.isEmpty()) {
-            throw new IchirinNotFoundException("exception.user.not-found", source);
-        }
-        return optional.get();
+        return repository.findById(userId)
+                .orElseThrow(() -> new IchirinNotFoundException("exception.user.not-found", source));
     }
 
     public Page<IchirinUser> getAllUsers(Pageable pageable) {
