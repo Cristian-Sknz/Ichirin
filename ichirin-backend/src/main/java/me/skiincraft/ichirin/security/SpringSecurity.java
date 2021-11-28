@@ -1,8 +1,6 @@
 package me.skiincraft.ichirin.security;
 
 import me.skiincraft.ichirin.configuration.ControllerExceptionHandler;
-import me.skiincraft.ichirin.security.filter.AuthenticationFilter;
-import me.skiincraft.ichirin.security.filter.ValidationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -23,12 +21,16 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userService;
     private final ControllerExceptionHandler exceptionHandler;
+    private final JWTProvider provider;
 
     @Autowired
-    public SpringSecurity(UserDetailsService userService, ControllerExceptionHandler exceptionHandler) {
+    public SpringSecurity(UserDetailsService userService,
+                          ControllerExceptionHandler exceptionHandler,
+                          JWTProvider provider) {
         super();
         this.userService = userService;
         this.exceptionHandler = exceptionHandler;
+        this.provider = provider;
     }
 
     @Override
@@ -45,9 +47,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/login", "/signin").permitAll()
                 .anyRequest().authenticated();
-
-        http.addFilter(new AuthenticationFilter(authenticationManager(), userService, exceptionHandler));
-        http.addFilter(new ValidationFilter(authenticationManager(), exceptionHandler));
+        http.apply(new JWTConfigurerAdapter(provider, authenticationManager(), userService, exceptionHandler));
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.exceptionHandling().authenticationEntryPoint(exceptionHandler);

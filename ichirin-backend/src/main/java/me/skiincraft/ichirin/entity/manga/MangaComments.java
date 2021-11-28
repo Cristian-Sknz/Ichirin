@@ -2,6 +2,7 @@ package me.skiincraft.ichirin.entity.manga;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import me.skiincraft.ichirin.entity.user.UserCommentary;
 
@@ -13,6 +14,7 @@ import java.util.Set;
 @Table(name = "tb_manga_comments")
 @Getter
 @Setter
+@NoArgsConstructor
 public class MangaComments {
 
     @Id

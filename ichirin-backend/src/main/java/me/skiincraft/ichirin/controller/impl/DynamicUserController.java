@@ -1,6 +1,7 @@
-package me.skiincraft.ichirin.controller;
+package me.skiincraft.ichirin.controller.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import me.skiincraft.ichirin.controller.IUserController;
 import me.skiincraft.ichirin.models.dto.UserCommentaryDTO;
 import me.skiincraft.ichirin.entity.user.IchirinUser;
 import me.skiincraft.ichirin.entity.user.UserCommentary;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-public abstract class DynamicUserController {
+public abstract class DynamicUserController implements IUserController {
 
     protected UserService userService;
     protected UserHistoryService userHistoryService;

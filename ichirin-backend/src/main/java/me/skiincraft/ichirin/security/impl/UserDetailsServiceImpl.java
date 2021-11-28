@@ -1,5 +1,6 @@
 package me.skiincraft.ichirin.security.impl;
 
+import me.skiincraft.ichirin.models.SimpleAuthenticatedUser;
 import me.skiincraft.ichirin.repository.user.IchirinUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -24,8 +25,8 @@ public class UserDetailsServiceImpl  implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return repository.findByEmailIgnoreCase(username)
+        return new SimpleAuthenticatedUser(repository.findByEmailIgnoreCase(username)
                 .orElseThrow(() -> new UsernameNotFoundException(source.getMessage("exception.user.invalid.credentials",
-                        null, Locale.getDefault())));
+                        null, Locale.getDefault()))));
     }
 }

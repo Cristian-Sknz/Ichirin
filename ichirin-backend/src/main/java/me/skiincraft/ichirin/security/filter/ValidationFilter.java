@@ -1,10 +1,9 @@
 package me.skiincraft.ichirin.security.filter;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import me.skiincraft.ichirin.configuration.ControllerExceptionHandler;
+import me.skiincraft.ichirin.security.JWTProvider;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
@@ -13,12 +12,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collections;
 
 public class ValidationFilter extends BasicAuthenticationFilter {
 
-    public ValidationFilter(AuthenticationManager authenticationManager, ControllerExceptionHandler resolver) {
+    private final JWTProvider provider;
+
+    public ValidationFilter(JWTProvider provider,
+                            AuthenticationManager authenticationManager,
+                            ControllerExceptionHandler resolver) {
         super(authenticationManager, resolver);
+        this.provider = provider;
     }
 
     @Override
@@ -30,7 +33,9 @@ public class ValidationFilter extends BasicAuthenticationFilter {
         }
         try {
             var token = authorization.substring("Bearer ".length());
-            var authenticationToken = getAuthenticationToken(token);
+            var authenticationToken = provider.getAuthentication(token)
+                    .orElseThrow(() -> new JWTVerificationException("Houve um problema ao verificar este usuário"));
+
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             chain.doFilter(request, response);
         } catch (Exception e) {
@@ -41,15 +46,6 @@ public class ValidationFilter extends BasicAuthenticationFilter {
 
     public ControllerExceptionHandler getExceptionHandler() {
         return (ControllerExceptionHandler) getAuthenticationEntryPoint();
-    }
-
-    public UsernamePasswordAuthenticationToken getAuthenticationToken(String token) {
-        String user = JWT.require(Algorithm.HMAC512(AuthenticationFilter.TEMPORARY_TOKEN))
-                .build()
-                .verify(token)
-                .getSubject();
-
-        return (user == null) ? null : new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList());
     }
 
     private boolean isValidHeader(String header) {

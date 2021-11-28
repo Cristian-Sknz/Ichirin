@@ -6,9 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.time.OffsetDateTime;
-import java.time.temporal.ChronoUnit;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,10 +18,6 @@ public class AuthenticationModel {
     private String accessToken;
     @JsonProperty("expires_in")
     private long expires;
-
-    public AuthenticationModel(String accessToken, OffsetDateTime expires) {
-        this(accessToken, ChronoUnit.SECONDS.between(OffsetDateTime.now(), expires));
-    }
 
     public AuthenticationModel(String accessToken, long expires) {
         this.tokenType = "Bearer";

@@ -616,7 +616,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"mangaId\": 1,\r\n    \"content\": \"Este é um comentario2\"\r\n}",
+                  "raw": "{\r\n    \"content\": \"Este é um comentario2\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -679,6 +679,308 @@
                 "api",
                 "users",
                 "{{userId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Self User",
+      "item": [
+        {
+          "name": "History",
+          "item": [
+            {
+              "name": "Get User History",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/me/history",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "me",
+                    "history"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Add Mangas To User History",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/me/history/{{mangaId}}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "me",
+                    "history",
+                    "{{mangaId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Remove manga from User History",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/me/history/{{mangaId}}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "me",
+                    "history",
+                    "{{mangaId}}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Favorites",
+          "item": [
+            {
+              "name": "Get favorite User Mangas",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/me/favorites",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "me",
+                    "favorites"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Add Manga to User Favorites",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/me/favorites/{{mangaId}}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "me",
+                    "favorites",
+                    "{{mangaId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Remove Manga from User Favorite",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/me/favorites/{{mangaId}}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "me",
+                    "favorites",
+                    "{{mangaId}}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Comments",
+          "item": [
+            {
+              "name": "Get All User Comments",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/me/comments",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "me",
+                    "comments"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Comments By Manga",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/me/comments/{{mangaId}}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "me",
+                    "comments",
+                    "{{mangaId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Comment By Id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/me/comments/{{mangaId}}/{{commentId}}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "me",
+                    "comments",
+                    "{{mangaId}}",
+                    "{{commentId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Comment by Id",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/me/comments/{{mangaId}}/{{commentId}}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "me",
+                    "comments",
+                    "{{mangaId}}",
+                    "{{commentId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create a User Comment",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"content\": \"Este é um comentario2\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/users/me/comments/{{mangaId}}",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "me",
+                    "comments",
+                    "{{mangaId}}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Get a Self User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/users/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "users",
+                "me"
               ]
             }
           },
@@ -994,12 +1296,7 @@
               "value": "mypassword",
               "type": "text"
             }
-          ],
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
+          ]
         },
         "url": {
           "raw": "http://localhost:8080/login",
@@ -1217,6 +1514,41 @@
           "body": "{\n    \"token_type\": \"Bearer\",\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJteWVtYWlsQG1haWwuY29tIiwiZXhwIjoxNjM3ODk0NTY2fQ.ioHomuF-mfIgOT60QsmyppqtDEgYtZcen1JQe3w-8841EmoENC0tNPbK_HhrqDV8-3Na_znr2GI5sl_ay1VE7A\",\n    \"expires_in\": 3599\n}"
         }
       ]
+    },
+    {
+      "name": "http://localhost:8080/Queue?mode=1&display=screen&value=valid",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/mangas/queue?mode=1&display=screen&value=valid",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "mangas",
+            "queue"
+          ],
+          "query": [
+            {
+              "key": "mode",
+              "value": "1"
+            },
+            {
+              "key": "display",
+              "value": "screen"
+            },
+            {
+              "key": "value",
+              "value": "valid"
+            }
+          ]
+        }
+      },
+      "response": []
     }
   ],
   "auth": {
