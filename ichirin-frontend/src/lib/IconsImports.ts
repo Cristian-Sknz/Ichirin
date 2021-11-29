@@ -1,45 +1,25 @@
-import { 
-    faArrowRight,
-    faComments, 
-    faEnvelopeOpenText,
-    faHeart, 
-    faHome, 
-    faListAlt, 
-    faSearch, 
-    faStar, 
-    faStarHalfAlt,
-    faChevronUp,
-    faTimes,
-    faBars,
-} from '@fortawesome/free-solid-svg-icons';
-  
-import { 
-    faDiscord, 
-    faFacebook, 
-    faFacebookMessenger, 
-    faInstagram
-} from '@fortawesome/free-brands-svg-icons';
-
-import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
+import * as fas from '@fortawesome/free-solid-svg-icons';
+import * as fab from '@fortawesome/free-brands-svg-icons';
+import * as far from '@fortawesome/free-regular-svg-icons';
 
 const AppIcons = [
-    faHome,
-    faListAlt,
-    faSearch,
-    faStar,
-    faEnvelopeOpenText,
-    farStar, 
-    faStarHalfAlt, 
-    faArrowRight,
-    faFacebook,
-    faInstagram,
-    faDiscord, 
-    faFacebookMessenger,
-    faHeart, 
-    faComments,
-    faChevronUp,
-    faTimes,
-    faBars,
+    fas.faHome,
+    fas.faListAlt,
+    fas.faSearch,
+    fas.faEnvelopeOpenText,
+    fas.faArrowRight,
+    fas.faStar,
+    far.faStar,      
+    fas.faStarHalfAlt, 
+    fas.faComments,
+    fas.faHeart, 
+    fas.faTimes,
+    fas.faBars,
+    fas.faChevronUp,
+    fab.faFacebook,
+    fab.faInstagram,
+    fab.faDiscord, 
+    fab.faFacebookMessenger,
 ]
 
 export default AppIcons;

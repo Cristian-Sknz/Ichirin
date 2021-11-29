@@ -4,11 +4,10 @@ import React, { forwardRef, useImperativeHandle, useState } from 'react';
 
 import { NavbarItens, TopbarItens } from '../../../lib/references';
 import AnchorLink from '../../models/AnchorLink';
+import { NavbarItem } from '../Navbar/style';
 import DropdownItem from './Dropdown/DropdownItem';
 import SidebarDropdown from './Dropdown/SidebarDropdown';
 import { Button, LoginContainer, Sidebar as StyledSidebar } from './style';
-import { NavbarItem } from '../Navbar/style';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export type SidebarHandles = {
   toggleSidebar: () => void;
@@ -42,12 +41,7 @@ const Sidebar = ({}, ref: React.RefObject<SidebarHandles>) => {
 
       <SidebarDropdown title={'Navegação'} defaultValue>
         {NavbarItens.map((item) => (
-          <NavbarItem key={item.name}>
-            <AnchorLink href={item.href}>
-              <Icon icon={item.icon as IconProp} />
-              <span>{item.name}</span>
-            </AnchorLink>
-          </NavbarItem>
+          <NavbarItem key={item.name} {...item}/>
         ))}
       </SidebarDropdown>
 

@@ -1,14 +1,14 @@
-import style from './Loading.module.css';
+import { Ball, BallGridPulse } from './style';
 
 const LoadingRing: React.FC = () => {
   const loadingRings = [];
   for (let i = 0; i < 9; i++) {
-    loadingRings.push(<div key={i} />);
+    loadingRings.push(<Ball key={i}/>);
   }
   return (
-    <div className={`${style.la_ball_grid_pulse} ${style.la_sm}`}>
+    <BallGridPulse className={'sm'}>
       {loadingRings}
-    </div>
+    </BallGridPulse>
   );
 };
 

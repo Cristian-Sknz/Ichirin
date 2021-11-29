@@ -1,11 +1,11 @@
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
-import { useCallback, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 
 import { NavbarItens } from '../../../lib/references';
 import AnchorLink from '../../models/AnchorLink';
 import Search, { SearchHandles } from '../Search';
 import NavbarList from './NavbarList/NavbarList';
-import { NavbarContainer, NavbarLinks, InvertedSearchButton, Navbar as StyledNavbar } from './style';
+import { InvertedSearchButton, NavbarContainer, NavbarLinks, Navbar as StyledNavbar } from './style';
 
 const Navbar: React.FC = () => {
   const searchRef = useRef<SearchHandles>(null);

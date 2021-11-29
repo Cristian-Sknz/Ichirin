@@ -1,5 +1,6 @@
-import style from './Loading.module.css';
+import classNames from 'classnames';
 import LoadingRing from './LoadingRing';
+import { LoadingBody, Logo } from './style';
 
 type LoadingProps = {
   loading: boolean;
@@ -7,11 +8,10 @@ type LoadingProps = {
 
 const Loading: React.FC<LoadingProps> = ({ loading }) => {
   return (
-    <div className={loading ? style.body_loading : `${style.body_loading} ${style.none}`}>
-      {/* eslint-disable-next-line @next/next/no-img-element*/}
-      <img src='/logo.svg' className={style.logo} alt={'Ichirin Logo'}/>
-      <LoadingRing/>
-    </div>
+    <LoadingBody className={classNames({ none: !loading })}>
+      <Logo src='/logo.svg' alt={'Ichirin Logo'}/>
+      <LoadingRing />
+    </LoadingBody>
   );
 };
 

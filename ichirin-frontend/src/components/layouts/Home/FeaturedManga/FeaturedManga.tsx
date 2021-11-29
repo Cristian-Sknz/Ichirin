@@ -5,7 +5,7 @@ import MangaData from '../../../../lib/types';
 import { textLimiter } from '../../../../lib/Util';
 import AnchorLink from '../../../models/AnchorLink';
 import RatingStars from '../../../models/RatingStar';
-import style from '../Home.module.css';
+
 import {
   FeaturedItem,
   FeaturedItemTitle,
@@ -15,6 +15,7 @@ import {
   MangaItemInfo,
   MangaName,
   MangaRatingContainer,
+  Readmore,
 } from '../style';
 
 type FeaturedMangaProps = {
@@ -54,9 +55,9 @@ const FeaturedManga: React.FC<FeaturedMangaProps> = ({ data }) => {
         {textLimiter(data.description.join(';'), 308)}
       </MangaDescription>
 
-      <AnchorLink href={data.urlName} className={style.readmore}>
+      <Readmore href={data.urlName}>
         Continuar Lendo <Icon icon={['fas', 'arrow-right']} />
-      </AnchorLink>
+      </Readmore>
     </FeaturedItem>
   );
 };

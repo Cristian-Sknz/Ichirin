@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import styled from 'styled-components';
+import AnchorLink from '../../models/AnchorLink';
 
 export const FeatureCarrousel = styled.section`
   background-image: url('/images/flower-background.jpg');
@@ -18,6 +20,10 @@ export const ImageContainer = styled.div`
   border: 0.3rem solid white !important;
   border-radius: 0.5rem;
   font-family: 'Poppins', sans-serif;
+`;
+
+export const CarrouselImage = styled(Image)`
+  background: white;
 `;
 
 export const FeatureFinishes = styled.section`
@@ -106,7 +112,15 @@ export const MangaDescription = styled.p`
   width: 100%;
   font-size: 14px;
   line-height: 2;
-`
+`;
+
+export const Readmore = styled(AnchorLink)`
+  text-decoration: none;
+  display: block;
+  margin-top: 0.3rem;
+  width: 100%;
+  color: #929292;
+`;
 
 export const LastMangaUpdates = styled.section`
   margin: 5rem 0;

@@ -1,0 +1,41 @@
+[
+  {
+    "duration": "0.65s",
+    "delay": "0.03s"
+  },
+  {
+    "duration": "1.02s",
+    "delay": "0.09s"
+  },
+  {
+    "duration": "1.06s",
+    "delay": "-0.69s"
+  },
+  {
+    "duration": "1.5s",
+    "delay": "-0.41s"
+  },
+  {
+    "duration": "1.6s",
+    "delay": "0.04s"
+  },
+  {
+    "duration": "0.84s",
+    "delay": "0.07s"
+  },
+
+  {
+    "duration": "0.68s",
+    "delay": "-0.66s"
+  },
+
+  {
+    "duration": "0.93s",
+    "delay": "-0.76s"
+  },
+
+  {
+    "duration": "1.24s",
+    "delay": "-0.76s"
+  }
+]

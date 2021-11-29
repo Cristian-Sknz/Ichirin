@@ -3,19 +3,9 @@ import { useCallback, useRef } from 'react';
 
 import { TopbarItens } from '../../../lib/references';
 import AnchorLinkListItem from '../../models/AnchorLinkListItem';
-import LinkListItem from '../../models/LinkListItem';
 import Sidebar, { SidebarHandles } from '../Sidebar/Sidebar';
 import SocialMedia from './models/SocialMedia';
-
-import { 
-  Topbar as TopbarStyled, 
-  TopbarBody, 
-  TopbarLists, 
-  Button, 
-  Categories, 
-  LoginContainer, 
-  SocialMedias,
-} from './style';
+import { Button, Categories, LoginContainer, SocialMedias, TopbarBody, TopbarLists, Topbar as TopbarStyled } from './style';
 
 const Topbar: React.FC = ()  => {
   const sidebarRef = useRef<SidebarHandles>(null);

@@ -1,11 +1,11 @@
-import Image from 'next/image';
-
+import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
-import style from './Home.module.css';
+
 import {
   FeatureCarrousel as StyledFeatureCarrousel,
   CarrouselContainer,
   ImageContainer,
+  CarrouselImage,
 } from './style';
 
 const FeatureCarrousel: React.FC = () => {
@@ -27,8 +27,7 @@ const FeatureCarrousel: React.FC = () => {
         <Carousel {...settings}>
           {itens.map((v) => (
             <ImageContainer key={v}>
-              <Image
-                className={style.carrousel_image}
+              <CarrouselImage
                 src='https://ichirinnohanayuriscan.com/wp-content/uploads/2021/10/banner-1.jpg'
                 layout={'fill'}
                 alt={'Feature Item'}
