@@ -19,7 +19,7 @@ public class AuthController {
         this.service = service;
     }
 
-    @PostMapping("/signin")
+    @PostMapping("/signup")
     public IchirinUser createUser(@RequestBody @Validated IchirinUserDTO dto) {
         return service.createUser(dto);
     }
