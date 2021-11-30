@@ -1,6 +1,7 @@
 package me.skiincraft.ichirin.entity.manga;
 
 import lombok.*;
+import me.skiincraft.ichirin.entity.manga.enums.MangaDescriptionType;
 import me.skiincraft.ichirin.models.dto.MangaDTO;
 import me.skiincraft.ichirin.entity.manga.embedded.MangaDates;
 import me.skiincraft.ichirin.entity.manga.embedded.MangaInformation;
@@ -8,6 +9,7 @@ import me.skiincraft.ichirin.repository.manga.MangaRepository;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -43,7 +45,8 @@ public class Manga {
     @Embedded
     private MangaDates dates;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER)
     private Set<MangaCategory> category;
 
     @OneToOne(mappedBy = "manga",
@@ -59,6 +62,7 @@ public class Manga {
         this.information = new MangaInformation(dto);
         this.dates = new MangaDates(dto);
         this.comments = new MangaComments(this);
+        this.category = new HashSet<>();
     }
 
     @Override
@@ -72,5 +76,12 @@ public class Manga {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    @PrePersist
+    public void prePresist() {
+        if (this.information.getDescription() == null) {
+            this.information.setDescription(new MangaDescription(this, MangaDescriptionType.PLAIN_TEXT));
+        }
     }
 }

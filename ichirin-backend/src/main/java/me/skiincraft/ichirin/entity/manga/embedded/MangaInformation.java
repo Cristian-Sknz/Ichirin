@@ -1,6 +1,7 @@
 package me.skiincraft.ichirin.entity.manga.embedded;
 
 import lombok.Data;
+import me.skiincraft.ichirin.entity.manga.MangaDescription;
 import me.skiincraft.ichirin.models.dto.MangaDTO;
 import me.skiincraft.ichirin.entity.manga.enums.MangaStatus;
 import me.skiincraft.ichirin.entity.manga.enums.MangaType;
@@ -12,6 +13,12 @@ import java.util.List;
 @Embeddable
 @Data
 public class MangaInformation {
+
+    @OneToOne(mappedBy = "manga",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @PrimaryKeyJoinColumn
+    private MangaDescription description;
 
     @Enumerated(EnumType.ORDINAL)
     private MangaType type;
