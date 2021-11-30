@@ -20,6 +20,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-responsive-carousel": "^3.2.21",
+    "sharp": "^0.29.3",
     "styled-components": "^5.3.3",
     "styled-reset": "^4.3.4"
   },
@@ -28,8 +29,8 @@
     "@types/react": "^17.0.27",
     "@types/styled-components": "^5.1.15",
     "babel-plugin-styled-components": "^2.0.2",
-    "eslint-config-next": "12.0.3",
     "eslint": "<8.0.0",
+    "eslint-config-next": "12.0.3",
     "typescript": "^4.4.3"
   }
 }
