@@ -1,6 +1,6 @@
 package me.skiincraft.ichirin.configuration;
 
-import me.skiincraft.ichirin.models.data.DataType;
+import me.skiincraft.ichirin.impl.converter.DataTypeConverter;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
@@ -8,7 +8,6 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory;
@@ -54,13 +53,8 @@ public class IchirinApplicationConfiguration implements WebMvcConfigurer {
         return factory.getValidator();
     }
 
-    @Bean
-    public Converter<String, DataType> getDataTypeConverter() {
-        return DataType::getByName;
-    }
-
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(getDataTypeConverter());
+        registry.addConverter(new DataTypeConverter());
     }
 }
