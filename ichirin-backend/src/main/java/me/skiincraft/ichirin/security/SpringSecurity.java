@@ -45,7 +45,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
         http.cors();
 
         http.authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/login", "/signin").permitAll()
+                .antMatchers(HttpMethod.POST, "/login", "/signup").permitAll()
                 .anyRequest().authenticated();
         http.apply(new JWTConfigurerAdapter(provider, authenticationManager(), userService, exceptionHandler));
 

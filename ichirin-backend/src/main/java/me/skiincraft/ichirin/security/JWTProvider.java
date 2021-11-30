@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
@@ -24,14 +25,17 @@ import java.util.Optional;
 public class JWTProvider {
 
     private final ObjectMapper mapper;
+    private final UserDetailsService userService;
+
     @Value("${ichirin.authentication.secret}")
     private String secretToken;
     @Value("${ichirin.authentication.expire}")
     private Integer expireTime;
 
     @Autowired
-    public JWTProvider(ObjectMapper mapper) {
+    public JWTProvider(UserDetailsService service, ObjectMapper mapper) {
         this.mapper = mapper;
+        this.userService = service;
     }
 
     public String createToken(Authentication authentication) {
@@ -40,7 +44,7 @@ public class JWTProvider {
         var authenticatedUser = (SimpleAuthenticatedUser) authentication.getPrincipal();
 
         return JWT.create().withSubject(String.valueOf(authenticatedUser.getUserId()))
-                .withClaim("model", stringfy(authenticatedUser))
+                .withClaim("email", authenticatedUser.getEmail())
                 .withIssuedAt(Date.from(now.toInstant()))
                 .withExpiresAt(Date.from(expires.toInstant()))
                 .sign(getAlgorithm());
@@ -50,7 +54,7 @@ public class JWTProvider {
         DecodedJWT decodedJWT = JWT.require(getAlgorithm())
                 .build().verify(token);
 
-        var simpleAuthenticatedUser = parse(decodedJWT);
+        var simpleAuthenticatedUser = loadUser(decodedJWT);
         if (simpleAuthenticatedUser == null) {
             return Optional.empty();
         }
@@ -62,19 +66,9 @@ public class JWTProvider {
         return Algorithm.HMAC512(secretToken);
     }
 
-    private String stringfy(SimpleAuthenticatedUser authenticatedUser) {
+    private SimpleAuthenticatedUser loadUser(DecodedJWT decoded) {
         try {
-            return mapper.writeValueAsString(authenticatedUser);
-        } catch (Exception ignored) {}
-        return null;
-    }
-
-    private SimpleAuthenticatedUser parse(DecodedJWT decoded) {
-        if (decoded == null || decoded.getSubject() == null) {
-            return null;
-        }
-        try {
-            return mapper.readValue(decoded.getClaim("model").asString(), SimpleAuthenticatedUser.class);
+            return (SimpleAuthenticatedUser) userService.loadUserByUsername(decoded.getClaim("email").asString());
         } catch (Exception ignored) {}
         return null;
     }
