@@ -1,11 +1,14 @@
 package me.skiincraft.ichirin.service;
 
 import me.skiincraft.ichirin.exception.IchirinNotFoundException;
-import me.skiincraft.ichirin.entity.manga.Manga;
 import me.skiincraft.ichirin.entity.manga.MangaCategory;
+import me.skiincraft.ichirin.models.data.DataType;
+import me.skiincraft.ichirin.models.data.manga.MangaShort;
 import me.skiincraft.ichirin.repository.manga.MangaCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -33,12 +36,22 @@ public class MangaCategoryService {
         return categoryRepository.save(new MangaCategory(name));
     }
 
+    public MangaCategory getCategory(String category) {
+        return categoryRepository.findByNameIgnoreCase(category)
+                .orElseThrow(() -> new IchirinNotFoundException("exception.category.not-found", source));
+    }
+
     public MangaCategory getCategory(long id) {
-        var optional = categoryRepository.findById(id);
-        if (optional.isEmpty()) {
-            throw new IchirinNotFoundException("exception.category.not-found", source);
-        }
-        return optional.get();
+        return categoryRepository.findById(id)
+                .orElseThrow(() -> new IchirinNotFoundException("exception.category.not-found", source));
+    }
+
+    public Page<? extends MangaShort> getMangasByCategory(DataType type, long category, Pageable pageable) {
+        return mangaService.getMangasByCategory(type, getCategory(category), pageable);
+    }
+
+    public Page<? extends MangaShort> getMangasByCategory(DataType type, String category, Pageable pageable) {
+        return mangaService.getMangasByCategory(type, getCategory(category), pageable);
     }
 
     public void deleteCategory(long categoryId) {
@@ -53,17 +66,16 @@ public class MangaCategoryService {
         categoryRepository.delete(category);
     }
 
-    public Manga addCategoryToManga(long mangaId, long categoryId) {
+    public MangaShort addCategoryToManga(DataType type, long mangaId, long categoryId) {
         var manga = mangaService.getManga(mangaId);
         manga.getCategory().add(getCategory(categoryId));
-
-        return mangaService.getRepository().save(manga);
+        return mangaService.getFunctionByType(type).apply(mangaService.getRepository().save(manga));
     }
 
-    public Manga removeCategoryFromManga(long mangaId, long categoryId) {
+    public MangaShort removeCategoryFromManga(DataType type, long mangaId, long categoryId) {
         var manga = mangaService.getManga(mangaId);
         manga.getCategory().remove(getCategory(categoryId));
 
-        return mangaService.getRepository().save(manga);
+        return mangaService.getFunctionByType(type).apply(mangaService.getRepository().save(manga));
     }
 }

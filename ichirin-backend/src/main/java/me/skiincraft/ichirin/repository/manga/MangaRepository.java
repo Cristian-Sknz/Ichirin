@@ -7,12 +7,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.List;
 
 @Repository
 public interface MangaRepository extends JpaRepository<Manga, Long> {
 
-    List<Manga> findAllByCategory(MangaCategory category);
+    Collection<Manga> findAllByCategory(MangaCategory category);
+    Page<Manga> findAllByCategory(MangaCategory category, Pageable pageable);
+
+    Collection<Manga> findAllByCategoryId(long categoryId);
+
     Page<Manga> findAllByCategoryId(long categoryId, Pageable pageable);
-    List<Manga> findAllByCategoryId(long categoryId);
+
 }

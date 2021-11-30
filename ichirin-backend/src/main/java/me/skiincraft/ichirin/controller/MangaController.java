@@ -1,9 +1,11 @@
 package me.skiincraft.ichirin.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import me.skiincraft.ichirin.models.data.DataType;
+import me.skiincraft.ichirin.models.data.manga.MangaData;
+import me.skiincraft.ichirin.models.data.manga.MangaShort;
 import me.skiincraft.ichirin.models.dto.MangaChapterDTO;
 import me.skiincraft.ichirin.models.dto.MangaDTO;
-import me.skiincraft.ichirin.entity.manga.Manga;
 import me.skiincraft.ichirin.entity.manga.MangaChapter;
 import me.skiincraft.ichirin.entity.manga.MangaComments;
 import me.skiincraft.ichirin.entity.user.UserCommentary;
@@ -39,25 +41,36 @@ public class MangaController {
     }
 
     @GetMapping("")
-    public Page<Manga> getMangas(Pageable pageable) {
-        return mangaService.getMangas(pageable);
+    public Page<? extends MangaShort> getMangas(@RequestParam(required = false) DataType type,
+                                                Pageable pageable) {
+        return mangaService.getMangas(type, pageable);
     }
 
     @PostMapping("")
-    public Manga newManga(@RequestBody @Validated MangaDTO dto) {
+    public MangaData newManga(@RequestBody @Validated MangaDTO dto) {
         return mangaService.createManga(dto);
     }
 
     @GetMapping("/{mangaId}")
-    public Manga getManga(@PathVariable Long mangaId) {
-        return mangaService.getManga(mangaId);
+    public MangaShort getManga(@RequestParam(required = false) DataType type,
+                          @PathVariable Long mangaId) {
+        return mangaService.getManga(type, mangaId);
     }
 
     @DeleteMapping("/{mangaId}")
     public Object deleteManga(@PathVariable Long mangaId) {
         mangaService.deleteManga(mangaId);
         return new ObjectMapper().createObjectNode().put("response", "ok");
-        // TODO mudar as respostas de DELETE
+    }
+
+    @GetMapping("/category/{category}")
+    public Page<? extends MangaShort> getMangaByCategory(@RequestParam(required = false) DataType type,
+                                                         @PathVariable String category,
+                                                         Pageable pageable) {
+        if (category.matches("\\d+$")) {
+            return categoryService.getMangasByCategory(type, Long.parseLong(category), pageable);
+        }
+        return categoryService.getMangasByCategory(type, category, pageable);
     }
 
     @PostMapping("/{mangaId}/chapters")
@@ -85,15 +98,17 @@ public class MangaController {
     }
 
     @PostMapping("/{mangaId}/category/{categoryId}")
-    public Manga addCategoryToManga(@PathVariable Long mangaId,
-                                    @PathVariable Long categoryId) {
-        return categoryService.addCategoryToManga(mangaId, categoryId);
+    public MangaShort addCategoryToManga(@RequestParam(required = false) DataType type,
+                                         @PathVariable Long mangaId,
+                                         @PathVariable Long categoryId) {
+        return categoryService.addCategoryToManga(type, mangaId, categoryId);
     }
 
     @DeleteMapping("/{mangaId}/category/{categoryId}")
-    public Manga removeCategoryFromManga(@PathVariable Long mangaId,
-                                         @PathVariable Long categoryId) {
-        return categoryService.removeCategoryFromManga(mangaId, categoryId);
+    public MangaShort removeCategoryFromManga(@RequestParam(required = false) DataType type,
+                                              @PathVariable Long mangaId,
+                                              @PathVariable Long categoryId) {
+        return categoryService.removeCategoryFromManga(type, mangaId, categoryId);
     }
 
     @GetMapping("/{mangaId}/comments")

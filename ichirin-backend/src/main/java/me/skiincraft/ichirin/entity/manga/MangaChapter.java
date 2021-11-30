@@ -1,5 +1,6 @@
 package me.skiincraft.ichirin.entity.manga;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -40,9 +41,11 @@ public class MangaChapter {
     private int season;
     private float chapter;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "manga_id")
     private Manga manga;
+
     @Column(name = "created_date")
     private OffsetDateTime createdDate;
     @Column(name = "release_date")
