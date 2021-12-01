@@ -1,9 +1,10 @@
 package me.skiincraft.ichirin.controller;
 
-import me.skiincraft.ichirin.entity.user.IchirinUser;
 import me.skiincraft.ichirin.entity.user.UserCommentary;
-import me.skiincraft.ichirin.entity.user.UserFavorite;
-import me.skiincraft.ichirin.entity.user.UserHistory;
+import me.skiincraft.ichirin.models.data.DataType;
+import me.skiincraft.ichirin.models.data.user.UserFavoriteData;
+import me.skiincraft.ichirin.models.data.user.UserHistoryData;
+import me.skiincraft.ichirin.models.data.user.UserShort;
 import me.skiincraft.ichirin.models.dto.UserCommentaryDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,52 +16,52 @@ import java.util.Collection;
 
 public interface IUserController {
 
-    Page<IchirinUser> getUsers(Pageable pageable);
+    Page<? extends UserShort> getUsers(DataType type, Pageable pageable);
 
-    default IchirinUser getUserById() {
+    default UserShort getUserById(DataType type) {
         throw new UnsupportedOperationException();
     }
 
-    IchirinUser getUserById(@PathVariable Long userId);
+    UserShort getUserById(DataType type, @PathVariable Long userId);
 
-    default UserFavorite getUserFavorites() {
+    default UserFavoriteData getUserFavorites(Pageable pageable) {
         throw new UnsupportedOperationException();
     }
 
-    UserFavorite getUserFavorites(@PathVariable Long userId);
+    UserFavoriteData getUserFavorites(@PathVariable Long userId, Pageable pageable);
 
-    default UserFavorite addToUserFavorites(@PathVariable Long mangaId) {
+    default UserFavoriteData addToUserFavorites(@PathVariable Long mangaId) {
         throw new UnsupportedOperationException();
     }
 
-    UserFavorite addToUserFavorites(@PathVariable Long userId, @PathVariable Long mangaId);
+    UserFavoriteData addToUserFavorites(@PathVariable Long userId, @PathVariable Long mangaId);
 
-    default UserFavorite removeToUserFavorites(@PathVariable Long mangaId) {
+    default UserFavoriteData removeToUserFavorites(@PathVariable Long mangaId) {
         throw new UnsupportedOperationException();
     }
 
-    UserFavorite removeToUserFavorites(@PathVariable Long userId, @PathVariable Long mangaId);
+    UserFavoriteData removeToUserFavorites(@PathVariable Long userId, @PathVariable Long mangaId);
 
-    default UserHistory getUserHistory() {
+    default UserHistoryData getUserHistory(Pageable pageable) {
         throw new UnsupportedOperationException();
     }
 
-    UserHistory getUserHistory(@PathVariable Long userId);
+    UserHistoryData getUserHistory(@PathVariable Long userId, Pageable pageable);
 
-    default UserHistory addToUserHistory(@PathVariable Long mangaId) {
+    default UserHistoryData addToUserHistory(@PathVariable Long mangaId) {
         throw new UnsupportedOperationException();
     }
 
-    UserHistory addToUserHistory(@PathVariable Long userId, @PathVariable Long mangaId);
+    UserHistoryData addToUserHistory(@PathVariable Long userId, @PathVariable Long mangaId);
 
-    default UserHistory removeFromUserHistory(@PathVariable Long mangaId) {
+    default UserHistoryData removeFromUserHistory(@PathVariable Long mangaId) {
         throw new UnsupportedOperationException();
     }
 
-    UserHistory removeFromUserHistory(@PathVariable Long userId,
-                                             @PathVariable Long mangaId);
+    UserHistoryData removeFromUserHistory(@PathVariable Long userId,
+                                          @PathVariable Long mangaId);
 
-    default Collection<UserHistory> getAllHistories() {
+    default Collection<UserHistoryData> getAllHistories() {
         throw new UnsupportedOperationException();
     }
 
@@ -70,7 +71,7 @@ public interface IUserController {
 
     Collection<UserCommentary> getUserCommentaries(@PathVariable Long userId);
 
-    default Collection<UserCommentary>  getUserCommentariesByManga(@PathVariable Long mangaId) {
+    default Collection<UserCommentary> getUserCommentariesByManga(@PathVariable Long mangaId) {
         throw new UnsupportedOperationException();
     }
 
@@ -88,7 +89,7 @@ public interface IUserController {
 
     UserCommentary createUserCommentary(@PathVariable Long userId, @PathVariable Long mangaId, @Validated @RequestBody UserCommentaryDTO userCommentary);
 
-    Object deleteUserCommentary(@PathVariable Long userId,  @PathVariable Long mangaId, @PathVariable Long commentId);
+    Object deleteUserCommentary(@PathVariable Long userId, @PathVariable Long mangaId, @PathVariable Long commentId);
 
     default Object deleteUserCommentary(@PathVariable Long mangaId, @PathVariable Long commentId) {
         throw new UnsupportedOperationException();

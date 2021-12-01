@@ -1,7 +1,9 @@
 package me.skiincraft.ichirin.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import me.skiincraft.ichirin.models.dto.IchirinUserDTO;
 import me.skiincraft.ichirin.repository.user.IchirinUserRepository;
 import org.hibernate.Hibernate;
@@ -32,13 +34,14 @@ public class IchirinUser {
     private Long id;
     private String name;
     private String nickname;
+    private String avatarUrl;
     private String email;
 
     @JsonIgnore
     private String password;
 
-    @Column(name = "created_time")
-    private OffsetDateTime createdTime;
+    @Column(name = "created_date")
+    private OffsetDateTime createdDate;
 
     @Column(name = "last_login")
     private OffsetDateTime lastLogin;
@@ -76,8 +79,8 @@ public class IchirinUser {
     @PrePersist
     @PreUpdate
     public void update() {
-        if (this.createdTime == null)
-            this.createdTime = OffsetDateTime.now(Clock.systemUTC());
+        if (this.createdDate == null)
+            this.createdDate = OffsetDateTime.now(Clock.systemUTC());
         this.lastLogin = OffsetDateTime.now(Clock.systemUTC());
     }
 

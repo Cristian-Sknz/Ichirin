@@ -1,16 +1,18 @@
 package me.skiincraft.ichirin.controller.impl;
 
-import me.skiincraft.ichirin.entity.user.IchirinUser;
 import me.skiincraft.ichirin.entity.user.UserCommentary;
-import me.skiincraft.ichirin.entity.user.UserFavorite;
-import me.skiincraft.ichirin.entity.user.UserHistory;
 import me.skiincraft.ichirin.models.SimpleAuthenticatedUser;
+import me.skiincraft.ichirin.models.data.DataType;
+import me.skiincraft.ichirin.models.data.user.UserFavoriteData;
+import me.skiincraft.ichirin.models.data.user.UserHistoryData;
+import me.skiincraft.ichirin.models.data.user.UserShort;
 import me.skiincraft.ichirin.models.dto.UserCommentaryDTO;
 import me.skiincraft.ichirin.service.CommentaryService;
 import me.skiincraft.ichirin.service.FavoriteService;
 import me.skiincraft.ichirin.service.UserHistoryService;
 import me.skiincraft.ichirin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,43 +32,43 @@ public class UserController extends DynamicUserController {
 
     @Override
     @GetMapping("/me")
-    public IchirinUser getUserById() {
-        return super.getUserById(getAuthenticatedUser().getUserId());
+    public UserShort getUserById(@RequestParam(required = false) DataType type) {
+        return super.getUserById(type, getAuthenticatedUser().getUserId());
     }
 
     @Override
     @GetMapping("/me/favorites")
-    public UserFavorite getUserFavorites() {
-        return super.getUserFavorites(getAuthenticatedUser().getUserId());
+    public UserFavoriteData getUserFavorites(Pageable pageable) {
+        return super.getUserFavorites(getAuthenticatedUser().getUserId(), pageable);
     }
 
     @Override
     @PostMapping("/me/favorites/{mangaId}")
-    public UserFavorite addToUserFavorites(Long mangaId) {
+    public UserFavoriteData addToUserFavorites(Long mangaId) {
         return super.addToUserFavorites(getAuthenticatedUser().getUserId(), mangaId);
     }
 
     @Override
     @DeleteMapping("/me/favorites/{mangaId}")
-    public UserFavorite removeToUserFavorites(Long mangaId) {
+    public UserFavoriteData removeToUserFavorites(Long mangaId) {
         return super.removeToUserFavorites(getAuthenticatedUser().getUserId(), mangaId);
     }
 
     @Override
     @GetMapping("/me/history")
-    public UserHistory getUserHistory() {
-        return super.getUserHistory(getAuthenticatedUser().getUserId());
+    public UserHistoryData getUserHistory(Pageable pageable) {
+        return super.getUserHistory(getAuthenticatedUser().getUserId(), pageable);
     }
 
     @Override
     @PostMapping("/me/history/{mangaId}")
-    public UserHistory addToUserHistory(Long mangaId) {
+    public UserHistoryData addToUserHistory(Long mangaId) {
         return super.addToUserHistory(getAuthenticatedUser().getUserId(), mangaId);
     }
 
     @Override
     @DeleteMapping("/me/history/{mangaId}")
-    public UserHistory removeFromUserHistory(Long mangaId) {
+    public UserHistoryData removeFromUserHistory(Long mangaId) {
         return super.removeFromUserHistory(getAuthenticatedUser().getUserId(), mangaId);
     }
 

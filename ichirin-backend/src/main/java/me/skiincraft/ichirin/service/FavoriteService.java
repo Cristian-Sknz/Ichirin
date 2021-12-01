@@ -1,14 +1,18 @@
 package me.skiincraft.ichirin.service;
 
 import me.skiincraft.ichirin.entity.manga.Manga;
+import me.skiincraft.ichirin.entity.user.IchirinUser;
 import me.skiincraft.ichirin.entity.user.UserFavorite;
+import me.skiincraft.ichirin.models.data.manga.MangaFavorite;
+import me.skiincraft.ichirin.models.data.user.UserFavoriteData;
 import me.skiincraft.ichirin.repository.user.UserFavoriteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,28 +31,39 @@ public class FavoriteService {
         this.ufRepository = ufRepository;
     }
 
-    public UserFavorite getUserFavorite(long userId) {
-        return ufRepository.findByUser(userService.getUser(userId));
+    public MangaFavorite getMangaFavorite(long mangaId, Pageable pageable) {
+        var manga = mangaService.getManga(mangaId);
+        List<IchirinUser> users = ufRepository.findAllByManga(manga)
+                .stream().map(UserFavorite::getUser)
+                .collect(Collectors.toList());
+
+        return MangaFavorite.of(manga, new PageImpl<>(users, pageable, users.size()));
     }
 
-    public Page<UserFavorite> getMangaFavorite(long mangaId, Pageable pageable) {
-        return ufRepository.findAllByManga(mangaService.getManga(mangaId), pageable);
+    public UserFavoriteData getUserFavorite(long userId, Pageable pageable) {
+        var user = userService.getUser(userId);
+        var favorite = ufRepository.findByUser(user);
+        return UserFavoriteData.of(user, new ArrayList<>(favorite.getMangas()), pageable);
     }
 
-    public Collection<UserFavorite> getMangaFavorite(long mangaId) {
-        return ufRepository.findAllByManga(mangaService.getManga(mangaId));
+    public UserFavoriteData addUserFavorite(long userId, long mangaId) {
+        var user = userService.getUser(userId);
+        var favorite = ufRepository.findByUser(user);
+        var manga = mangaService.getManga(mangaId);
+
+        favorite.addManga(manga);
+        ufRepository.save(favorite);
+        return UserFavoriteData.of(user, new ArrayList<>(favorite.getMangas()), Pageable.unpaged());
     }
 
-    public UserFavorite addUserFavorite(long userId, long mangaId) {
-        var favorite = ufRepository.findByUser(userService.getUser(userId));
-        favorite.addManga(mangaService.getManga(mangaId));
-        return ufRepository.save(favorite);
-    }
+    public UserFavoriteData removeUserFavorite(long userId, long mangaId) {
+        var user = userService.getUser(userId);
+        var favorite = ufRepository.findByUser(user);
+        var manga = mangaService.getManga(mangaId);
 
-    public UserFavorite removeUserFavorite(long userId, long mangaId) {
-        var favorite = ufRepository.findByUser(userService.getUser(userId));
-        favorite.removeManga(mangaService.getManga(mangaId));
-        return ufRepository.save(favorite);
+        favorite.removeManga(manga);
+        ufRepository.save(favorite);
+        return UserFavoriteData.of(user, new ArrayList<>(favorite.getMangas()), Pageable.unpaged());
     }
 
     public void removeUserFavorite(Manga manga) {

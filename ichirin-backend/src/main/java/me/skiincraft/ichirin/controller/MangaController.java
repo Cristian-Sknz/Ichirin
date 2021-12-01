@@ -1,15 +1,15 @@
 package me.skiincraft.ichirin.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import me.skiincraft.ichirin.models.data.DataType;
-import me.skiincraft.ichirin.models.data.manga.MangaData;
-import me.skiincraft.ichirin.models.data.manga.MangaShort;
-import me.skiincraft.ichirin.models.dto.MangaChapterDTO;
-import me.skiincraft.ichirin.models.dto.MangaDTO;
 import me.skiincraft.ichirin.entity.manga.MangaChapter;
 import me.skiincraft.ichirin.entity.manga.MangaComments;
 import me.skiincraft.ichirin.entity.user.UserCommentary;
-import me.skiincraft.ichirin.entity.user.UserFavorite;
+import me.skiincraft.ichirin.models.data.DataType;
+import me.skiincraft.ichirin.models.data.manga.MangaData;
+import me.skiincraft.ichirin.models.data.manga.MangaFavorite;
+import me.skiincraft.ichirin.models.data.manga.MangaShort;
+import me.skiincraft.ichirin.models.dto.MangaChapterDTO;
+import me.skiincraft.ichirin.models.dto.MangaDTO;
 import me.skiincraft.ichirin.service.CommentaryService;
 import me.skiincraft.ichirin.service.FavoriteService;
 import me.skiincraft.ichirin.service.MangaCategoryService;
@@ -53,7 +53,7 @@ public class MangaController {
 
     @GetMapping("/{mangaId}")
     public MangaShort getManga(@RequestParam(required = false) DataType type,
-                          @PathVariable Long mangaId) {
+                               @PathVariable Long mangaId) {
         return mangaService.getManga(type, mangaId);
     }
 
@@ -92,8 +92,8 @@ public class MangaController {
     }
 
     @GetMapping("/{mangaId}/favorites")
-    public Page<UserFavorite> getMangaFavorite(@PathVariable Long mangaId,
-                                               Pageable pageable) {
+    public MangaFavorite getMangaFavorite(@PathVariable Long mangaId,
+                                          Pageable pageable) {
         return favoriteService.getMangaFavorite(mangaId, pageable);
     }
 

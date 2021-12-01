@@ -1,7 +1,7 @@
 package me.skiincraft.ichirin.controller;
 
+import me.skiincraft.ichirin.models.data.user.UserData;
 import me.skiincraft.ichirin.models.dto.IchirinUserDTO;
-import me.skiincraft.ichirin.entity.user.IchirinUser;
 import me.skiincraft.ichirin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -20,7 +20,7 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public IchirinUser createUser(@RequestBody @Validated IchirinUserDTO dto) {
+    public UserData createUser(@RequestBody @Validated IchirinUserDTO dto) {
         return service.createUser(dto);
     }
 }

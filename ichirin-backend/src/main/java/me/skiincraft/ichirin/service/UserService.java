@@ -1,16 +1,25 @@
 package me.skiincraft.ichirin.service;
 
-import me.skiincraft.ichirin.models.dto.IchirinUserDTO;
+import me.skiincraft.ichirin.entity.user.IchirinUser;
 import me.skiincraft.ichirin.exception.IchirinAPIException;
 import me.skiincraft.ichirin.exception.IchirinNotFoundException;
-import me.skiincraft.ichirin.entity.user.IchirinUser;
+import me.skiincraft.ichirin.models.data.DataType;
+import me.skiincraft.ichirin.models.data.manga.MangaShort;
+import me.skiincraft.ichirin.models.data.user.UserData;
+import me.skiincraft.ichirin.models.data.user.UserShort;
+import me.skiincraft.ichirin.models.dto.IchirinUserDTO;
 import me.skiincraft.ichirin.repository.user.IchirinUserRepository;
+import me.skiincraft.ichirin.repository.user.UserFavoriteRepository;
+import me.skiincraft.ichirin.repository.user.UserHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -19,19 +28,25 @@ public class UserService {
     private MessageSource source;
 
     private final IchirinUserRepository repository;
+    private final UserFavoriteRepository favoriteRepository;
+    private final UserHistoryRepository historyRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     public UserService(IchirinUserRepository repository,
+                       UserFavoriteRepository favoriteRepository,
+                       UserHistoryRepository historyRepository,
                        BCryptPasswordEncoder passwordEncoder) {
         this.repository = repository;
+        this.favoriteRepository = favoriteRepository;
+        this.historyRepository = historyRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
-    public IchirinUser createUser(IchirinUserDTO dto) {
+    public UserData createUser(IchirinUserDTO dto) {
         try {
             dto.setPassword(passwordEncoder.encode(dto.getPassword()));
-            return repository.save(new IchirinUser(dto));
+            return UserData.of(repository.save(new IchirinUser(dto)));
         } catch (Exception e) {
             throw new IchirinAPIException("exception.user.creation", source, e);
         }
@@ -46,7 +61,44 @@ public class UserService {
                 .orElseThrow(() -> new IchirinNotFoundException("exception.user.not-found", source));
     }
 
-    public Page<IchirinUser> getAllUsers(Pageable pageable) {
-        return repository.findAll(pageable);
+    public UserShort getUser(DataType type, long userId) {
+        return getFunctionByType(type).apply(getUser(userId));
+    }
+
+    public Page<UserShort> getAllUsers(DataType type, Pageable pageable) {
+        return repository.findAll(pageable).map(getFunctionByType(type));
+    }
+
+    public Function<IchirinUser, ? extends UserShort> getFunctionByType(DataType type,
+                                                                        Function<IchirinUser, UserShort> ifShort,
+                                                                        Function<IchirinUser, UserShort> ifLimited,
+                                                                        Function<IchirinUser, UserShort> ifFull) {
+        return type == DataType.FULL ? ifFull : type == DataType.SHORT ? ifShort : ifLimited;
+    }
+
+    public Function<IchirinUser, ? extends UserShort> getFunctionByType(DataType type) {
+        return getFunctionByType(type, UserShort::of, getLimitedOrFullFunction(true),
+                getLimitedOrFullFunction(false));
+    }
+
+    public Function<IchirinUser, UserShort> getLimitedOrFullFunction(boolean isLimited) {
+        return ((user) -> {
+            var favorites = favoriteRepository.findByUser(user)
+                    .getMangas()
+                    .stream()
+                    .map(MangaShort::of);
+
+            var history = historyRepository.findByUser(user)
+                    .getMangas()
+                    .stream()
+                    .map(MangaShort::of);
+
+            if (isLimited) {
+                return UserData.of(user, favorites.limit(10).collect(Collectors.toList()),
+                        history.limit(10).collect(Collectors.toList()));
+            }
+            return UserData.of(user, favorites.collect(Collectors.toList()),
+                    history.collect(Collectors.toList()));
+        });
     }
 }
