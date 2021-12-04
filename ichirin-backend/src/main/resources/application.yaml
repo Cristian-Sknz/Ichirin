@@ -1,14 +1,13 @@
 spring:
-  jpa:
-    hibernate:
-      database: HSQLDB
-      ddl-auto: update
-    spring.jpa.database-platform: org.hibernate.dialect.HSQLDialect
   datasource:
-    url: jdbc:hsqldb:mem:ichirin
+    url: jdbc:postgresql://ichirin-postgres:5432/ichirin
     username: ichirin
     password: password
-    driverClassName: org.hsqldb.jdbc.JDBCDriver
+    driverClassName: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    spring.jpa.database-platform: org.hibernate.dialect.PostgreSQL10Dialect;
   application:
     name: Ichirin-Backend
 

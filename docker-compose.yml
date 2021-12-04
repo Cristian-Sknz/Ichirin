@@ -1,0 +1,22 @@
+version: "3.4"
+
+services:
+  backend:
+    container_name: ichirin-backend
+    build:
+      context: ./ichirin-backend
+      dockerfile: dockerfile
+    image: ichirin-backend:1.0
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+  postgres:
+    container_name: ichirin-postgres
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=ichirin
+      - POSTGRES_DB=ichirin
+      - POSTGRES_PASSWORD=password

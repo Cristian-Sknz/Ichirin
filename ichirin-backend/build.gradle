@@ -19,22 +19,19 @@ configurations {
 }
 
 dependencies {
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
+	compileOnly group: 'org.projectlombok', name: 'lombok'
+	annotationProcessor group: 'org.projectlombok', name: 'lombok'
 
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+	implementation group: 'org.springframework.boot', name:'spring-boot-starter-web'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security'
 	implementation group: 'com.auth0', name: 'java-jwt', version: '3.18.1'
 
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	runtimeOnly 'org.hsqldb:hsqldb'
-
+	runtimeOnly 'org.postgresql:postgresql'
+	testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	//testImplementation 'org.springframework.security:spring-security-test'
-	//runtimeOnly 'org.postgresql:postgresql'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
 
 test {
