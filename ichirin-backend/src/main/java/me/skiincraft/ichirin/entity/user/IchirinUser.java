@@ -3,9 +3,7 @@ package me.skiincraft.ichirin.entity.user;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import me.skiincraft.ichirin.models.dto.IchirinUserDTO;
-import me.skiincraft.ichirin.repository.user.IchirinUserRepository;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -13,20 +11,9 @@ import java.time.Clock;
 import java.time.OffsetDateTime;
 import java.util.Objects;
 
-/**
- * <h2>IchirinUser</h2>
- * <p>Está entidade será um usuário no banco de dados onde serão guardado as
- * informações privadas, configurações, histórico e favoritos.</p>
- *
- * @see IchirinUserRepository Repository
- * @see me.skiincraft.ichirin.service.UserService Service
- * @see IchirinUserDTO Data Transfer Object
- */
-
 @Entity
 @Getter
 @Setter
-@ToString
 public class IchirinUser {
 
     @Id
@@ -34,8 +21,14 @@ public class IchirinUser {
     private Long id;
     private String name;
     private String nickname;
-    private String avatarUrl;
     private String email;
+
+    @OneToOne(mappedBy = "user",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true)
+    @PrimaryKeyJoinColumn
+    private UserAvatar avatar;
 
     @JsonIgnore
     private String password;
@@ -74,6 +67,7 @@ public class IchirinUser {
         this.password = user.getPassword();
         this.setFavorite(new UserFavorite(this));
         this.setHistory(new UserHistory(this));
+        this.setAvatar(new UserAvatar(this));
     }
 
     @PrePersist

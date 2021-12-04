@@ -10,7 +10,6 @@ import javax.persistence.Embeddable;
 @Embeddable
 @Getter
 @Setter
-@ToString
 public class UserConfiguration {
 
     private ReadingStyle readingStyle;
