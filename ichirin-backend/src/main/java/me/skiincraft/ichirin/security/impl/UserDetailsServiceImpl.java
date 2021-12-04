@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Locale;
 
 @Service
@@ -24,6 +25,7 @@ public class UserDetailsServiceImpl  implements UserDetailsService {
     }
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return new SimpleAuthenticatedUser(repository.findByEmailIgnoreCase(username)
                 .orElseThrow(() -> new UsernameNotFoundException(source.getMessage("exception.user.invalid.credentials",
