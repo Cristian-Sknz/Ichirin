@@ -3,6 +3,7 @@ package me.skiincraft.ichirin.entity.user;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import me.skiincraft.ichirin.entity.permissions.Role;
 import me.skiincraft.ichirin.models.dto.IchirinUserDTO;
 import org.hibernate.Hibernate;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 import java.time.Clock;
 import java.time.OffsetDateTime;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -50,6 +52,14 @@ public class IchirinUser {
             orphanRemoval = true)
     @PrimaryKeyJoinColumn
     private UserHistory history;
+
+    @ManyToMany
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private Set<Role> roles;
 
     @Embedded
     private UserConfiguration configuration;

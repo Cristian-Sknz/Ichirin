@@ -27,8 +27,12 @@ public class UserDetailsServiceImpl  implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new SimpleAuthenticatedUser(repository.findByEmailIgnoreCase(username)
-                .orElseThrow(() -> new UsernameNotFoundException(source.getMessage("exception.user.invalid.credentials",
-                        null, Locale.getDefault()))));
+        var user = repository.findByEmailIgnoreCase(username);
+        if (user.isEmpty()) {
+            throw new UsernameNotFoundException(source.getMessage("exception.user.invalid.credentials",
+                    null, Locale.getDefault()));
+        }
+
+        return new SimpleAuthenticatedUser(user.get());
     }
 }

@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.Collections;
 import java.util.Date;
 import java.util.Optional;
 
@@ -59,7 +58,11 @@ public class JWTProvider {
             return Optional.empty();
         }
 
-        return Optional.of(new UsernamePasswordAuthenticationToken(simpleAuthenticatedUser, token, Collections.emptyList()));
+        return Optional.of(createAuthenticationToken(simpleAuthenticatedUser, token));
+    }
+
+    private UsernamePasswordAuthenticationToken createAuthenticationToken(SimpleAuthenticatedUser user, String token) {
+        return new UsernamePasswordAuthenticationToken(user, token, user.getAuthorities());
     }
 
     private Algorithm getAlgorithm() {

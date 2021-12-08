@@ -1,7 +1,6 @@
 package me.skiincraft.ichirin.service;
 
 import me.skiincraft.ichirin.entity.user.IchirinUser;
-import me.skiincraft.ichirin.exception.IchirinAPIException;
 import me.skiincraft.ichirin.exception.IchirinNotFoundException;
 import me.skiincraft.ichirin.models.data.DataType;
 import me.skiincraft.ichirin.models.data.manga.MangaShort;
@@ -18,6 +17,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -32,24 +33,28 @@ public class UserService {
     private final UserHistoryRepository historyRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
+    private final RoleService roleService;
+
     @Autowired
     public UserService(IchirinUserRepository repository,
                        UserFavoriteRepository favoriteRepository,
                        UserHistoryRepository historyRepository,
-                       BCryptPasswordEncoder passwordEncoder) {
+                       BCryptPasswordEncoder passwordEncoder,
+                       RoleService roleService) {
         this.repository = repository;
         this.favoriteRepository = favoriteRepository;
         this.historyRepository = historyRepository;
         this.passwordEncoder = passwordEncoder;
+        this.roleService = roleService;
     }
 
+    @Transactional
     public UserData createUser(IchirinUserDTO dto) {
-        try {
-            dto.setPassword(passwordEncoder.encode(dto.getPassword()));
-            return UserData.of(repository.save(new IchirinUser(dto)));
-        } catch (Exception e) {
-            throw new IchirinAPIException("exception.user.creation", source, e);
-        }
+        var user = new IchirinUser(dto);
+        user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        user.setRoles(Set.of(roleService.getRole("Ichirin_USER")));
+
+        return UserData.of(repository.save(user));
     }
 
     public void removeUser(long userId) {
@@ -69,16 +74,16 @@ public class UserService {
         return repository.findAll(pageable).map(getFunctionByType(type));
     }
 
+    public Function<IchirinUser, ? extends UserShort> getFunctionByType(DataType type) {
+        return getFunctionByType(type, UserShort::of, getLimitedOrFullFunction(true),
+                getLimitedOrFullFunction(false));
+    }
+
     public Function<IchirinUser, ? extends UserShort> getFunctionByType(DataType type,
                                                                         Function<IchirinUser, UserShort> ifShort,
                                                                         Function<IchirinUser, UserShort> ifLimited,
                                                                         Function<IchirinUser, UserShort> ifFull) {
         return type == DataType.FULL ? ifFull : type == DataType.SHORT ? ifShort : ifLimited;
-    }
-
-    public Function<IchirinUser, ? extends UserShort> getFunctionByType(DataType type) {
-        return getFunctionByType(type, UserShort::of, getLimitedOrFullFunction(true),
-                getLimitedOrFullFunction(false));
     }
 
     public Function<IchirinUser, UserShort> getLimitedOrFullFunction(boolean isLimited) {

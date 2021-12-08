@@ -12,6 +12,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -40,6 +41,20 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler i
     public ControllerExceptionHandler(ObjectMapper mapper, MessageSource messageSource) {
         this.mapper = mapper;
         this.messageSource = messageSource;
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public void handleAccessDeniedException(HttpServletRequest req,
+                                              HttpServletResponse res,
+                                              Exception e) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode node = mapper.createObjectNode();
+        HttpStatus status = HttpStatus.FORBIDDEN;
+        node.put("authentication", "Bearer");
+        node.put("message", e.getMessage());
+        node.put("timestamp", OffsetDateTime.now(Clock.systemUTC()).toString());
+
+        sendResponse(node, status, req, res);
     }
 
     @ExceptionHandler(Exception.class)
