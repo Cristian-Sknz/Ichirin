@@ -16,10 +16,12 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Table(name = "users")
+@SequenceGenerator(name = "users", sequenceName = "seq_users")
 public class IchirinUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "users")
     private Long id;
     private String name;
     private String nickname;
@@ -54,7 +56,7 @@ public class IchirinUser {
     private UserHistory history;
 
     @ManyToMany
-    @JoinTable(name = "users_roles",
+    @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(
                     name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(

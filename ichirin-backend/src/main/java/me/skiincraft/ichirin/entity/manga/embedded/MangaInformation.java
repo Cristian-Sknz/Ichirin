@@ -28,10 +28,13 @@ public class MangaInformation {
     private String rating;
 
     @ElementCollection
+    @CollectionTable(name = "manga_names")
     private List<String> alternativeNames;
     @ElementCollection
+    @CollectionTable(name = "manga_authors")
     private List<String> authors;
     @ElementCollection
+    @CollectionTable(name = "manga_artists")
     private List<String> artists;
 
     public MangaInformation() {

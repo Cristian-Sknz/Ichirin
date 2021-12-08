@@ -14,17 +14,19 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@SequenceGenerator(name = "roles", sequenceName = "seq_roles")
+@Table(name = "roles")
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "roles")
     private Long id;
     private String name;
     @ManyToMany(mappedBy = "roles")
     private Set<IchirinUser> users;
 
     @ManyToMany
-    @JoinTable(name = "roles_permissions",
+    @JoinTable(name = "role_permissions",
             joinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(

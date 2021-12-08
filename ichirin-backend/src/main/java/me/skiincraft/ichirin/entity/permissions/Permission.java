@@ -11,10 +11,12 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@SequenceGenerator(name = "permissions", sequenceName = "seq_permissions")
+@Table(name = "permissions")
 public class Permission {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "permissions")
     private Long id;
     private String name;
 

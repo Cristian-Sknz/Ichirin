@@ -27,15 +27,15 @@ import java.util.Objects;
  * @see MangaDTO Data Transfer Object
  */
 @Entity
-@Table(name = "tb_mangas_chapters")
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+@Table(name = "manga_chapters")
+@SequenceGenerator(name = "manga_chapters", sequenceName = "seq_manga_chapters")
 public class MangaChapter {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "manga_chapters")
     private Long id;
     private String chapterName;
     private int season;

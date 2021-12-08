@@ -14,10 +14,11 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
+@SequenceGenerator(name = "user_commentary", sequenceName = "seq_commentaries")
 public class UserCommentary {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "user_commentary")
     private Long id;
     private OffsetDateTime createdDate;
     @Lob

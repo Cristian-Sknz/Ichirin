@@ -11,10 +11,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "tb_manga_comments")
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "manga_comments")
 public class MangaComments {
 
     @Id

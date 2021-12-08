@@ -23,15 +23,15 @@ import java.util.Set;
  * @see MangaDTO Data Transfer Object
  */
 @Entity
-@Table(name = "tb_mangas")
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+@SequenceGenerator(name = "manga_sequence", sequenceName = "seq_manga")
+@Table(name = "mangas")
 public class Manga {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "manga_sequence")
     private Long id;
 
     private String name;
@@ -47,6 +47,7 @@ public class Manga {
 
     @ManyToMany(cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
+    @JoinTable(name = "manga_categories")
     private Set<MangaCategory> category;
 
     @OneToOne(mappedBy = "manga",

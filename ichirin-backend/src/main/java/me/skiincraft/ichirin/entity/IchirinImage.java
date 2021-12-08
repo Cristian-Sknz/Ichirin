@@ -15,10 +15,12 @@ import java.io.IOException;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "images")
+@SequenceGenerator(name = "images", sequenceName = "seq_images")
 public class IchirinImage {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "images")
     private Long id;
     private String name;
     private String contentType;
