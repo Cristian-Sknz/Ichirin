@@ -52,7 +52,7 @@ public class UserService {
     public UserData createUser(IchirinUserDTO dto) {
         var user = new IchirinUser(dto);
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
-        user.setRoles(Set.of(roleService.getRole("Ichirin_USER")));
+        user.setRoles(Set.of(roleService.getRole("ROLE_USER")));
 
         return UserData.of(repository.save(user));
     }
