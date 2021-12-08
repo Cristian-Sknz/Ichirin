@@ -7,6 +7,7 @@ import me.skiincraft.ichirin.service.MangaCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,11 +36,13 @@ public class CategoryController {
     }
 
     @PostMapping(path = "/{name}")
+    @PreAuthorize("hasAuthority('ROLE_EDITOR')")
     public MangaCategory createCategory(@Validated @PathVariable @NotBlank String name) {
         return categoryService.createCategory(name);
     }
 
     @DeleteMapping(path = "/{id}")
+    @PreAuthorize("hasAuthority('ROLE_EDITOR')")
     public ResponseEntity<Object> deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategory(id);
         ObjectNode node = new ObjectMapper().createObjectNode();

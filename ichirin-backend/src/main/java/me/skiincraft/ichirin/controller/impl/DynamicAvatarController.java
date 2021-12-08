@@ -6,6 +6,7 @@ import me.skiincraft.ichirin.service.AvatarService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,6 +44,7 @@ public abstract class DynamicAvatarController implements IAvatarController {
 
     @Override
     @PostMapping("/user/{userId}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<Object> setUserAvatar(@PathVariable Long userId,
                                                 @RequestParam(name = "file") MultipartFile file) {
         try {

@@ -17,6 +17,7 @@ import me.skiincraft.ichirin.service.MangaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,6 +48,7 @@ public class MangaController {
     }
 
     @PostMapping("")
+    @PreAuthorize("hasAuthority('ROLE_EDITOR')")
     public MangaData newManga(@RequestBody @Validated MangaDTO dto) {
         return mangaService.createManga(dto);
     }
@@ -58,6 +60,7 @@ public class MangaController {
     }
 
     @DeleteMapping("/{mangaId}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Object deleteManga(@PathVariable Long mangaId) {
         mangaService.deleteManga(mangaId);
         return new ObjectMapper().createObjectNode().put("response", "ok");
@@ -74,6 +77,7 @@ public class MangaController {
     }
 
     @PostMapping("/{mangaId}/chapters")
+    @PreAuthorize("hasAuthority('ROLE_EDITOR')")
     public MangaChapter newMangaChapter(@PathVariable Long mangaId,
                                         @RequestBody @Validated MangaChapterDTO dto) {
         return mangaService.createMangaChapter(mangaId, dto);
@@ -98,6 +102,7 @@ public class MangaController {
     }
 
     @PostMapping("/{mangaId}/category/{categoryId}")
+    @PreAuthorize("hasAuthority('ROLE_EDITOR')")
     public MangaShort addCategoryToManga(@RequestParam(required = false) DataType type,
                                          @PathVariable Long mangaId,
                                          @PathVariable Long categoryId) {
@@ -105,6 +110,7 @@ public class MangaController {
     }
 
     @DeleteMapping("/{mangaId}/category/{categoryId}")
+    @PreAuthorize("hasAuthority('ROLE_EDITOR')")
     public MangaShort removeCategoryFromManga(@RequestParam(required = false) DataType type,
                                               @PathVariable Long mangaId,
                                               @PathVariable Long categoryId) {

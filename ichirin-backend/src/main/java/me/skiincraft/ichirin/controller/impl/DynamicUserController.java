@@ -14,6 +14,7 @@ import me.skiincraft.ichirin.service.UserHistoryService;
 import me.skiincraft.ichirin.service.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,12 +56,14 @@ public abstract class DynamicUserController implements IUserController {
     }
 
     @PostMapping(value = "/{userId}/favorites/{mangaId}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public UserFavoriteData addToUserFavorites(@PathVariable Long userId,
                                                @PathVariable Long mangaId) {
         return favoriteService.addUserFavorite(userId, mangaId);
     }
 
     @DeleteMapping(value = "/{userId}/favorites/{mangaId}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public UserFavoriteData removeToUserFavorites(@PathVariable Long userId,
                                                   @PathVariable Long mangaId) {
         return favoriteService.removeUserFavorite(userId, mangaId);
@@ -72,12 +75,14 @@ public abstract class DynamicUserController implements IUserController {
     }
 
     @PostMapping(value = "/{userId}/history/{mangaId}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public UserHistoryData addToUserHistory(@PathVariable Long userId,
                                             @PathVariable Long mangaId) {
         return userHistoryService.addManga(userId, mangaId);
     }
 
     @DeleteMapping(value = "/{userId}/history/{mangaId}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public UserHistoryData removeFromUserHistory(@PathVariable Long userId,
                                                  @PathVariable Long mangaId) {
         return userHistoryService.removeManga(userId, mangaId);
@@ -85,6 +90,7 @@ public abstract class DynamicUserController implements IUserController {
 
     @GetMapping(value = "/history")
     @Deprecated
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Page<UserHistoryData> getAllHistories(Pageable pageable) {
         return userHistoryService.getAllUserHistory(pageable);
     }
@@ -108,6 +114,7 @@ public abstract class DynamicUserController implements IUserController {
     }
 
     @PostMapping(value = "/{userId}/comments/{mangaId}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public UserCommentary createUserCommentary(@PathVariable Long userId,
                                                @PathVariable Long mangaId,
                                                @Validated @RequestBody UserCommentaryDTO userCommentary) {
@@ -115,6 +122,7 @@ public abstract class DynamicUserController implements IUserController {
     }
 
     @DeleteMapping(value = "/{userId}/comments/{mangaId}/{commentId}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Object deleteUserCommentary(@PathVariable Long userId,
                                        @PathVariable Long mangaId,
                                        @PathVariable Long commentId) {
