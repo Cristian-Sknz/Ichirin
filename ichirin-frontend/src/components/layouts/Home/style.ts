@@ -123,12 +123,12 @@ export const Readmore = styled(AnchorLink)`
 `;
 
 export const LastMangaUpdates = styled.section`
-  margin: 5rem 0;
+  margin: 2rem 0;
 `;
 
 export const MangaUpdatesContainer = styled.div`
   max-width: var(--max-width);
-  margin: 0 auto;
+  margin: 1rem auto;
 `;
 
 export const MangaListContainer = styled.div`
