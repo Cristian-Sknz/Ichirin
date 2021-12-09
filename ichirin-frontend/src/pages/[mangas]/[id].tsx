@@ -5,6 +5,7 @@ import React from 'react';
 import MangaChapters from '../../components/layouts/Manga/MangaChapters';
 import MangaDescription from '../../components/layouts/Manga/MangaDescription';
 import MangaPreview from '../../components/layouts/Manga/MangaPreview';
+import Comments from '../../components/template/Comments/Comments';
 import Footer from '../../components/template/Footer';
 import Navbar from '../../components/template/Navbar';
 import Topbar from '../../components/template/Topbar';
@@ -33,6 +34,7 @@ const Obra: React.FC<ObraProps> = ({ manga }) => {
           <MangaPreview manga={manga} />
           <MangaDescription manga={manga} />
           <MangaChapters chapters={[]} />
+          <Comments/>
         </>
         <Footer />
       </>

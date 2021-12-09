@@ -1,4 +1,4 @@
-import { TableRow as StyledTableRow } from '../../style';
+import { TableRow as StyledTableRow } from '../style';
 
 type TableRowProps = {
   title: string;

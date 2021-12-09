@@ -1,4 +1,4 @@
-import { TableContent as StyledTableContent } from '../../style';
+import { TableContent as StyledTableContent } from '../style';
 
 type TableContentProps = {
   children?: JSX.Element[] | JSX.Element;

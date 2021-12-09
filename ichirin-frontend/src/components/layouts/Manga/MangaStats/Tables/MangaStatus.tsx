@@ -3,7 +3,7 @@ import React from 'react';
 import MangaData from '../../../../../lib/types';
 import TableContent from '../Table/TableContent';
 import TableRow from '../Table/TableRow';
-import { MangaStatus as StyledMangaStatus } from '../../style';
+import { MangaStatus as StyledMangaStatus } from '../style';
 
 type MangaStatusProps = {
   manga: MangaData;

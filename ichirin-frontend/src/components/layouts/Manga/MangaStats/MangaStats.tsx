@@ -8,7 +8,7 @@ import {
   ChapterButtons,
   MangaStats as StyledMangaStats,
   MangaStatsContainer,
-} from '../style';
+} from './style';
 
 type MangaStatsProps = {
   manga: MangaData;

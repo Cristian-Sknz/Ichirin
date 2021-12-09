@@ -3,6 +3,7 @@ import SectionTitle from '../../models/SectionTitle';
 import {
   MangaDescriptionContainer,
   MangaDescription as StyledMangaDescription,
+  MangaDescriptionParagraph,
 } from './style';
 
 type MangaDescriptionProps = {
@@ -33,8 +34,8 @@ type DescriptionLineProp = {
 const DescriptionLine: React.FC<DescriptionLineProp> = ({ text, breakline }) => {
   return (
     <>
-      <p className='description_line'>{text}</p>
-      {breakline && <br className='description_breakline' />}
+      <MangaDescriptionParagraph>{text}</MangaDescriptionParagraph>
+      {breakline && <br/>}
     </>
   );
 };
