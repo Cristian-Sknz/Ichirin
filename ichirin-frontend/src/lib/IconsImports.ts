@@ -10,6 +10,8 @@ const AppIcons = [
     fas.faArrowRight,
     fas.faStar,
     far.faStar,      
+    far.faThumbsUp,
+    far.faThumbsDown,
     fas.faStarHalfAlt, 
     fas.faComments,
     fas.faHeart, 

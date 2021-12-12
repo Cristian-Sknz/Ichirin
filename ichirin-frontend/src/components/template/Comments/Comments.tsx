@@ -1,7 +1,8 @@
 import React from 'react';
 import SectionTitle from '../../models/SectionTitle';
+import Commentary from './Commentary/Commentary';
 import CommentaryForm from './CommentaryForm';
-import { CommentarySection } from './style';
+import { CommentaryList, CommentarySection } from './style';
 
 const Comments: React.FC = () => {
   return (
@@ -9,7 +10,9 @@ const Comments: React.FC = () => {
       {/* filtro de comentarios*/}
       <SectionTitle title={'Comentários'}/>
       <CommentaryForm/>
-      {/* comentarios*/}
+      <CommentaryList>
+        <Commentary></Commentary>
+      </CommentaryList>
     </CommentarySection>
   );
 };

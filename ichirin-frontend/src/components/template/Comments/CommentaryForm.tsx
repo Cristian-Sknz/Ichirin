@@ -10,7 +10,7 @@ import {
   UserCommentaryForm,
 } from './style';
 
-const CommentaryForm: React.FC = () => {
+const CommentaryForm: React.FC = ({children}) => {
   return (
     <UserCommentaryForm>
       <UserAvatarContainer>
@@ -24,7 +24,9 @@ const CommentaryForm: React.FC = () => {
       </UserAvatarContainer>
 
       <InputContainer>
-        <TextArea contentEditable={'true'} />
+        <TextArea placeholder={'Escreva um comentário'} contentEditable={'true'} suppressContentEditableWarning={true}>
+          {children}
+        </TextArea>
         <ToolsContainer>
           <Tools>
 

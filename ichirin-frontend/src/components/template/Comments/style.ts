@@ -11,10 +11,15 @@ export const UserCommentaryForm = styled.form`
   margin: 1rem 0;
 `;
 
+export const CommentaryList = styled.ul`
+  display: flex;
+  flex-direction: column;
+`
+
 export const UserAvatarContainer = styled.div`
   margin-top: 0.5rem;
   display: inline-block;
-  `
+`
 
 export const UserAvatar = styled(Image)`
   //border: 1px solid #777 !important;
@@ -28,6 +33,16 @@ export const InputContainer = styled.div`
   width: 100%;
   border-radius: .3rem;
   margin: 0.5rem;
+
+  [placeholder]:empty {
+    :focus:before {
+      content: "";
+    }
+    :before {
+      content: attr(placeholder);
+      color: #666; 
+    }
+  }
 `;
 
 export const TextArea = styled.div`
