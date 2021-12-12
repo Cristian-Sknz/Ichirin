@@ -13,7 +13,6 @@ import {
   ReplyButton,
   ThumbIcon,
 } from './style';
-import CommentaryForm from '../CommentaryForm';
 
 const Commentary: React.FC = () => {
   return (

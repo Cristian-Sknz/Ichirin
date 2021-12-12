@@ -3,6 +3,7 @@ import {
   InputContainer,
   PublishButton,
   TextArea,
+  ToolIcon,
   Tools,
   ToolsContainer,
   UserAvatar,
@@ -29,7 +30,9 @@ const CommentaryForm: React.FC = ({children}) => {
         </TextArea>
         <ToolsContainer>
           <Tools>
-
+            <ToolIcon icon={['fas', 'bold']}/>
+            <ToolIcon icon={['fas', 'italic']}/>
+            <ToolIcon icon={['fas', 'underline']}/>
           </Tools>
           <PublishButton>Publicar comentário</PublishButton>
         </ToolsContainer>

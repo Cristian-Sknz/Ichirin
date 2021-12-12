@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Image from 'next/image';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { SectionCSS } from '../../../styles/theme/components';
 
 export const CommentarySection = styled.section`
@@ -75,15 +76,31 @@ export const ToolsContainer = styled.div`
 
 export const Tools = styled.ul`
   display: flex;
+  align-items: center;
+  padding: 0 .5rem;
+`;
+
+export const ToolIcon = styled(Icon)`
+  margin: 0 .3rem;
+  color: #666;
+  transition: 125ms;
+  cursor: pointer;
+  :hover {
+    color: #333;
+    transform: scale(1.07);
+    transition: 125ms;
+  }
 `;
 
 export const PublishButton = styled.button`
-  background-color: #777;
+  background-color: #666;
   color: white;
   border: none;
   padding: .3rem .5rem;
-
+  transition: 125ms;
   :hover {
     background-color: #555;
+    transform: scale(1.01);
+    transition: 125ms;
   }
 `;
