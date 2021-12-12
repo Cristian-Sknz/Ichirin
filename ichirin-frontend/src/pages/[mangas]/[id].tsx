@@ -7,7 +7,10 @@ import MangaDescription from '../../components/layouts/Manga/MangaDescription';
 import MangaPreview from '../../components/layouts/Manga/MangaPreview';
 import Comments from '../../components/template/Comments/Comments';
 import Footer from '../../components/template/Footer';
+import PageHeaderProvider from '../../components/template/header';
 import Navbar from '../../components/template/Navbar';
+import Search from '../../components/template/Search';
+import Sidebar from '../../components/template/Sidebar/Sidebar';
 import Topbar from '../../components/template/Topbar';
 import { MangaTypes } from '../../lib/api';
 import MangaData from '../../lib/types';
@@ -22,25 +25,25 @@ const Obra: React.FC<ObraProps> = ({ manga }) => {
     <>
       <Head>
         <title>{`${manga?.name} - Ichirin no Hana Yuri`}</title>
-        <meta
-          name='description'
-          content={`Leia o manga ${manga?.name} online.`}/>
+        <meta name='description' content={`Leia o manga ${manga?.name} online.`} />
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <>
-        <Navbar />
-        <Topbar />
-        <>
-          <MangaPreview manga={manga} />
-          <MangaDescription manga={manga} />
-          <MangaChapters chapters={[]} />
-          <Comments/>
-        </>
+        <PageHeaderProvider>
+          <Navbar />
+          <Topbar />
+          <Search />
+          <Sidebar />
+        </PageHeaderProvider>
+        <MangaPreview manga={manga} />
+        <MangaDescription manga={manga} />
+        <MangaChapters chapters={[]} />
+        <Comments />
         <Footer />
       </>
     </>
   );
-}
+};
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { id, mangas } = context.params;
@@ -70,6 +73,5 @@ function identifyType(type: string): string | undefined {
     (name) => removeAccents(name).toLowerCase() == type.toLowerCase()
   )[0];
 }
-
 
 export default Obra;

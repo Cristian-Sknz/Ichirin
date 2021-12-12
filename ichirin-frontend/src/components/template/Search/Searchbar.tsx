@@ -1,20 +1,34 @@
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
-import React, { ChangeEvent, forwardRef, MouseEventHandler, useRef } from 'react';
+import React, {
+  ChangeEvent,
+  forwardRef,
+  MouseEventHandler,
+  useContext,
+  useEffect,
+  useRef,
+} from 'react';
+import { SearchContext } from './Search';
 
 import { CloseButton, SearchForm, SearchGroup, SearchInput } from './style';
 
 type SearchbarProps = {
-  onChange?: (e : string) => void;
   onClose?: MouseEventHandler<HTMLButtonElement>;
 };
 
-const Searchbar = ({ onChange, onClose }: SearchbarProps, ref : React.RefObject<HTMLInputElement>) => {
+type InputRef = React.RefObject<HTMLInputElement>;
+
+const Searchbar = ({ onClose }: SearchbarProps, ref: InputRef) => {
+  const { search, values } = useContext(SearchContext);
   const timeout = useRef<NodeJS.Timeout>(null);
 
   const onChangeEvent = (e: ChangeEvent<HTMLInputElement>) => {
     if (timeout.current != null) clearTimeout(timeout.current);
-    timeout.current = setTimeout(() => onChange(e.target.value), 700);
-  }
+    timeout.current = setTimeout(() => search(e.target.value), 700);
+  };
+
+  useEffect(() => {
+    if (ref.current) ref.current.blur();
+  }, [ref, values]);
 
   return (
     <SearchForm onSubmit={(e) => e.preventDefault()}>
@@ -32,8 +46,8 @@ const Searchbar = ({ onChange, onClose }: SearchbarProps, ref : React.RefObject<
         />
       </SearchGroup>
       <CloseButton onClick={onClose}>Fechar</CloseButton>
-      </SearchForm>
+    </SearchForm>
   );
-}
+};
 
 export default forwardRef(Searchbar);

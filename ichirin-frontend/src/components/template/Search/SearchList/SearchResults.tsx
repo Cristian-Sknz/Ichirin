@@ -1,7 +1,9 @@
 import classNames from 'classnames';
+import { useContext, useEffect } from 'react';
 
 import MangaData from '../../../../lib/types';
 import LoadingRing from '../../Loading/LoadingRing';
+import { SearchContext } from '../Search';
 import { EmptyItem, SearchResults as StyledSearchResults } from '../style';
 import SearchItem from './SearchItem';
 
@@ -10,12 +12,13 @@ type SearchResultsProps = {
   loading: boolean;
 };
 
-const SearchResults: React.FC<SearchResultsProps> = ({ items, loading }) => {
+const SearchResults: React.FC = () => {
+  const {values, loading} = useContext(SearchContext);
   return (
     <StyledSearchResults>
-      {items.length != 0 &&
-        items.map((item) => <SearchItem item={item} key={item.id} />)}
-      <EmptyItem className={classNames({ active: items.length == 0 })}>
+      {values.length != 0 &&
+        values.map((item) => <SearchItem item={item} key={item.id} />)}
+      <EmptyItem className={classNames({ active: values.length == 0 })}>
         {!loading ? <h3>Nenhum resultado foi encontrado!</h3> : <LoadingRing />}
       </EmptyItem>
     </StyledSearchResults>

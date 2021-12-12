@@ -1,28 +1,25 @@
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+import classNames from 'classnames';
 import Image from 'next/image';
-import React, { forwardRef, useImperativeHandle, useState } from 'react';
+import React, { forwardRef, useContext, useImperativeHandle, useState } from 'react';
 
 import { NavbarItens, TopbarItens } from '../../../lib/references';
 import AnchorLink from '../../models/AnchorLink';
+import { PageHeaderContext } from '../header';
 import NavbarItem from '../Navbar/NavbarList/NavbarItem';
 import DropdownItem from './Dropdown/DropdownItem';
 import SidebarDropdown from './Dropdown/SidebarDropdown';
 import { Button, LoginContainer, Sidebar as StyledSidebar } from './style';
 
-export type SidebarHandles = {
-  toggleSidebar: () => void;
-};
 
-const Sidebar = ({}, ref: React.RefObject<SidebarHandles>) => {
-  const [open, setOpen] = useState<boolean>(false);
-  useImperativeHandle(ref, () => ({ toggleSidebar: () => setOpen(!open) }));
-
+const Sidebar: React.FC = ({}) => {
+  const { sidebar, toggleSidebar } = useContext(PageHeaderContext);
   return (
-    <StyledSidebar className={open ? 'active' : ''}>
+    <StyledSidebar className={classNames({ active: sidebar })}>
       <Icon
         className={'sidebar_close'}
         icon={['fas', 'times']}
-        onClick={() => setOpen(false)}
+        onClick={toggleSidebar}
       />
       <AnchorLink href={'/'}>
         <Image
@@ -56,4 +53,4 @@ const Sidebar = ({}, ref: React.RefObject<SidebarHandles>) => {
   );
 };
 
-export default forwardRef(Sidebar);
+export default Sidebar;

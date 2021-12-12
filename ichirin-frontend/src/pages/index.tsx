@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 import { InferGetStaticPropsType } from 'next';
 
@@ -8,6 +9,9 @@ import Footer from '../components/template/Footer';
 import Navbar from '../components/template/Navbar';
 import Topbar from '../components/template/Topbar';
 import MangaData from '../lib/types';
+import PageHeaderProvider from '../components/template/header';
+import Search from '../components/template/Search';
+import Sidebar from '../components/template/Sidebar/Sidebar';
 
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -19,8 +23,12 @@ const Home: React.FC<HomeProps> = ({ mangas }) => {
         <meta name='description' content='Pagina inicial do Ichirin no Hana Yuri' />
       </Head>
       <>
-        <Navbar />
-        <Topbar />
+        <PageHeaderProvider>
+          <Navbar />
+          <Topbar />
+          <Search />
+          <Sidebar />
+        </PageHeaderProvider>
         <>
           <FeatureCarrousel />
           <FeatureFinishes mangas={mangas.slice(0, 9)} />
