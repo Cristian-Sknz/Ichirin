@@ -4,7 +4,7 @@ import React, { forwardRef, useImperativeHandle, useState } from 'react';
 
 import { NavbarItens, TopbarItens } from '../../../lib/references';
 import AnchorLink from '../../models/AnchorLink';
-import { NavbarItem } from '../Navbar/style';
+import NavbarItem from '../Navbar/NavbarList/NavbarItem';
 import DropdownItem from './Dropdown/DropdownItem';
 import SidebarDropdown from './Dropdown/SidebarDropdown';
 import { Button, LoginContainer, Sidebar as StyledSidebar } from './style';
