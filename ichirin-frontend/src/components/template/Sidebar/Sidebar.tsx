@@ -5,7 +5,7 @@ import React, { forwardRef, useContext, useImperativeHandle, useState } from 're
 
 import { NavbarItens, TopbarItens } from '../../../lib/references';
 import AnchorLink from '../../models/AnchorLink';
-import { PageHeaderContext } from '../header';
+import { PageHeaderContext } from '../Contexts/header';
 import NavbarItem from '../Navbar/NavbarList/NavbarItem';
 import DropdownItem from './Dropdown/DropdownItem';
 import SidebarDropdown from './Dropdown/SidebarDropdown';

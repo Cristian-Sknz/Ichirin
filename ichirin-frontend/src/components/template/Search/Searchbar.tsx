@@ -7,7 +7,7 @@ import React, {
   useEffect,
   useRef,
 } from 'react';
-import { SearchContext } from './Search';
+import { SearchContext } from '../Contexts/search';
 
 import { CloseButton, SearchForm, SearchGroup, SearchInput } from './style';
 
@@ -22,7 +22,7 @@ const Searchbar = ({ onClose }: SearchbarProps, ref: InputRef) => {
   const timeout = useRef<NodeJS.Timeout>(null);
 
   const onChangeEvent = (e: ChangeEvent<HTMLInputElement>) => {
-    if (timeout.current != null) clearTimeout(timeout.current);
+    if (timeout.current) clearTimeout(timeout.current);
     timeout.current = setTimeout(() => search(e.target.value), 700);
   };
 

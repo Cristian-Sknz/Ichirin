@@ -7,7 +7,7 @@ import MangaLists from '../../components/layouts/MangaLists/MangaLists';
 import Navbar from '../../components/template/Navbar';
 import Topbar from '../../components/template/Topbar';
 import MangaData from '../../lib/types';
-import PageHeaderProvider from '../../components/template/header';
+import PageHeaderProvider from '../../components/template/Contexts/header';
 import Search from '../../components/template/Search';
 import Sidebar from '../../components/template/Sidebar/Sidebar';
 import Footer from '../../components/template/Footer';

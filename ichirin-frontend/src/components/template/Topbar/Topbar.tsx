@@ -3,7 +3,7 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 import { TopbarItens } from '../../../lib/references';
 import AnchorLinkListItem from '../../models/AnchorLinkListItem';
-import { PageHeaderContext } from '../header';
+import { PageHeaderContext } from '../Contexts/header';
 import SocialMedia from './models/SocialMedia';
 import {
   Button,

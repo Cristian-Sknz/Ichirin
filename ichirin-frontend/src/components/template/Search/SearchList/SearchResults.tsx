@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import { useContext, useEffect } from 'react';
 
 import MangaData from '../../../../lib/types';
+import { SearchContext } from '../../Contexts/search';
 import LoadingRing from '../../Loading/LoadingRing';
-import { SearchContext } from '../Search';
 import { EmptyItem, SearchResults as StyledSearchResults } from '../style';
 import SearchItem from './SearchItem';
 

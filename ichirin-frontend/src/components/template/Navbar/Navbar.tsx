@@ -4,7 +4,7 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { NavbarItens } from '../../../lib/references';
 import NavbarList from './NavbarList/NavbarList';
 import AnchorLink from '../../models/AnchorLink';
-import { PageHeaderContext } from '../header';
+import { PageHeaderContext } from '../Contexts/header';
 import {
   InvertedSearchButton,
   NavbarContainer,

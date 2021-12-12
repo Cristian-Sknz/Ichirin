@@ -7,7 +7,7 @@ import MangaDescription from '../../components/layouts/Manga/MangaDescription';
 import MangaPreview from '../../components/layouts/Manga/MangaPreview';
 import Comments from '../../components/template/Comments/Comments';
 import Footer from '../../components/template/Footer';
-import PageHeaderProvider from '../../components/template/header';
+import PageHeaderProvider from '../../components/template/Contexts/header';
 import Navbar from '../../components/template/Navbar';
 import Search from '../../components/template/Search';
 import Sidebar from '../../components/template/Sidebar/Sidebar';
