@@ -5,27 +5,34 @@ export const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 0;
   background-image: url('/images/flower-background.jpg');
   width: 100%;
 `;
 
 export const LoginBox = styled.div`
   display: flex;
-  width: 800px;
-  height: 500px;
+  width: 90%;
+  max-width: 720px;
+  min-height: 500px;
   background-color: white;
   border-radius: 1rem;
 `;
+
 export const Container = styled.div`
   background-color: #000;
   width: 300px;
   padding: 2rem;
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
+  display: none;
   & p {
     color: white;
     text-align: center;
+  }
+
+  @media screen and (min-width: 540px) {
+    display: block;
   }
 `;
 
@@ -34,18 +41,20 @@ export const LoginForm = styled.form`
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
-  padding: 2rem 1rem;
+  padding: 2rem;
 `;
 
 export const FormTitle = styled.h2`
-  font-weight: 500;
   color: black;
+  text-align: center;
+  font-weight: 500;
   font-size: 1.5rem;
 `;
 
 export const FormDescription = styled.span`
-  margin: 0.5rem 0;
   color: #777;
+  text-align: center;
+  margin: 0.5rem 0;
 `;
 
 export const InputBox = styled.div`
