@@ -14,6 +14,7 @@ import {
   TopbarLists,
   Topbar as TopbarStyled,
 } from './style';
+import AnchorLink from '../../models/AnchorLink';
 
 const Topbar: React.FC = () => {
   const { toggleSidebar } = useContext(PageHeaderContext);
@@ -38,8 +39,8 @@ const Topbar: React.FC = () => {
         </TopbarLists>
 
         <LoginContainer>
-          <Button>Entrar</Button>
-          <Button>Cadastrar</Button>
+          <Button href={'/login'}>Entrar</Button>
+          <Button href={'/register'}>Cadastrar</Button>
         </LoginContainer>
 
         <Icon

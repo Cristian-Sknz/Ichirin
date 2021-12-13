@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import AnchorLink from '../../models/AnchorLink';
 
 export const Topbar = styled.div`
   position: sticky;
@@ -113,7 +114,7 @@ export const LoginContainer = styled.div`
   display: none;
 `;
 
-export const Button = styled.button`
+export const Button = styled(AnchorLink)`
   display: inline-block;
   padding: 0.5rem 0.8rem;
   border: 2px solid #666666;
