@@ -19,7 +19,7 @@ const Home: React.FC<HomeProps> = ({ mangas }) => {
   return (
     <>
       <Head>
-        <title>Ichirin no Hana Yuri</title>
+        <title>Ichirin no Hana Yuri - Mangas Yuri</title>
         <meta name='description' content='Pagina inicial do Ichirin no Hana Yuri' />
       </Head>
       <>
