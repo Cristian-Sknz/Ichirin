@@ -40,7 +40,7 @@ const Topbar: React.FC = () => {
 
         <LoginContainer>
           <Button href={'/login'}>Entrar</Button>
-          <Button href={'/register'}>Cadastrar</Button>
+          <Button href={'/signup'}>Cadastrar</Button>
         </LoginContainer>
 
         <Icon

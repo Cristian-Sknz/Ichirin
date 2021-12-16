@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import AnchorLink from '../../models/AnchorLink';
 
 export const StyledSidebar = styled.div`
   display: flex;
@@ -68,16 +69,16 @@ export const LoginContainer = styled.div`
   display: flex;
 `;
 
-export const Button = styled.button`
+export const Button = styled(AnchorLink)`
   background: #eb3349;
-  border: 2px solid white;
-
   display: inline-block;
   padding: ${(props) =>
     props.className == 'login' ? '.6rem 1.8rem' : '.6rem .8rem'};
+  border: 2px solid white;
   border-radius: 2rem;
   margin: 0.2rem;
   transition: 300ms;
+  cursor: pointer;
 
   & {
     color: white;
@@ -89,8 +90,8 @@ export const Button = styled.button`
 
   :hover {
     background-color: transparent;
-    border-color: white;
-    color: white;
+    border-color: #eb3349;
+    color: #eb3349;
     transition: 300ms;
   }
 `;

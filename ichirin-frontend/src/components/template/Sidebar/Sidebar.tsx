@@ -32,8 +32,8 @@ const Sidebar: React.FC = ({}) => {
       </AnchorLink>
 
       <LoginContainer>
-        <Button className={'login'}>Entrar</Button>
-        <Button>Cadastrar</Button>
+        <Button className={'login'} href={'/login'}>Entrar</Button>
+        <Button href={'/signup'}>Cadastrar</Button>
       </LoginContainer>
 
       <SidebarDropdown title={'Navegação'} defaultValue>

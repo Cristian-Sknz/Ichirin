@@ -25,6 +25,7 @@ const AppIcons = [
     fab.faInstagram,
     fab.faDiscord, 
     fab.faFacebookMessenger,
+    fab.faGoogle,
 ]
 
 export default AppIcons;

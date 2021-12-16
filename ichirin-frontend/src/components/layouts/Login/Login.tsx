@@ -1,16 +1,16 @@
 import React from 'react';
 
 import {
-  Container,
+  MessageContainer,
   FormDescription,
   FormTitle,
   InputBox,
   InputContainer,
-  LoginBox,
-  LoginContainer,
-  LoginForm,
-  LoginInput,
-  LoginLabel,
+  Box,
+  Container,
+  Form,
+  FormInput,
+  FormLabel,
   SubmitButton,
   AnchorLink,
 } from './style';
@@ -18,18 +18,17 @@ import Image from 'next/image';
 
 const Login: React.FC = () => {
   return (
-    <LoginContainer>
-      <LoginBox>
-        <Container>
+    <Container>
+      <Box>
+        <MessageContainer>
           <Image src={'/logo.svg'} alt={'Ichirin Logo'} width={260} height={85} />
           <p>
             Leia diversos mangas, manwas, manhwas entre outros!
-            <br />
-            <br />
+            <br /><br />
             Scan de fans para fans, sem fins lucrativos!
           </p>
-        </Container>
-        <LoginForm>
+        </MessageContainer>
+        <Form>
           <FormTitle>Entre com sua conta!</FormTitle>
           <FormDescription>
             Ainda não tem uma conta?
@@ -37,21 +36,21 @@ const Login: React.FC = () => {
           </FormDescription>
           <InputBox>
             <InputContainer>
-              <LoginInput type={'email'} placeholder={'Digite seu Email'} />
+              <FormInput type={'email'} placeholder={'Digite seu Email'} />
             </InputContainer>
             <InputContainer>
-              <LoginInput type={'password'} placeholder={'Senha'} />
+              <FormInput type={'password'} placeholder={'Senha'} />
             </InputContainer>
             <InputContainer>
               <input id={'remember'} name={'remember'} type={'checkbox'} />
-              <LoginLabel htmlFor='remember'>Lembre de mim</LoginLabel>
+              <FormLabel htmlFor='remember'>Lembre de mim</FormLabel>
             </InputContainer>
             <SubmitButton>Entrar</SubmitButton>
           </InputBox>
           <AnchorLink href={'#'}>Esqueceu a senha?</AnchorLink>
-        </LoginForm>
-      </LoginBox>
-    </LoginContainer>
+        </Form>
+      </Box>
+    </Container>
   );
 };
 
