@@ -80,6 +80,13 @@ export const FormLabel = styled.label`
   font-size: 0.9rem;
 `;
 
+export const ErrorMessage = styled.span`
+  display: block;
+  color: #ff3535;
+  font-size: 14px;
+  margin: .2rem;
+`
+
 export const FormInput = styled.input`
   font-size: 1rem;
   padding: 0.8rem 0.3rem;

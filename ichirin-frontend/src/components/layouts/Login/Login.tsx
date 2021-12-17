@@ -1,22 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import {
-  MessageContainer,
-  FormDescription,
-  FormTitle,
-  InputBox,
-  InputContainer,
-  Box,
-  Container,
-  Form,
-  FormInput,
-  FormLabel,
-  SubmitButton,
-  AnchorLink,
-} from './style';
+import { MessageContainer, Box, Container } from './style';
 import Image from 'next/image';
+import LoginForm from './forms/LoginForm';
+import { AuthContext } from '../../template/Contexts/AuthContext';
 
 const Login: React.FC = () => {
+  const { signIn } = useContext(AuthContext);
   return (
     <Container>
       <Box>
@@ -28,27 +18,10 @@ const Login: React.FC = () => {
             Scan de fans para fans, sem fins lucrativos!
           </p>
         </MessageContainer>
-        <Form>
-          <FormTitle>Entre com sua conta!</FormTitle>
-          <FormDescription>
-            Ainda não tem uma conta?
-            <AnchorLink href={'/signup'}> Registre-se!</AnchorLink>
-          </FormDescription>
-          <InputBox>
-            <InputContainer>
-              <FormInput type={'email'} placeholder={'Digite seu Email'} />
-            </InputContainer>
-            <InputContainer>
-              <FormInput type={'password'} placeholder={'Senha'} />
-            </InputContainer>
-            <InputContainer>
-              <input id={'remember'} name={'remember'} type={'checkbox'} />
-              <FormLabel htmlFor='remember'>Lembre de mim</FormLabel>
-            </InputContainer>
-            <SubmitButton>Entrar</SubmitButton>
-          </InputBox>
-          <AnchorLink href={'#'}>Esqueceu a senha?</AnchorLink>
-        </Form>
+        <LoginForm onSubmit={(e) => signIn({
+          email: e.email,
+          password: e.password,
+        })}/>
       </Box>
     </Container>
   );
