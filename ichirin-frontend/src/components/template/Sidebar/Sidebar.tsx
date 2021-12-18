@@ -32,7 +32,7 @@ const Sidebar: React.FC = ({}) => {
       </AnchorLink>
 
       <LoginContainer>
-        <Button className={'login'} href={'/login'}>Entrar</Button>
+        <Button className={'login'} href={'/signin'}>Entrar</Button>
         <Button href={'/signup'}>Cadastrar</Button>
       </LoginContainer>
 

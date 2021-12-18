@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Login from '../components/layouts/Login/Login';
 import PageHeaderProvider from '../components/template/Contexts/header';
+import Footer from '../components/template/Footer';
 import Navbar from '../components/template/Navbar';
 import Search from '../components/template/Search';
 import Sidebar from '../components/template/Sidebar/Sidebar';
@@ -20,6 +21,7 @@ const LoginPage: React.FC = () => {
         <Sidebar />
       </PageHeaderProvider>
       <Login/>
+      <Footer/>
     </>
   );
 };

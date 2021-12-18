@@ -2,6 +2,7 @@ import Head from 'next/head';
 import React from 'react';
 import Register from '../components/layouts/Login/Register';
 import PageHeaderProvider from '../components/template/Contexts/header';
+import Footer from '../components/template/Footer';
 import Navbar from '../components/template/Navbar';
 import Search from '../components/template/Search';
 import Sidebar from '../components/template/Sidebar/Sidebar';
@@ -21,6 +22,7 @@ const SignupPage: React.FC = () => {
         <Sidebar />
       </PageHeaderProvider>
       <Register />
+      <Footer/>
     </>
   );
 };

@@ -39,7 +39,7 @@ const Topbar: React.FC = () => {
         </TopbarLists>
 
         <LoginContainer>
-          <Button href={'/login'}>Entrar</Button>
+          <Button href={'/signin'}>Entrar</Button>
           <Button href={'/signup'}>Cadastrar</Button>
         </LoginContainer>
 
