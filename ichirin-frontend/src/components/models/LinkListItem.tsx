@@ -1,12 +1,19 @@
+import AnchorLink from './AnchorLink';
+
 type LinkListProps = {
-  name: string;
   href: string;
+  useDefault?: boolean;
+  children: JSX.Element | JSX.Element[] | string;
 };
 
-const LinkListItem: React.FC<LinkListProps> = ({ name, href }: LinkListProps) => {
+const LinkListItem: React.FC<LinkListProps> = ({ children, href, useDefault }) => {
   return (
     <li className='list-item'>
-      <a href={href}>{name}</a>
+      {!useDefault ? (
+        <AnchorLink href={href}>{children}</AnchorLink>
+      ) : (
+        <a href={href}>{children}</a>
+      )}
     </li>
   );
 };

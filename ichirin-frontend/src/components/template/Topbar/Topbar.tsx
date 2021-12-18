@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 import { TopbarItens } from '../../../lib/references';
-import ListItem from '../../models/AnchorLinkListItem';
+import ListItem from '../../models/LinkListItem';
 import { PageHeaderContext } from '../Contexts/header';
 import SocialMedia from './models/SocialMedia';
 import {

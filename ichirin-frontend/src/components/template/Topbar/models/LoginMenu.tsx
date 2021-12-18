@@ -37,7 +37,7 @@ const LoggedUser: React.FC<LoggedUserProps> = ({ user }) => {
         <DropdownList>
           <DropdownItem href='/user/me'>Perfil</DropdownItem>
           <DropdownItem href='/user/me/settings'>Configurações</DropdownItem>
-          <DropdownItem href='/logout'>Sair</DropdownItem>
+          <DropdownItem href='/logout' useDefault>Sair</DropdownItem>
         </DropdownList>
       </Dropdown>
     </LoginContainer>

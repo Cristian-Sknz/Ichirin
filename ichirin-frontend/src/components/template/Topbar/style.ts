@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import AnchorLink from '../../models/AnchorLink';
-import ListItem from '../../models/AnchorLinkListItem';
+import ListItem from '../../models/LinkListItem';
 
 export const Topbar = styled.div`
   position: sticky;
