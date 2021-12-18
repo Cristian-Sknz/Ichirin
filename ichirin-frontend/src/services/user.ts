@@ -1,6 +1,6 @@
 import { api } from './api';
 
-export type User = {
+export type UserCompact = {
   id: number;
   name: string;
   nickname: string;
@@ -15,7 +15,7 @@ export enum DataType {
   FULL = "Full",
 }
 
-async function getUserData(type: DataType): Promise<User> {
+async function getUserData(type: DataType): Promise<UserCompact> {
   var response = await api.get('/api/users/me', {
     params: {
       'type': type

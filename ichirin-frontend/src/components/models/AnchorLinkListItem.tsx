@@ -1,15 +1,15 @@
 import AnchorLink from './AnchorLink';
 
 type LinkListProps = {
-  name: string;
   href: string;
+  children: JSX.Element | JSX.Element[] | string;
 };
 
-const AnchorLinkListItem: React.FC<LinkListProps> = ({ name, href }: LinkListProps) => {
+const AnchorLinkListItem: React.FC<LinkListProps> = ({ children, href }: LinkListProps) => {
   return (
     <li className='list-item'>
       <AnchorLink href={href}>
-      {name}
+        {children}
       </AnchorLink>
     </li>
   );

@@ -2,22 +2,22 @@ import React, { useContext } from 'react';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 import { TopbarItens } from '../../../lib/references';
-import AnchorLinkListItem from '../../models/AnchorLinkListItem';
+import ListItem from '../../models/AnchorLinkListItem';
 import { PageHeaderContext } from '../Contexts/header';
 import SocialMedia from './models/SocialMedia';
 import {
-  Button,
   Categories,
-  LoginContainer,
   SocialMedias,
   TopbarBody,
   TopbarLists,
   Topbar as TopbarStyled,
 } from './style';
-import AnchorLink from '../../models/AnchorLink';
+import LoginMenu from './models/LoginMenu';
+import { AuthContext } from '../Contexts/AuthContext';
 
 const Topbar: React.FC = () => {
   const { toggleSidebar } = useContext(PageHeaderContext);
+  const { user } = useContext(AuthContext);
   return (
     <TopbarStyled>
       <TopbarBody>
@@ -33,15 +33,14 @@ const Topbar: React.FC = () => {
 
           <Categories>
             {TopbarItens.map(({ name, link }) => (
-              <AnchorLinkListItem key={name} name={name} href={link} />
+              <ListItem key={name} href={link}>
+                {name}
+              </ListItem>
             ))}
           </Categories>
         </TopbarLists>
 
-        <LoginContainer>
-          <Button href={'/signin'}>Entrar</Button>
-          <Button href={'/signup'}>Cadastrar</Button>
-        </LoginContainer>
+        <LoginMenu user={user}/>
 
         <Icon
           className={'menu-btn'}

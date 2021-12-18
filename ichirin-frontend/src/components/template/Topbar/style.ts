@@ -1,5 +1,7 @@
 import styled from 'styled-components';
+import Image from 'next/image';
 import AnchorLink from '../../models/AnchorLink';
+import ListItem from '../../models/AnchorLinkListItem';
 
 export const Topbar = styled.div`
   position: sticky;
@@ -53,7 +55,7 @@ export const SocialMedias = styled.div`
   }
 
   & li a {
-    color: ${(({theme}) => theme.colors.secondary)};
+    color: ${({ theme }) => theme.colors.secondary};
     background: transparent;
     font-size: 1.8rem;
     transition: 128ms;
@@ -67,7 +69,7 @@ export const SocialMedia = styled.li`
 
 export const SocialMediaLink = styled.a`
   background: transparent;
-  color: ${(({theme}) => theme.colors.secondary)};
+  color: ${({ theme }) => theme.colors.secondary};
   font-size: 1.8rem;
   transition: 128ms;
 
@@ -86,7 +88,7 @@ export const Categories = styled.ul`
   }
 
   & li a {
-    color: ${(({theme}) => theme.colors.secondary)};
+    color: ${({ theme }) => theme.colors.secondary};
     font-family: poppins, sans-serif;
     text-decoration: none;
     text-transform: uppercase;
@@ -108,11 +110,61 @@ export const Categories = styled.ul`
 
 export const LoginContainer = styled.div`
   @media screen and (min-width: 968px) {
+    position: relative;
     display: flex;
     align-items: center;
   }
   display: none;
 `;
+
+export const LoggedUsername = styled.p`
+  cursor: default;
+  font-size: 0.9rem;
+  font-weight: 300;
+  margin: 0 0.6rem;
+`;
+
+export const UserAvatar = styled(Image)`
+  border: 2px solid #999 !important;
+  border-radius: 50%;
+  cursor: pointer;
+`;
+
+export const Dropdown = styled.div`
+  position: absolute;
+  width: 158px;
+  background-color: white;
+  top: 100%;
+  right: 0;
+  border-bottom: 0.3rem solid black;
+  padding: 0.3rem;
+
+  & {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+    &.dropdown,
+    :hover {
+      opacity: 1;
+      visibility: visible;
+      transition: 0.5s;
+    }
+  }
+`;
+
+export const DropdownList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 0.5rem;
+
+  transition: 0.3s;
+  li {
+    margin: 0.2rem 0;
+  }
+`;
+
+export const DropdownItem = ListItem;
 
 export const Button = styled(AnchorLink)`
   display: inline-block;
