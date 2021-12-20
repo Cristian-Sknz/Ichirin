@@ -73,6 +73,14 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
         return expressionHandler;
     }
 
+    /**
+     * O CORS está configurado para permitir todas as origens.
+     * Para funcionar no container docker isso terá que ser habilitado,
+     * pois, não é possível configurar o endereço dinamicamente (colocando o nome do container e porta).
+     *
+     * Caso queira permitir origens limitadas use como o exemplo:
+     * configuration.setAllowedOrigins(List.of("http://localhost:3000"));
+     */
     @Bean
     public CorsFilter corsFilter() {
         var configuration = new CorsConfiguration();
@@ -81,7 +89,8 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
         configuration.setAllowCredentials(true);
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
-        configuration.setAllowedOrigins(List.of("http://localhost:3000"));
+        configuration.setAllowedOriginPatterns(List.of("*"));
+
         configuration.setMaxAge(3600L);
 
         source.registerCorsConfiguration("/**", configuration);

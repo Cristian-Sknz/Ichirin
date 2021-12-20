@@ -10,8 +10,7 @@ type IchirinAPIError = {
 
 export function createAPIClient(context?: any): AxiosInstance {
   const client = axios.create({
-    baseURL: 'http://192.168.99.100:8080',
-    // backend ip (docker): troque isso
+    baseURL: '/backend',
   });
 
   client.interceptors.request.use((config) => {

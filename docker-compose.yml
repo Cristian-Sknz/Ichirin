@@ -1,4 +1,8 @@
-version: "3.4"
+version: '3.4'
+
+networks:
+  ichirin:
+    driver: bridge
 
 services:
   backend:
@@ -7,13 +11,29 @@ services:
       context: ./ichirin-backend
       dockerfile: dockerfile
     image: ichirin-backend:1.0
+    networks:
+      - ichirin
     ports:
       - "8080:8080"
     depends_on:
       - postgres
+  frontend:
+    container_name: ichirin-frontend
+    build:
+      context: ./ichirin-frontend
+      dockerfile: dockerfile
+    image: ichirin-frontend:1.0
+    networks:
+      - ichirin
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
   postgres:
     container_name: ichirin-postgres
     image: postgres
+    networks:
+      - ichirin
     ports:
       - "5432:5432"
     environment:

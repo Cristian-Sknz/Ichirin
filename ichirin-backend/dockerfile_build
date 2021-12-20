@@ -1,0 +1,24 @@
+# Este dockerfile foi feito para caso você não queira
+# fazer toda a etapa de build com docker.
+#
+# Este build costuma ser demorado pela 
+# quantidade de dependencias que tem no projeto.
+#
+# Caso tenha o gradle e as dependencias instaladas em sua maquina
+# recomendo que utilize o 'dockerfile' para criar a imagem.
+#
+
+FROM gradle:jdk11-alpine as build
+
+COPY --chown=gradle:gradle . /home/gradle/src
+
+WORKDIR /home/gradle/src
+RUN gradle build
+
+FROM openjdk:11-jre-slim
+EXPOSE 8080
+
+RUN mkdir /app
+COPY --from=build /home/gradle/src/build/libs/ichirin-1.0-SNAPSHOT.jar /app/ichirin-api.jar
+
+ENTRYPOINT ["java", "-jar", "/app/ichirin-api.jar"]
