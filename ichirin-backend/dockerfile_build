@@ -1,11 +1,11 @@
-# Este dockerfile foi feito para caso você não queira
+# Este dockerfile foi feito para caso você queira
 # fazer toda a etapa de build com docker.
 #
 # Este build costuma ser demorado pela 
 # quantidade de dependencias que tem no projeto.
 #
 # Caso tenha o gradle e as dependencias instaladas em sua maquina
-# recomendo que utilize o 'dockerfile' para criar a imagem.
+# recomendo que utilize o outro 'dockerfile' para criar a imagem.
 #
 
 FROM gradle:jdk11-alpine as build
