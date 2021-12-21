@@ -11,6 +11,10 @@
 ## :fire: Status
 > Como este projeto ainda não está concluido, recomendo que teste em ambiente de desenvolvimento.
 
+Atualmente o projeto irá passar por um "replanejamento", no começo criei este projeto sem nenhum planejamento apenas fui desenvolvendo com as ideias que tinha na cabeça. Bem isso não foi algo que deu muito certo, o projeto tomou uma proporção alem das minhas expectativas e continua a evoluir tomando porporções de desenvolvimento ainda maiores. Este replanejamento será feito para deixar as ideias e objetivos do projeto mais claros.
+
+Decidi replanejar pois como disse, o projeto está ficando bem grande e com isso, eu estava começando a desenvolvendo de forma desorganizada sem completar o desenvolvimento de features e desenvolvendo varias features ao mesmo tempo. Este replanejamento irá fazer com que o desenvolvimento do projeto fique mais saudavel e fazendo com que seja mais produtivo até chegar no resultado final.
+
 ### Desenvolvimento atual:
 Você pode ver o progresso do projeto em [Issues](https://github.com/Cristian-Sknz/Ichirin/issues).
 As modificações que não estão totalmente prontas, não serão commitados na [`master`](https://github.com/Cristian-Sknz/Ichirin/tree/master), tente dar uma olhada em outras branches para ver o progresso do projeto.
@@ -20,7 +24,7 @@ As modificações que não estão totalmente prontas, não serão commitados na 
   <a href="https://www.docker.com/get-started">
     <img align="left" width="90px" alt="Docker logo" src="https://icon-library.com/images/docker-icon/docker-icon-15.jpg">
   </a>
-  Para isso você irá precisar utilizar o <a href="https://www.docker.com/get-started">Docker</a> para deixar todos os ambientes funcionando em corretamente e sem problemas!
+  Para isso você irá precisar utilizar o <a href="https://www.docker.com/get-started">Docker</a> para deixar todos os ambientes funcionando em conjunto, corretamente e sem problemas!
 Tem duas formas de criar o ambiente de produção com o Docker.
 </div>
 <hr>
@@ -28,7 +32,7 @@ Tem duas formas de criar o ambiente de produção com o Docker.
 
 ### 1. Build completo com o docker-compose
   
-A primeira forma requer menos etapas e não precisa ter as ferramentas de desenvolvimento instaladas na sua maquina, porem é mais demorada por conta do processo de building. Comece editando o arquivo **docker-compose.yml** na raiz do projeto.
+A primeira forma requer menos etapas e não precisa ter as ferramentas de desenvolvimento instaladas na sua maquina, porem é mais demorado por conta do processo de building. Comece editando o arquivo **docker-compose.yml** na raiz do projeto.
 
 Modifique os seguintes campos:
 ```yml
@@ -49,7 +53,7 @@ Aqui você precisará ter instalado o [Gradle](https://gradle.org) na sua maquin
 você precisará apenas rodar o comando `docker-compose up -d` na raiz do projeto **utilizando** o arquivo **docker-compose.yml** padrão que vem na raiz do projeto.
 
 Criar as imagens e containers Docker utilizando este metodo é muito mais rapido, pois o docker não terá que baixar todas as dependências do gradle (que são muitas) 
-a cada build, com isso as proximas builds do projeto serão menos custosos.
+a cada build, com isso as proximas builds do projeto serão menos custosas.
 
 ## Como iniciar em modo de desenvolvimento?
 Como este projeto é um projeto que tem tanto o front-end e back-end, caso queira desenvolver ambas as partes, terá que ter uma serie de ferramentas instaladas em seu sistema, abaixo separei quais ferramentas você irá precisar em cada stack.
