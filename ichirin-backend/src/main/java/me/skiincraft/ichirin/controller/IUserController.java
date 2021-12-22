@@ -4,7 +4,7 @@ import me.skiincraft.ichirin.entity.user.UserCommentary;
 import me.skiincraft.ichirin.models.data.DataType;
 import me.skiincraft.ichirin.models.data.user.UserFavoriteData;
 import me.skiincraft.ichirin.models.data.user.UserHistoryData;
-import me.skiincraft.ichirin.models.data.user.UserShort;
+import me.skiincraft.ichirin.models.data.user.UserCompact;
 import me.skiincraft.ichirin.models.dto.UserCommentaryDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,13 +16,13 @@ import java.util.Collection;
 
 public interface IUserController {
 
-    Page<? extends UserShort> getUsers(DataType type, Pageable pageable);
+    Page<? extends UserCompact> getUsers(DataType type, Pageable pageable);
 
-    default UserShort getUserById(DataType type) {
+    default UserCompact getUserById(DataType type) {
         throw new UnsupportedOperationException();
     }
 
-    UserShort getUserById(DataType type, @PathVariable Long userId);
+    UserCompact getUserById(DataType type, @PathVariable Long userId);
 
     default UserFavoriteData getUserFavorites(Pageable pageable) {
         throw new UnsupportedOperationException();

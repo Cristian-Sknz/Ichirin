@@ -3,9 +3,9 @@ package me.skiincraft.ichirin.service;
 import me.skiincraft.ichirin.entity.user.IchirinUser;
 import me.skiincraft.ichirin.exception.IchirinNotFoundException;
 import me.skiincraft.ichirin.models.data.DataType;
-import me.skiincraft.ichirin.models.data.manga.MangaShort;
+import me.skiincraft.ichirin.models.data.manga.MangaCompact;
 import me.skiincraft.ichirin.models.data.user.UserData;
-import me.skiincraft.ichirin.models.data.user.UserShort;
+import me.skiincraft.ichirin.models.data.user.UserCompact;
 import me.skiincraft.ichirin.models.dto.IchirinUserDTO;
 import me.skiincraft.ichirin.repository.user.IchirinUserRepository;
 import me.skiincraft.ichirin.repository.user.UserFavoriteRepository;
@@ -66,37 +66,37 @@ public class UserService {
                 .orElseThrow(() -> new IchirinNotFoundException("exception.user.not-found", source));
     }
 
-    public UserShort getUser(DataType type, long userId) {
+    public UserCompact getUser(DataType type, long userId) {
         return getFunctionByType(type).apply(getUser(userId));
     }
 
-    public Page<UserShort> getAllUsers(DataType type, Pageable pageable) {
+    public Page<UserCompact> getAllUsers(DataType type, Pageable pageable) {
         return repository.findAll(pageable).map(getFunctionByType(type));
     }
 
-    public Function<IchirinUser, ? extends UserShort> getFunctionByType(DataType type) {
-        return getFunctionByType(type, UserShort::of, getLimitedOrFullFunction(true),
+    public Function<IchirinUser, ? extends UserCompact> getFunctionByType(DataType type) {
+        return getFunctionByType(type, UserCompact::of, getLimitedOrFullFunction(true),
                 getLimitedOrFullFunction(false));
     }
 
-    public Function<IchirinUser, ? extends UserShort> getFunctionByType(DataType type,
-                                                                        Function<IchirinUser, UserShort> ifShort,
-                                                                        Function<IchirinUser, UserShort> ifLimited,
-                                                                        Function<IchirinUser, UserShort> ifFull) {
+    public Function<IchirinUser, ? extends UserCompact> getFunctionByType(DataType type,
+                                                                          Function<IchirinUser, UserCompact> ifShort,
+                                                                          Function<IchirinUser, UserCompact> ifLimited,
+                                                                          Function<IchirinUser, UserCompact> ifFull) {
         return type == DataType.FULL ? ifFull : type == DataType.SHORT ? ifShort : ifLimited;
     }
 
-    public Function<IchirinUser, UserShort> getLimitedOrFullFunction(boolean isLimited) {
+    public Function<IchirinUser, UserCompact> getLimitedOrFullFunction(boolean isLimited) {
         return ((user) -> {
             var favorites = favoriteRepository.findByUser(user)
                     .getMangas()
                     .stream()
-                    .map(MangaShort::of);
+                    .map(MangaCompact::of);
 
             var history = historyRepository.findByUser(user)
                     .getMangas()
                     .stream()
-                    .map(MangaShort::of);
+                    .map(MangaCompact::of);
 
             if (isLimited) {
                 return UserData.of(user, favorites.limit(10).collect(Collectors.toList()),

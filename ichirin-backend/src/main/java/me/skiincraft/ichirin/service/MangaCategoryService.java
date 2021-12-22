@@ -3,7 +3,7 @@ package me.skiincraft.ichirin.service;
 import me.skiincraft.ichirin.exception.IchirinNotFoundException;
 import me.skiincraft.ichirin.entity.manga.MangaCategory;
 import me.skiincraft.ichirin.models.data.DataType;
-import me.skiincraft.ichirin.models.data.manga.MangaShort;
+import me.skiincraft.ichirin.models.data.manga.MangaCompact;
 import me.skiincraft.ichirin.repository.manga.MangaCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -46,11 +46,11 @@ public class MangaCategoryService {
                 .orElseThrow(() -> new IchirinNotFoundException("exception.category.not-found", source));
     }
 
-    public Page<? extends MangaShort> getMangasByCategory(DataType type, long category, Pageable pageable) {
+    public Page<? extends MangaCompact> getMangasByCategory(DataType type, long category, Pageable pageable) {
         return mangaService.getMangasByCategory(type, getCategory(category), pageable);
     }
 
-    public Page<? extends MangaShort> getMangasByCategory(DataType type, String category, Pageable pageable) {
+    public Page<? extends MangaCompact> getMangasByCategory(DataType type, String category, Pageable pageable) {
         return mangaService.getMangasByCategory(type, getCategory(category), pageable);
     }
 
@@ -66,13 +66,13 @@ public class MangaCategoryService {
         categoryRepository.delete(category);
     }
 
-    public MangaShort addCategoryToManga(DataType type, long mangaId, long categoryId) {
+    public MangaCompact addCategoryToManga(DataType type, long mangaId, long categoryId) {
         var manga = mangaService.getManga(mangaId);
         manga.getCategory().add(getCategory(categoryId));
         return mangaService.getFunctionByType(type).apply(mangaService.getRepository().save(manga));
     }
 
-    public MangaShort removeCategoryFromManga(DataType type, long mangaId, long categoryId) {
+    public MangaCompact removeCategoryFromManga(DataType type, long mangaId, long categoryId) {
         var manga = mangaService.getManga(mangaId);
         manga.getCategory().remove(getCategory(categoryId));
 

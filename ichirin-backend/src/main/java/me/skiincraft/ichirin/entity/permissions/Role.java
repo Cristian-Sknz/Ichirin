@@ -1,5 +1,6 @@
 package me.skiincraft.ichirin.entity.permissions;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +23,8 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "roles")
     private Long id;
     private String name;
+
+    @JsonIgnore
     @ManyToMany(mappedBy = "roles")
     private Set<IchirinUser> users;
 

@@ -1,7 +1,14 @@
 package me.skiincraft.ichirin.entity.manga.enums;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.util.Arrays;
 
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@Getter
+@AllArgsConstructor
 public enum MangaStatus {
 
     COMPLETED(0, "Completo"),
@@ -10,13 +17,8 @@ public enum MangaStatus {
     GAP(3, "Hiato"),
     NOT_YET_AIRED(4, "Não lançado");
 
-    private int id;
-    private String name;
-
-    MangaStatus(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    private final int id;
+    private final String name;
 
     public static MangaStatus getById(int id) {
         return Arrays.stream(values()).filter(status -> status.id == id).findFirst().orElse(null);

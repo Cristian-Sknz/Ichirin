@@ -6,7 +6,7 @@ import me.skiincraft.ichirin.entity.user.UserCommentary;
 import me.skiincraft.ichirin.models.data.DataType;
 import me.skiincraft.ichirin.models.data.user.UserFavoriteData;
 import me.skiincraft.ichirin.models.data.user.UserHistoryData;
-import me.skiincraft.ichirin.models.data.user.UserShort;
+import me.skiincraft.ichirin.models.data.user.UserCompact;
 import me.skiincraft.ichirin.models.dto.UserCommentaryDTO;
 import me.skiincraft.ichirin.service.CommentaryService;
 import me.skiincraft.ichirin.service.FavoriteService;
@@ -38,14 +38,14 @@ public abstract class DynamicUserController implements IUserController {
     }
 
     @GetMapping(value = "")
-    public Page<UserShort> getUsers(@RequestParam(required = false) DataType type,
-                                    Pageable pageable) {
+    public Page<UserCompact> getUsers(@RequestParam(required = false) DataType type,
+                                      Pageable pageable) {
         return userService.getAllUsers(type, pageable);
     }
 
     @GetMapping(value = "/{userId}")
-    public UserShort getUserById(@RequestParam(required = false) DataType type,
-                                 @PathVariable Long userId) {
+    public UserCompact getUserById(@RequestParam(required = false) DataType type,
+                                   @PathVariable Long userId) {
         return userService.getUser(type, userId);
     }
 

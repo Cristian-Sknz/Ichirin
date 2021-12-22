@@ -1,5 +1,6 @@
 package me.skiincraft.ichirin.entity.permissions;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +22,7 @@ public class Permission {
     private String name;
 
     @ManyToMany(mappedBy = "permissions")
+    @JsonIgnore
     private Set<Role> roles;
 
     public Permission(String name) {

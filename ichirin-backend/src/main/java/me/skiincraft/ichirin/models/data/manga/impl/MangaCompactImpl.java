@@ -7,14 +7,14 @@ import me.skiincraft.ichirin.entity.manga.Manga;
 import me.skiincraft.ichirin.entity.manga.MangaCategory;
 import me.skiincraft.ichirin.entity.manga.enums.MangaStatus;
 import me.skiincraft.ichirin.entity.manga.enums.MangaType;
-import me.skiincraft.ichirin.models.data.manga.MangaShort;
+import me.skiincraft.ichirin.models.data.manga.MangaCompact;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class MangaShortImpl implements MangaShort {
+public class MangaCompactImpl implements MangaCompact {
 
     private long id;
     private String name;
@@ -29,7 +29,7 @@ public class MangaShortImpl implements MangaShort {
     @JsonIgnore
     protected Manga manga;
 
-    public MangaShortImpl(Manga manga) {
+    public MangaCompactImpl(Manga manga) {
         this.id = manga.getId();
         this.name = manga.getName();
         this.author = manga.getInformation().getAuthors().get(0);

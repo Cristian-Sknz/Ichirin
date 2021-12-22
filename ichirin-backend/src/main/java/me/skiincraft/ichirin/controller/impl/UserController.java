@@ -5,7 +5,7 @@ import me.skiincraft.ichirin.models.SimpleAuthenticatedUser;
 import me.skiincraft.ichirin.models.data.DataType;
 import me.skiincraft.ichirin.models.data.user.UserFavoriteData;
 import me.skiincraft.ichirin.models.data.user.UserHistoryData;
-import me.skiincraft.ichirin.models.data.user.UserShort;
+import me.skiincraft.ichirin.models.data.user.UserCompact;
 import me.skiincraft.ichirin.models.dto.UserCommentaryDTO;
 import me.skiincraft.ichirin.service.CommentaryService;
 import me.skiincraft.ichirin.service.FavoriteService;
@@ -32,7 +32,7 @@ public class UserController extends DynamicUserController {
 
     @Override
     @GetMapping("/me")
-    public UserShort getUserById(@RequestParam(required = false) DataType type) {
+    public UserCompact getUserById(@RequestParam(required = false) DataType type) {
         return super.getUserById(type, getAuthenticatedUser().getUserId());
     }
 

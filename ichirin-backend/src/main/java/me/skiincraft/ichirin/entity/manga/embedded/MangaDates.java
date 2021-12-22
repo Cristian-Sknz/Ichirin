@@ -19,13 +19,13 @@ public class MangaDates {
 
     @Column(name = "created_date")
     private OffsetDateTime createdDate;
+    @Column(name = "release_date")
     private LocalDateTime releaseDate;
     @Column(name = "last_update")
     private OffsetDateTime lastUpdate;
 
     public MangaDates(MangaDTO dto) {
-        // TODO LocalDateTime.now() é temporário
-        this.releaseDate = LocalDateTime.now();
+        this.releaseDate = LocalDateTime.parse(dto.getReleaseDate());
     }
 
     @PrePersist

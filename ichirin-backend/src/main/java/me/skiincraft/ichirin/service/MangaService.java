@@ -3,7 +3,7 @@ package me.skiincraft.ichirin.service;
 import me.skiincraft.ichirin.entity.manga.MangaCategory;
 import me.skiincraft.ichirin.models.data.DataType;
 import me.skiincraft.ichirin.models.data.manga.MangaData;
-import me.skiincraft.ichirin.models.data.manga.MangaShort;
+import me.skiincraft.ichirin.models.data.manga.MangaCompact;
 import me.skiincraft.ichirin.models.dto.MangaChapterDTO;
 import me.skiincraft.ichirin.models.dto.MangaDTO;
 import me.skiincraft.ichirin.exception.IchirinNotFoundException;
@@ -18,7 +18,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.function.Function;
 
@@ -45,7 +44,7 @@ public class MangaService {
         return repository.findAll(pageable);
     }
 
-    public Page<? extends MangaShort> getMangas(DataType type, Pageable pageable) {
+    public Page<? extends MangaCompact> getMangas(DataType type, Pageable pageable) {
         return repository.findAll(pageable).map(getFunctionByType(type));
     }
 
@@ -54,7 +53,7 @@ public class MangaService {
                 .orElseThrow(() -> new IchirinNotFoundException("exception.manga.not-found", source));
     }
 
-    public MangaShort getManga(DataType type, long mangaId) {
+    public MangaCompact getManga(DataType type, long mangaId) {
         return getFunctionByType(type).apply(getManga(mangaId));
     }
 
@@ -86,18 +85,18 @@ public class MangaService {
         return chapterRepository.save(new MangaChapter(getManga(mangaId), dto));
     }
 
-    public Page<? extends MangaShort> getMangasByCategory(DataType type, MangaCategory category, Pageable pageable) {
+    public Page<? extends MangaCompact> getMangasByCategory(DataType type, MangaCategory category, Pageable pageable) {
         return repository.findAllByCategory(category, pageable).map(getFunctionByType(type));
     }
 
-    public Function<Manga, ? extends MangaShort> getFunctionByType(DataType type,
-                                                                   Function<Manga, MangaShort> ifShort,
-                                                                  Function<Manga, MangaData> ifFull) {
+    public Function<Manga, ? extends MangaCompact> getFunctionByType(DataType type,
+                                                                     Function<Manga, MangaCompact> ifShort,
+                                                                     Function<Manga, MangaData> ifFull) {
         return type == DataType.FULL ? ifFull : ifShort;
     }
 
-    public Function<Manga, ? extends MangaShort> getFunctionByType(DataType type) {
-        return getFunctionByType(type, MangaShort::of, (manga) -> MangaData.of(manga, chapterRepository.findAllByManga(manga)));
+    public Function<Manga, ? extends MangaCompact> getFunctionByType(DataType type) {
+        return getFunctionByType(type, MangaCompact::of, (manga) -> MangaData.of(manga, chapterRepository.findAllByManga(manga)));
     }
 
     public MangaRepository getRepository() {

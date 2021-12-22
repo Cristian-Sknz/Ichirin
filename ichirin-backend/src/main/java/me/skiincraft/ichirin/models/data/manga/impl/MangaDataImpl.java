@@ -12,7 +12,7 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class MangaDataImpl extends MangaShortImpl implements MangaData {
+public class MangaDataImpl extends MangaCompactImpl implements MangaData {
 
     private MangaInformation information;
     private MangaDates dates;

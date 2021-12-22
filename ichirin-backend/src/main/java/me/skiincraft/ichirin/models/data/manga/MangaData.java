@@ -9,7 +9,7 @@ import me.skiincraft.ichirin.models.data.manga.impl.MangaDataImpl;
 
 import java.util.List;
 
-public interface MangaData extends MangaShort {
+public interface MangaData extends MangaCompact {
 
     MangaInformation getInformation();
     MangaDates getDates();

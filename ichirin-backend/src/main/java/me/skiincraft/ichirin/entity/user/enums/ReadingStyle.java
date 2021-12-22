@@ -1,12 +1,16 @@
 package me.skiincraft.ichirin.entity.user.enums;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ReadingStyle {
 
-    DEFAULT("Padrão"), PAGED("Paginado"), CASCADE("Cascata");
+    DEFAULT(0, "Padrão"), PAGED(1, "Paginado"), CASCADE(2, "Cascata");
 
-    private String name;
-
-    ReadingStyle(String name) {
-        this.name = name;
-    }
+    private final int id;
+    private final String name;
 }

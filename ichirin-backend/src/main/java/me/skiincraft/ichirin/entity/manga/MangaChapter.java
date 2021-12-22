@@ -4,28 +4,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import me.skiincraft.ichirin.models.dto.MangaChapterDTO;
-import me.skiincraft.ichirin.models.dto.MangaDTO;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.time.Clock;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.Objects;
 
-/** <h2>MangaChapter</h2>
- *  <p>Está entidade será um capitulo de algum manga, com as informações básicas como:
- *    <ul>
- *        <li>Nome</li>
- *        <li>Numero do capitulo</li>
- *        <li>Temporada</li>
- *    </ul>
- *  </p>
- *
- * @see Manga Manga
- * @see MangaDTO Data Transfer Object
- */
 @Entity
 @Getter
 @Setter
@@ -56,7 +44,7 @@ public class MangaChapter {
     public MangaChapter(Manga manga, MangaChapterDTO dto) {
         this.chapterName = dto.getName();
         this.chapter = dto.getChapter();
-        this.releaseDate = OffsetDateTime.now(Clock.systemUTC());
+        this.releaseDate = OffsetDateTime.parse(dto.getReleaseDate());
         this.season = dto.getSeason();
         this.manga = manga;
     }

@@ -11,7 +11,7 @@ import javax.validation.constraints.PositiveOrZero;
 @NoArgsConstructor
 public class MangaChapterDTO {
 
-    @NotNull(message = "validation.chapter.name")
+    @NotBlank(message = "validation.chapter.name")
     private String name;
 
     @NotBlank(message = "validation.chapter.summary")
@@ -24,4 +24,6 @@ public class MangaChapterDTO {
     @PositiveOrZero(message = "validation.chapter.chapter")
     @NotNull(message = "validation.chapter.season")
     private float chapter;
+
+    private String releaseDate;
 }

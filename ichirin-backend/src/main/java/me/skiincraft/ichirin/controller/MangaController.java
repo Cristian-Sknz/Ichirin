@@ -7,7 +7,7 @@ import me.skiincraft.ichirin.entity.user.UserCommentary;
 import me.skiincraft.ichirin.models.data.DataType;
 import me.skiincraft.ichirin.models.data.manga.MangaData;
 import me.skiincraft.ichirin.models.data.manga.MangaFavorite;
-import me.skiincraft.ichirin.models.data.manga.MangaShort;
+import me.skiincraft.ichirin.models.data.manga.MangaCompact;
 import me.skiincraft.ichirin.models.dto.MangaChapterDTO;
 import me.skiincraft.ichirin.models.dto.MangaDTO;
 import me.skiincraft.ichirin.service.CommentaryService;
@@ -42,8 +42,8 @@ public class MangaController {
     }
 
     @GetMapping("")
-    public Page<? extends MangaShort> getMangas(@RequestParam(required = false) DataType type,
-                                                Pageable pageable) {
+    public Page<? extends MangaCompact> getMangas(@RequestParam(required = false) DataType type,
+                                                  Pageable pageable) {
         return mangaService.getMangas(type, pageable);
     }
 
@@ -54,8 +54,8 @@ public class MangaController {
     }
 
     @GetMapping("/{mangaId}")
-    public MangaShort getManga(@RequestParam(required = false) DataType type,
-                               @PathVariable Long mangaId) {
+    public MangaCompact getManga(@RequestParam(required = false) DataType type,
+                                 @PathVariable Long mangaId) {
         return mangaService.getManga(type, mangaId);
     }
 
@@ -67,9 +67,9 @@ public class MangaController {
     }
 
     @GetMapping("/category/{category}")
-    public Page<? extends MangaShort> getMangaByCategory(@RequestParam(required = false) DataType type,
-                                                         @PathVariable String category,
-                                                         Pageable pageable) {
+    public Page<? extends MangaCompact> getMangaByCategory(@RequestParam(required = false) DataType type,
+                                                           @PathVariable String category,
+                                                           Pageable pageable) {
         if (category.matches("\\d+$")) {
             return categoryService.getMangasByCategory(type, Long.parseLong(category), pageable);
         }
@@ -103,17 +103,17 @@ public class MangaController {
 
     @PostMapping("/{mangaId}/category/{categoryId}")
     @PreAuthorize("hasAuthority('ROLE_EDITOR')")
-    public MangaShort addCategoryToManga(@RequestParam(required = false) DataType type,
-                                         @PathVariable Long mangaId,
-                                         @PathVariable Long categoryId) {
+    public MangaCompact addCategoryToManga(@RequestParam(required = false) DataType type,
+                                           @PathVariable Long mangaId,
+                                           @PathVariable Long categoryId) {
         return categoryService.addCategoryToManga(type, mangaId, categoryId);
     }
 
     @DeleteMapping("/{mangaId}/category/{categoryId}")
     @PreAuthorize("hasAuthority('ROLE_EDITOR')")
-    public MangaShort removeCategoryFromManga(@RequestParam(required = false) DataType type,
-                                              @PathVariable Long mangaId,
-                                              @PathVariable Long categoryId) {
+    public MangaCompact removeCategoryFromManga(@RequestParam(required = false) DataType type,
+                                                @PathVariable Long mangaId,
+                                                @PathVariable Long categoryId) {
         return categoryService.removeCategoryFromManga(type, mangaId, categoryId);
     }
 
