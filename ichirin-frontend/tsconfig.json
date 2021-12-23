@@ -22,9 +22,9 @@
     "paths": {
       "@ichirin/*": ["src/*"],
       // components
-      "@template/*": ["@ichirin/components/template/*"],
-      "@layouts/*": ["@ichirin/components/layouts/*"],
-      "@models/*": ["@ichirin/components/models/*"]
+      "@template/*": ["src/components/template/*"],
+      "@layouts/*": ["src/components/layouts/*"],
+      "@models/*": ["src/components/models/*"]
     }
   },
   "include": [
