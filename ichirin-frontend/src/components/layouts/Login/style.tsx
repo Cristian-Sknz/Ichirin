@@ -1,6 +1,8 @@
-import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+import React from 'react';
 import styled from 'styled-components';
-import Link from '../../models/AnchorLink';
+import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+
+import Link from '@models/AnchorLink';
 
 export const Container = styled.div`
   display: flex;

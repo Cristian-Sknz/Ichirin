@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { MessageContainer, Box, Container } from './style';
 import Image from 'next/image';
 import LoginForm from './forms/LoginForm';
-import { AuthContext } from '../../template/Contexts/AuthContext';
+import { AuthContext } from '@ichirin/contexts/auth';
 
 const Login: React.FC = () => {
   const { signIn } = useContext(AuthContext);

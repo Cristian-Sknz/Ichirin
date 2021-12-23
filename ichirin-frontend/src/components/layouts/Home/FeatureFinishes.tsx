@@ -1,5 +1,8 @@
-import MangaData from '../../../lib/types';
-import SectionTitle from '../../models/SectionTitle';
+import React from 'react';
+
+import MangaData from '@ichirin/lib/types';
+import SectionTitle from '@models/SectionTitle';
+
 import FeaturedManga from './FeaturedManga';
 import MangaList from './MangaList';
 import MangaListItem from './MangaList/MangaListItem';

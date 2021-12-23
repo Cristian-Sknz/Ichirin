@@ -3,14 +3,15 @@ import React from 'react';
 import Head from 'next/head';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
-import MangaLists from '../../components/layouts/MangaLists/MangaLists';
-import Navbar from '../../components/template/Navbar';
-import Topbar from '../../components/template/Topbar';
-import MangaData from '../../lib/types';
-import PageHeaderProvider from '../../components/template/Contexts/header';
-import Search from '../../components/template/Search';
-import Sidebar from '../../components/template/Sidebar/Sidebar';
-import Footer from '../../components/template/Footer';
+import MangaLists from '@layouts/MangaLists/MangaLists';
+import Navbar from '@template/Navbar';
+import Topbar from '@template/Topbar';
+import Search from '@template/Search';
+import Sidebar from '@template/Sidebar/Sidebar';
+import Footer from '@template/Footer';
+
+import MangaData from '@ichirin/lib/types';
+import PageHeaderProvider from '@ichirin/contexts/header';
 
 type MangaTypeProps = InferGetStaticPropsType<typeof getStaticProps>;
 

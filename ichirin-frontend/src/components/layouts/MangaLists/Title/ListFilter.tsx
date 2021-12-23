@@ -1,5 +1,6 @@
-import ListFilterItem from './ListFilterItem';
+import React from 'react';
 
+import ListFilterItem from './ListFilterItem';
 import { FilterItem, FilterList } from '../style';
 
 const ListFilter: React.FC = () => {

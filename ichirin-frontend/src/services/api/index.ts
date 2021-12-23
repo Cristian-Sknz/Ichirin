@@ -1,12 +1,6 @@
 import axios, { AxiosError, AxiosInstance } from 'axios';
 import { parseCookies } from 'nookies';
-
-type IchirinAPIError = {
-  authentication: string;
-  message: string;
-  path?: string;
-  timestamp: string;
-}
+import { IchirinAPIError } from './types';
 
 export function createAPIClient(context?: any): AxiosInstance {
   const client = axios.create({
@@ -17,7 +11,7 @@ export function createAPIClient(context?: any): AxiosInstance {
     const { token } = parseCookies(context);
     if (token) {
       var header = `Bearer ${token}`;
-      client.defaults.headers['Authorization'] = config.headers['Authorization'] = header;
+      config.headers['Authorization'] = header;
     }
     return config;
   });

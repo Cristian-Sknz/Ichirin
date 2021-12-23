@@ -68,10 +68,11 @@ export const Ball = styled.div`
   ${() =>
     Loading.map(
       (item, index) =>
-        `:nth-child(${index + 1}) {
-      animation-duration: ${item.duration};
-      animation-delay: ${item.delay};
-    }`
+        ` :nth-child(${index + 1}) {
+            animation-duration: ${item.duration};
+            animation-delay: ${item.delay};
+          }
+         `
     )}
 `;
 

@@ -1,5 +1,7 @@
+import React from 'react';
 import { IconName } from '@fortawesome/fontawesome-common-types';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+
 import { SocialMedia as StyledSocialMedia, SocialMediaLink } from '../style';
 
 type SocialMediaProps = {

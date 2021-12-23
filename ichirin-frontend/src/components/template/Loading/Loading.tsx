@@ -1,6 +1,8 @@
+import React from 'react';
 import classNames from 'classnames';
+
 import LoadingRing from './LoadingRing';
-import { LoadingBody, Logo } from './style';
+import { Logo, LoadingBody } from './style';
 
 type LoadingProps = {
   loading: boolean;

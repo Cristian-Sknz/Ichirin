@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { TableContent as StyledTableContent } from '../style';
 
 type TableContentProps = {

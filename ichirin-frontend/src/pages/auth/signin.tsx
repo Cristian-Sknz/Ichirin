@@ -1,11 +1,14 @@
+import React from 'react';
 import Head from 'next/head';
-import Login from '../components/layouts/Login/Login';
-import PageHeaderProvider from '../components/template/Contexts/header';
-import Footer from '../components/template/Footer';
-import Navbar from '../components/template/Navbar';
-import Search from '../components/template/Search';
-import Sidebar from '../components/template/Sidebar/Sidebar';
-import Topbar from '../components/template/Topbar';
+
+import Login from '@layouts/Login/Login';
+import Footer from '@template/Footer';
+import Navbar from '@template/Navbar';
+import Search from '@template/Search';
+import Sidebar from '@template/Sidebar/Sidebar';
+import Topbar from '@template/Topbar';
+
+import PageHeaderProvider from '@ichirin/contexts/header';
 
 const LoginPage: React.FC = () => {
   return (

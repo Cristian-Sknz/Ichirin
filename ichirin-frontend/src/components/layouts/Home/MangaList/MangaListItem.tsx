@@ -1,5 +1,6 @@
-import classNames from 'classnames';
+import React from 'react';
 import Image from 'next/image';
+import classNames from 'classnames';
 
 import MangaData from '../../../../lib/types';
 import AnchorLink from '../../../models/AnchorLink';

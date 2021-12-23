@@ -1,5 +1,7 @@
-import MangaData from '../../../lib/types';
-import SectionTitle from '../../models/SectionTitle';
+import React from 'react';
+
+import MangaData from '@ichirin/lib/types';
+import SectionTitle from '@models/SectionTitle';
 import {
   MangaDescriptionContainer,
   MangaDescription as StyledMangaDescription,

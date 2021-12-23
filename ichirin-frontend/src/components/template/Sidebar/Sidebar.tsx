@@ -1,11 +1,12 @@
+import React, { useContext } from 'react';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import Image from 'next/image';
-import React, { forwardRef, useContext, useImperativeHandle, useState } from 'react';
 
-import { NavbarItens, TopbarItens } from '../../../lib/references';
-import AnchorLink from '../../models/AnchorLink';
-import { PageHeaderContext } from '../Contexts/header';
+import { NavbarItens, TopbarItens } from '@ichirin/lib/references';
+import { PageHeaderContext } from '@ichirin/contexts/header';
+
+import AnchorLink from '@models/AnchorLink';
 import NavbarItem from '../Navbar/NavbarList/NavbarItem';
 import DropdownItem from './Dropdown/DropdownItem';
 import SidebarDropdown from './Dropdown/SidebarDropdown';
@@ -32,8 +33,8 @@ const Sidebar: React.FC = ({}) => {
       </AnchorLink>
 
       <LoginContainer>
-        <Button className={'login'} href={'/signin'}>Entrar</Button>
-        <Button href={'/signup'}>Cadastrar</Button>
+        <Button className={'login'} href={'/auth/signin'}>Entrar</Button>
+        <Button href={'/auth/signup'}>Cadastrar</Button>
       </LoginContainer>
 
       <SidebarDropdown title={'Navegação'} defaultValue>

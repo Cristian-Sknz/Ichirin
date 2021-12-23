@@ -1,6 +1,7 @@
+import React, { useCallback, useState } from 'react';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
-import { useCallback, useState } from 'react';
+
 import { Dropdown, DropdownList } from '../style';
 
 type SidebarDropdownProps = {

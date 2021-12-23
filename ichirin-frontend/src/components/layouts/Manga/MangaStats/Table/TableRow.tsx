@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { TableRow as StyledTableRow } from '../style';
 
 type TableRowProps = {

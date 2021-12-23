@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import AnchorLink from '../../models/AnchorLink';
+import AnchorLink from '@models/AnchorLink';
 
 export const FeatureCarrousel = styled.section`
   background-image: url('/images/flower-background.jpg');

@@ -1,6 +1,7 @@
 import React from 'react';
 
-import MangaData from '../../../../lib/types';
+import MangaData from '@ichirin/lib/types';
+
 import MangaContent from './Tables/MangaContent';
 import MangaStatus from './Tables/MangaStatus';
 import {

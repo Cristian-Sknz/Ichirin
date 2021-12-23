@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Ball, BallGridPulse } from './style';
 
 const LoadingRing: React.FC = () => {

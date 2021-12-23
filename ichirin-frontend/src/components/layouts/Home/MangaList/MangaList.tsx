@@ -1,3 +1,4 @@
+import React from 'react';
 import { MangaListContainer, MangaList as StyledMangaList } from '../style';
 
 type MangaListProps = {

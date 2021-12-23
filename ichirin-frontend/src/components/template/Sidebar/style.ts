@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import AnchorLink from '../../models/AnchorLink';
+import AnchorLink from '@models/AnchorLink';
 
 export const StyledSidebar = styled.div`
   display: flex;

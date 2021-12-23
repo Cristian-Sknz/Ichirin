@@ -1,4 +1,6 @@
-import AnchorLink from '../../../models/AnchorLink';
+import React from 'react';
+
+import AnchorLink from '@models/AnchorLink';
 import { FilterItem } from '../style';
 
 type ListFilterItemProps = {

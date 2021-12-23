@@ -1,4 +1,3 @@
-import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import React, {
   ChangeEvent,
   forwardRef,
@@ -7,7 +6,8 @@ import React, {
   useEffect,
   useRef,
 } from 'react';
-import { SearchContext } from '../Contexts/search';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+import { SearchContext } from '@ichirin/contexts/search';
 
 import { CloseButton, SearchForm, SearchGroup, SearchInput } from './style';
 

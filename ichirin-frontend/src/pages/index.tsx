@@ -2,16 +2,17 @@ import React from 'react';
 import Head from 'next/head';
 import { InferGetStaticPropsType } from 'next';
 
-import FeatureCarrousel from '../components/layouts/Home/FeatureCarrousel';
-import FeatureFinishes from '../components/layouts/Home/FeatureFinishes';
-import LastMangaUpdates from '../components/layouts/Home/LastMangaUpdates';
-import Footer from '../components/template/Footer';
-import Navbar from '../components/template/Navbar';
-import Topbar from '../components/template/Topbar';
+import FeatureCarrousel from '@layouts/Home/FeatureCarrousel';
+import FeatureFinishes from '@layouts/Home/FeatureFinishes';
+import LastMangaUpdates from '@layouts/Home/LastMangaUpdates';
+import Footer from '@template/Footer';
+import Navbar from '@template/Navbar';
+import Topbar from '@template/Topbar';
+import Search from '@template/Search';
+import Sidebar from '@template/Sidebar/Sidebar';
+
 import MangaData from '../lib/types';
-import PageHeaderProvider from '../components/template/Contexts/header';
-import Search from '../components/template/Search';
-import Sidebar from '../components/template/Sidebar/Sidebar';
+import PageHeaderProvider from '@ichirin/contexts/header';
 
 type HomeProps = InferGetStaticPropsType<typeof getStaticProps>;
 

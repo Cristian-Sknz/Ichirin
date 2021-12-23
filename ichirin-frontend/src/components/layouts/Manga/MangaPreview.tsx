@@ -1,7 +1,8 @@
-import classNames from 'classnames';
+import React from 'react';
 import Image from 'next/image';
+import classNames from 'classnames';
 
-import MangaData from '../../../lib/types';
+import MangaData from '@ichirin/lib/types';
 import MangaStats from './MangaStats';
 import {
   MangaAgeRating,

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import AnchorLink from './AnchorLink';
 
 type LinkListProps = {

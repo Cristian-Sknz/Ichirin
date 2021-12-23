@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 
-import { PageHeaderContext } from '../Contexts/header';
-import { SearchContextProvider } from '../Contexts/search';
+import { PageHeaderContext } from '@ichirin/contexts/header';
+import { SearchContextProvider } from '@ichirin/contexts/search';
 
 import Searchbar from './Searchbar';
 import SearchResults from './SearchList/SearchResults';

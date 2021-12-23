@@ -17,7 +17,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@ichirin/*": ["src/*"],
+      // components
+      "@template/*": ["@ichirin/components/template/*"],
+      "@layouts/*": ["@ichirin/components/layouts/*"],
+      "@models/*": ["@ichirin/components/models/*"]
+    }
   },
   "include": [
     "next-env.d.ts",

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import RatingStars from '../../../models/RatingStar';
+import RatingStars from '@models/RatingStar';
 
 export const MangaStats = styled.div`
   background: rgb(255, 255, 255, 70%);

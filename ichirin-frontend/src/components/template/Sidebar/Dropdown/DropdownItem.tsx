@@ -1,3 +1,5 @@
+import React from 'react';
+
 import AnchorLink from '../../../models/AnchorLink';
 import { DropdownItem as StyledDropdownItem } from '../style';
 

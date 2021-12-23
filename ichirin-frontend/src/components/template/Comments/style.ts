@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
-import { SectionCSS } from '../../../styles/theme/components';
+import { SectionCSS } from '@ichirin/styles/theme/components';
 
 export const CommentarySection = styled.section`
   ${SectionCSS}

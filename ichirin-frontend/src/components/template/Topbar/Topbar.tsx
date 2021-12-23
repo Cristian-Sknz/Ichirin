@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
-import { TopbarItens } from '../../../lib/references';
-import ListItem from '../../models/LinkListItem';
-import { PageHeaderContext } from '../Contexts/header';
+import { TopbarItens } from '@ichirin/lib/references';
+import ListItem from '@ichirin/components/models/LinkListItem';
+import { PageHeaderContext } from '@ichirin/contexts/header';
+import { AuthContext } from '@ichirin/contexts/auth';
+
 import SocialMedia from './models/SocialMedia';
 import {
   Categories,
@@ -13,7 +15,6 @@ import {
   Topbar as TopbarStyled,
 } from './style';
 import LoginMenu from './models/LoginMenu';
-import { AuthContext } from '../Contexts/AuthContext';
 
 const Topbar: React.FC = () => {
   const { toggleSidebar } = useContext(PageHeaderContext);

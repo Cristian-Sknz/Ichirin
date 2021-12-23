@@ -1,4 +1,6 @@
-import AnchorLink from '../../models/AnchorLink';
+import React from 'react';
+
+import AnchorLink from '@models/AnchorLink';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 import {

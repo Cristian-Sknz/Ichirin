@@ -1,11 +1,12 @@
+import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { useContext, useEffect } from 'react';
 
-import MangaData from '../../../../lib/types';
-import { SearchContext } from '../../Contexts/search';
-import LoadingRing from '../../Loading/LoadingRing';
-import { EmptyItem, SearchResults as StyledSearchResults } from '../style';
+import MangaData from '@ichirin/lib/types';
+import { SearchContext } from '@ichirin/contexts/search';
+import LoadingRing from '@template/Loading/LoadingRing';
+
 import SearchItem from './SearchItem';
+import { EmptyItem, SearchResults as StyledSearchResults } from '../style';
 
 type SearchResultsProps = {
   items: MangaData[];

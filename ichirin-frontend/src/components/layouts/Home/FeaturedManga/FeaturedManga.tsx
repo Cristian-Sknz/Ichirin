@@ -1,11 +1,12 @@
-import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 import Image from 'next/image';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
-import MangaData from '../../../../lib/types';
-import { textLimiter } from '../../../../lib/Util';
-import AnchorLink from '../../../models/AnchorLink';
-import RatingStars from '../../../models/RatingStar';
+import MangaData from '@ichirin/lib/types';
+import { textLimiter } from '@ichirin/lib/Util';
 
+import AnchorLink from '@models/AnchorLink';
+import RatingStars from '@models/RatingStar';
 import {
   FeaturedItem,
   FeaturedItemTitle,

@@ -1,6 +1,7 @@
+import React from 'react';
 import Link, { LinkProps } from 'next/link';
 
-export interface AnchorLinkProps extends LinkProps {
+export type AnchorLinkProps = LinkProps & {
   className?: string;
   children?: JSX.Element | JSX.Element[] | any;
 }

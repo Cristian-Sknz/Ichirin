@@ -1,20 +1,22 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
-import Head from 'next/head';
 import React from 'react';
+import Head from 'next/head';
+import { GetStaticPaths, GetStaticProps } from 'next';
 
-import MangaChapters from '../../components/layouts/Manga/MangaChapters';
-import MangaDescription from '../../components/layouts/Manga/MangaDescription';
-import MangaPreview from '../../components/layouts/Manga/MangaPreview';
-import Comments from '../../components/template/Comments/Comments';
-import Footer from '../../components/template/Footer';
-import PageHeaderProvider from '../../components/template/Contexts/header';
-import Navbar from '../../components/template/Navbar';
-import Search from '../../components/template/Search';
-import Sidebar from '../../components/template/Sidebar/Sidebar';
-import Topbar from '../../components/template/Topbar';
-import { MangaTypes } from '../../lib/api';
-import MangaData from '../../lib/types';
-import { removeAccents } from '../../lib/Util';
+import MangaChapters from '@layouts/Manga/MangaChapters';
+import MangaDescription from '@layouts/Manga/MangaDescription';
+import MangaPreview from '@layouts/Manga/MangaPreview';
+import Comments from '@template/Comments/Comments';
+import Footer from '@template/Footer';
+import Navbar from '@template/Navbar';
+import Search from '@template/Search';
+import Sidebar from '@template/Sidebar/Sidebar';
+import Topbar from '@template/Topbar';
+
+import PageHeaderProvider from '@ichirin/contexts/header';
+
+import { MangaTypes } from '@ichirin/lib/api';
+import MangaData from '@ichirin/lib/types';
+import { removeAccents } from '@ichirin/lib/Util';
 
 type ObraProps = {
   manga: MangaData;

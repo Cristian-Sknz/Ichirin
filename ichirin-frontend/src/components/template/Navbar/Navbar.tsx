@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
-import { NavbarItens } from '../../../lib/references';
+import { NavbarItens } from '@ichirin/lib/references';
+import { PageHeaderContext } from '@ichirin/contexts/header';
+
+import AnchorLink from '@models/AnchorLink';
 import NavbarList from './NavbarList/NavbarList';
-import AnchorLink from '../../models/AnchorLink';
-import { PageHeaderContext } from '../Contexts/header';
 import {
   InvertedSearchButton,
   NavbarContainer,

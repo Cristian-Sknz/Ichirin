@@ -1,6 +1,7 @@
-import classNames from 'classnames';
 import React, { useState } from 'react';
-import { UserCompact } from '../../../../services/user';
+import classNames from 'classnames';
+
+import { UserCompact } from '@ichirin/services/api/user/types';
 import {
   Button,
   Dropdown,
@@ -37,7 +38,7 @@ const LoggedUser: React.FC<LoggedUserProps> = ({ user }) => {
         <DropdownList>
           <DropdownItem href='/user/me'>Perfil</DropdownItem>
           <DropdownItem href='/user/me/settings'>Configurações</DropdownItem>
-          <DropdownItem href='/logout' useDefault>Sair</DropdownItem>
+          <DropdownItem href='/auth/logout' useDefault>Sair</DropdownItem>
         </DropdownList>
       </Dropdown>
     </LoginContainer>
@@ -47,8 +48,8 @@ const LoggedUser: React.FC<LoggedUserProps> = ({ user }) => {
 const SignButtons: React.FC = () => {
   return (
     <LoginContainer>
-      <Button href={'/signin'}>Entrar</Button>
-      <Button href={'/signup'}>Cadastrar</Button>
+      <Button href={'/auth/signin'}>Entrar</Button>
+      <Button href={'/auth/signup'}>Cadastrar</Button>
     </LoginContainer>
   );
 };

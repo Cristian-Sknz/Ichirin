@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+
 import style from './Models.module.css';
 
 type SectionTitleProps = {

@@ -1,4 +1,6 @@
-import SectionTitle from '../../models/SectionTitle';
+import React from 'react';
+
+import SectionTitle from '@models/SectionTitle';
 import MangaChapter from './ChapterList/MangaChapter';
 
 import { MangaChapterList, MangaChapters as StyledMangaChapters } from './style';

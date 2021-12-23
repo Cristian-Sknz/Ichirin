@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Section } from '../../../styles/theme/components';
+import { Section } from '@ichirin/styles/theme/components';
 
 export const MangaArticle = styled.article`
   font-family: 'Poppins', sans-serif;

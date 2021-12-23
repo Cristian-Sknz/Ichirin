@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { UserAvatar, UserAvatarContainer } from '../style';
-import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import {
   Commentary as StyledCommentary,
   CommentaryButtons,

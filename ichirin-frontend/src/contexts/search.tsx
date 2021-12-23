@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import MangaData from '../../../lib/types';
+import MangaData from '@ichirin/lib/types';
 
 type SearchContextType = {
   values: MangaData[];

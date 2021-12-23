@@ -1,4 +1,6 @@
-import MangaData from '../../../lib/types';
+import React from 'react';
+
+import MangaData from '@ichirin/lib/types';
 import MangaList from '../Home/MangaList';
 import MangaListItem from '../Home/MangaList/MangaListItem';
 import MangaListsTitle from './MangaListsTitle';
