@@ -3,7 +3,7 @@
 <h1 align="left">Ichirin</h1>
 
 <div>
-  <img align="left" width="165px" alt="Chika Fujiwara" src="https://c.tenor.com/S_Bm_Ect9uMAAAAC/chika-delicious.gif">
+  <img align="left" width="165px" height="165px" alt="Chika Fujiwara" src="https://c.tenor.com/S_Bm_Ect9uMAAAAC/chika-delicious.gif">
   <h2>Sobre</h2>
   Este projeto será apresentado em meu portfolio, mostrando algumas das tecnologias que sei atualmente. Este projeto é um projeto full-stack, com o front-end feito com ReactJS e NextJS utilizando o TypeScript e o back-end feito em Java utilizando o Spring Framework.
 </div>
